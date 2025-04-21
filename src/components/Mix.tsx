@@ -1,9 +1,8 @@
 // /src/components/Mix.tsx
 import React, { useState, useEffect } from "react";
-import Data from "./data";
-import "../styles/mix.css";
+import Data from "./Data";
+import "../styles/Mix.css";
 import { useTranslation } from "../hooks/useTranslation";
-import { SettingsContext } from "../context/SettingsContext";
 
 const Mix = () => {
   const { data, loading, error } = Data();

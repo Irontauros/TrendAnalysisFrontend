@@ -1,7 +1,7 @@
 // src/components/Comparison.tsx
 import React, { useState } from "react";
 import Shared from "./Shared";
-import Data from "./data";
+import Data from "./Data";
 import { useTranslation } from "../hooks/useTranslation";
 import translations from "../i18n";
 import "../styles/Comparison.css";

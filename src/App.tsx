@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import Mix from "./components/Mix";
 import Prediction from "./components/Prediction";
 import { Settings } from "./components/Settings";
-import './app.css';
+import './App.css';
 import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
 import LandingPage from "./components/LandingPage";
 
