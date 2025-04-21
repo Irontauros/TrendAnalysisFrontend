@@ -1,0 +1,121 @@
+/* === Comparison Page === */
+.comparison-container {
+  margin-top: 80px;
+  padding: 2rem;
+  min-height: 100vh;
+  color: white;
+}
+
+/* Page Header */
+.comparison-header {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+/* Year Labels Row */
+.year-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.year-label-start,
+.year-label-end {
+  font-weight: bold;
+}
+
+/* === Table Wrapper === */
+.comparison-table-wrapper {
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 2px solid #71fafc;
+  box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
+  margin-top: 2rem;
+  position: relative;
+}
+
+/* === Table Layout === */
+.comparison-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+/* Sticky Header */
+.comparison-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #2a7eb0;
+  padding: 1rem 1.5rem;
+  font-weight: 400;
+  color: #e2e8f0;
+  border-bottom: 1px solid #56b7d9;
+}
+
+/* Round Header Corners */
+.comparison-table thead tr th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.comparison-table thead tr th:last-child {
+  border-top-right-radius: 12px;
+}
+
+/* Table Body Cells */
+.comparison-table td {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #56b7d9;
+  font-size: 20px;
+}
+
+/* Hover Row */
+.comparison-table tr:hover {
+  background-color: #2a7eb0;
+}
+
+/* === Loading & Error === */
+.comparison-loading,
+.comparison-error {
+  font-size: 1.25rem;
+  color: #f87171;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* === Serious Mode Overrides === */
+.serious-mode .comparison-container,
+.serious-mode .comparison-table-wrapper,
+.serious-mode .comparison-table,
+.serious-mode .comparison-table th,
+.serious-mode .comparison-table td {
+  background-color: #0f172a !important;
+  color: white !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
+}
+
+.serious-mode .comparison-table th {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  font-weight: 500;
+}
+
+.serious-mode .comparison-table tr:hover {
+  background-color: #475569 !important;
+}

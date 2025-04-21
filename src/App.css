@@ -1,0 +1,439 @@
+/* === Tailwind Directives === */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Base Body === */
+@layer base {
+  body {
+    @apply bg-white text-black m-0 p-0;
+  }
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* === Layout Containers === */
+.no-scroll-body {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+
+.app-wrapper {
+  @apply flex;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.main-content {
+  @apply flex-grow p-0;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Background Image === */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* === Graph Section === */
+.graph-container {
+  background-color: transparent;
+  padding: 2rem;
+  margin-top: 140px;
+}
+
+.graph-header {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #71fafc;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #71fafc;
+}
+
+.graph-box {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-top: -1rem; /* Moved down to give space from buttons */
+  box-shadow: 0 0 15px #71fafc99;
+}
+
+/* === Align Top Controls: Years on Left, Buttons on Right === */
+.top-controls-aligned {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Left side: Years */
+.top-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Right side: Reset + New */
+.top-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Fix arrow alignment */
+.year-arrow {
+  @apply text-white font-bold;
+  font-size: 5rem;
+  margin-bottom: 0.6rem; /* Raise arrow up slightly */
+  line-height: 1;
+}
+
+
+/* === Compare Button Base === */
+.compare-categories-btn,
+.compare-countries-btn {
+  @apply btn;
+}
+
+.compare-categories-btn.active {
+  background-color: #0f172a;
+  color: #71fafc;
+  border-color: #71fafc;
+  box-shadow: 0 0 14px #71fafc;
+}
+
+
+/* === Year Inputs === */
+.years-input {
+  @apply px-4 py-2 rounded-lg font-semibold text-center text-white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 2px solid white;
+  width: 100px;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  -moz-appearance: textfield;
+}
+
+.years-input:focus {
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px #71fafc;
+  border-color: #71fafc;
+}
+
+.years-input::placeholder {
+  color: #cbd5e1;
+}
+
+.years-input::-webkit-outer-spin-button,
+.years-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* === Reset Button === */
+.reset-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #ef4444;
+  color: white;
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.reset-btn:hover {
+  background-color: #9b2c2c;
+  box-shadow: 0 0 12px #ef4444;
+}
+
+/* === Button Row Layout === */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.button-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* === Chart Toggle Buttons === */
+.chart-toggle-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.chart-toggle-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chart-btn-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.chart-toggle-btn:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px #71fafc;
+  color: #71fafc;
+}
+
+.chart-toggle-line-active {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+  box-shadow: 0 0 12px #3b82f6;
+}
+
+.chart-toggle-bar-active {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: white;
+  box-shadow: 0 0 12px #10b981;
+}
+
+.chart-toggle-pie-active {
+  background-color: #ec4899;
+  border-color: #ec4899;
+  color: white;
+  box-shadow: 0 0 12px #ec4899;
+}
+
+/* === Compare + Category Buttons === */
+.compare-categories-btn,
+.compare-countries-btn {
+  @apply btn;
+}
+
+.compare-categories-btn.active,
+.compare-countries-btn.active {
+  background-color: #0f172a;
+  color: #71fafc;
+  border-color: #71fafc;
+  box-shadow: 0 0 14px #71fafc;
+}
+
+.category-btn,
+.country-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: rgba(15, 23, 42, 0.9);
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.category-btn:hover,
+.country-btn:hover {
+  box-shadow: 0 0 10px #71fafc;
+}
+
+.category-btn.active {
+  background-color: #6366f1;
+  color: white;
+  border-color: #6366f1;
+  box-shadow: 0 0 12px #6366f1;
+}
+
+.country-btn.active {
+  background-color: #34d399;
+  color: #0f172a;
+  border-color: #34d399;
+  box-shadow: 0 0 12px #34d399;
+}
+
+/* === Base Button Styling === */
+.btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: rgba(15, 23, 42, 0.75);
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #71fafc;
+  box-shadow: 0 0 10px #71fafc;
+}
+
+/* === Serious Mode Theme Override === */
+
+.serious-mode body,
+.serious-mode .graph-container,
+.serious-mode .app-wrapper {
+  background-color: #0f172a !important;
+  color: white !important;
+}
+
+/* Navbar + Nav Links */
+.serious-mode .navbar,
+.serious-mode .nav-link {
+  background: #1e293b !important;
+  color: white !important;
+  box-shadow: none !important;
+  border-color: #334155 !important;
+}
+
+.serious-mode .nav-link:hover {
+  background-color: #334155 !important;
+  box-shadow: none !important;
+}
+
+/* Graph Box */
+.serious-mode .graph-box {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  box-shadow: none !important;
+}
+
+/* Graph Header Text */
+.serious-mode .graph-header {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* Buttons: only remove glow — keep color styles intact */
+.serious-mode .btn,
+.serious-mode .category-btn,
+.serious-mode .country-btn,
+.serious-mode .chart-toggle-btn,
+.serious-mode .reset-btn {
+  box-shadow: none !important;
+  border-color: currentColor !important;
+}
+
+/* Optional: if you want to tone down hover effects */
+.serious-mode .btn:hover,
+.serious-mode .chart-toggle-btn:hover,
+.serious-mode .category-btn:hover,
+.serious-mode .reset-btn:hover {
+  box-shadow: none !important;
+  filter: brightness(1.1);
+}
+
+/* Compare Category Button (active state) still preserved */
+.serious-mode .compare-categories-btn.active,
+.serious-mode .compare-countries-btn.active {
+  border-color: #71fafc !important;
+  box-shadow: 0 0 12px #71fafc !important;
+  color: #71fafc !important;
+}
+
+/* Optional: neutralize glow-only overrides from other classes */
+.serious-mode .chart-toggle-line-active,
+.serious-mode .chart-toggle-bar-active,
+.serious-mode .chart-toggle-pie-active {
+  box-shadow: none !important;
+}
+
+/* === Full Serious Mode Background Override === */
+
+.serious-mode body,
+.serious-mode .graph-container,
+.serious-mode .app-wrapper,
+.serious-mode .main-content {
+  background-color: #0f172a !important; /* deep dark blue */
+  color: white !important;
+}
+
+.landing-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.landing-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 12px #71fafc;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.graphs-countries-row {
+  margin-bottom: 2rem;
+  margin-top: -1rem; /* override the default 1.5rem from button-row */
+}
