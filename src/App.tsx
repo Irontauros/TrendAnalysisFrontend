@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Graphs from "./components/Graphs";
@@ -20,7 +19,7 @@ const AppContent = () => {
   return (
     <div className={`app-wrapper ${seriousMode ? 'serious-mode' : ''}`}>
       {/* Background Image or Dark Mode based on Serious Mode */}
-      {seriousMode ? (
+      {seriousMode && (
         <div
           style={{
             position: 'absolute',
@@ -32,24 +31,19 @@ const AppContent = () => {
             zIndex: -1,
           }}
         />
-      ) : (
-        <video className="background-video" autoPlay loop muted playsInline>
-  <source src="/bg.mp4" type="video/mp4" />
-</video>
       )}
 
       <Navbar onOpenSettings={() => setShowSettings(true)} />
 
       <main className="main-content">
-<Routes>
-  <Route path="/" element={<LandingPage />} />
-  <Route path="/comparison" element={<Comparison />} />
-  <Route path="/graphs" element={<Graphs />} />
-  <Route path="/mix" element={<Mix />} />
-  <Route path="/prediction" element={<Prediction />} />
-  <Route path="*" element={<Navigate to="/" replace />} />
-</Routes>
-
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/comparison" element={<Comparison />} />
+          <Route path="/graphs" element={<Graphs />} />
+          <Route path="/mix" element={<Mix />} />
+          <Route path="/prediction" element={<Prediction />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       {showSettings && <Settings onClose={() => setShowSettings(false)} />}

@@ -7,7 +7,7 @@ import {
 } from "recharts";
 import translations from "../i18n";
 import Shared from "./Shared";
-import FutureData from "./futureData";
+import FutureData from "./FutureData";
 import { useTranslation } from "../hooks/useTranslation";
 
 const Prediction = () => {
