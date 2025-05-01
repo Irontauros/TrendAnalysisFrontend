@@ -1,9 +1,7 @@
-// src/components/Comparison.tsx
 import React, { useState } from "react";
 import Shared from "./Shared";
-import Data from "./Data";
-import { useTranslation } from "../hooks/useTranslation";
-import translations from "../i18n";
+import Data from "./data";
+import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 import "../styles/Comparison.css";
 
 const Comparison = () => {
@@ -40,39 +38,41 @@ const Comparison = () => {
 
     return (
       <div className="comparison-table-wrapper">
-        <table className="comparison-table">
-          <thead>
-            <tr>
-              <th>{t("year")}</th>
-              {activeCategories.map((cat) => (
-                <React.Fragment key={cat}>
-                  <th>{t(cat as keyof typeof translations["en"])}</th>
-                  <th>{t("percentageOfTotal")}</th>
-                </React.Fragment>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {years.map((year) => {
-              const total = getTotalForYear(year);
-              return (
-                <tr key={year}>
-                  <td>{year}</td>
-                  {activeCategories.map((cat) => {
-                    const val = getCategoryDataByYear(year, cat);
-                    const percentage = total > 0 ? ((val || 0) / total) * 100 : 0;
-                    return (
-                      <React.Fragment key={cat}>
-                        <td>{val !== null ? Math.round(val) : "-"}</td>
-                        <td>{percentage.toFixed(1)}%</td>
-                      </React.Fragment>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="comparison-table-scroll">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th>{t("year")}</th>
+                {activeCategories.map((cat) => (
+                  <th key={cat} colSpan={2}>
+                    {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {years.map((year) => {
+                const total = getTotalForYear(year);
+                return (
+                  <tr key={year}>
+                    <td>{year}</td>
+                    {activeCategories.map((cat) => {
+                      const catKey = cat.toLowerCase();
+                      const val = getCategoryDataByYear(year, catKey);
+                      const percentage = total > 0 ? ((val || 0) / total) * 100 : 0;
+                      return (
+                        <React.Fragment key={cat}>
+                          <td>{val !== null ? Math.round(val) : "-"}</td>
+                          <td>{percentage.toFixed(1)}</td>
+                        </React.Fragment>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   };

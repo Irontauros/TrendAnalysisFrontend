@@ -1,39 +1,75 @@
 import React, { useContext, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+
 import Graphs from "./components/Graphs";
 import Comparison from "./components/Comparison";
 import Navbar from "./components/Navbar";
 import Mix from "./components/Mix";
 import Prediction from "./components/Prediction";
 import { Settings } from "./components/Settings";
-import './App.css';
-import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
 import LandingPage from "./components/LandingPage";
+
+import "./App.css";
+import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
 
 const AppContent = () => {
   const { seriousMode } = useContext(SettingsContext);
   const [showSettings, setShowSettings] = useState(false);
+  const location = useLocation();
+
+  const isLandingPage = location.pathname === "/";
 
   return (
-    <div className={`app-wrapper ${seriousMode ? 'serious-mode' : ''}`}>
-      {/* Background Image or Dark Mode based on Serious Mode */}
+    <div className={`app-wrapper ${seriousMode ? "serious-mode" : ""}`}>
+      {/* Background video only for non-landing routes */}
+      {!isLandingPage && (
+        <video
+          className="background-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            minWidth: "100vw",
+            minHeight: "100vh",
+            objectFit: "cover",
+            zIndex: -1,
+          }}
+        >
+          <source src="/bg.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Serious mode overlay */}
       {seriousMode && (
         <div
           style={{
-            position: 'absolute',
+            position: "fixed",
             top: 0,
             left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: '#0f172a',
-            zIndex: -1,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "#0f172a",
+            zIndex: 0,
           }}
         />
       )}
 
-      <Navbar onOpenSettings={() => setShowSettings(true)} />
+      {/* Show navbar only on non-landing pages */}
+      {!isLandingPage && (
+        <Navbar onOpenSettings={() => setShowSettings(true)} />
+      )}
 
       <main className="main-content">
         <Routes>
@@ -46,7 +82,10 @@ const AppContent = () => {
         </Routes>
       </main>
 
-      {showSettings && <Settings onClose={() => setShowSettings(false)} />}
+      {/* Show settings only on non-landing pages */}
+      {!isLandingPage && showSettings && (
+        <Settings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

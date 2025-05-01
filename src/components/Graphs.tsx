@@ -1,4 +1,3 @@
-// src/components/Graphs.tsx
 import React, { useState } from "react";
 import {
   ResponsiveContainer, LineChart, Line, CartesianGrid,
@@ -6,10 +5,12 @@ import {
   Pie, Cell
 } from "recharts";
 
-import Data from "./Data";
+import Data from "./data";
 import Shared from "./Shared";
+import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 
 const Graphs = () => {
+  const { t } = useTranslation();
   const { data, loading, error } = Data();
   const [selectedChart, setSelectedChart] = useState("line");
 
@@ -21,8 +22,8 @@ const Graphs = () => {
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [colorsMap, setColorsMap] = useState<Record<string, string>>({});
 
-  if (loading) return <div className="text-white p-8">Loading...</div>;
-  if (error || !data) return <div className="text-red-500 p-8">Error: {error}</div>;
+  if (loading) return <div className="text-white p-8">{t("loading")}</div>;
+  if (error || !data) return <div className="text-red-500 p-8">{t("error")}: {error}</div>;
 
   const countries = Array.from(new Set(data.groupedData.map((d: any) => d.country)));
 
@@ -67,7 +68,7 @@ const Graphs = () => {
                   key={cat}
                   type="monotone"
                   dataKey={cat}
-                  name={cat}
+                  name={translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} // Translated name
                   stroke={colorsMap[cat] || "#8884d8"}
                   strokeWidth={2}
                   dot={{ r: 4 }}
@@ -91,7 +92,7 @@ const Graphs = () => {
                 <Bar
                   key={cat}
                   dataKey={cat}
-                  name={cat}
+                  name={translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} // Translated name
                   fill={colorsMap[cat] || "#8884d8"}
                   barSize={30}
                 />
@@ -103,7 +104,6 @@ const Graphs = () => {
       case "pie":
         return (
           <>
-            <h2 className="graph-header">Category Totals</h2>
             <ResponsiveContainer width="100%" height={400}>
               <PieChart>
                 <Pie
@@ -113,13 +113,12 @@ const Graphs = () => {
                   cx="50%"
                   cy="50%"
                   outerRadius={150}
-                  label
+                  label={({ name }) => translateDynamic(t, `category.${name.toLowerCase()}`, name)} // Translated name
                 >
                   {pieData.map((entry, i) => (
                     <Cell key={`cell-${i}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <Legend iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
           </>
@@ -138,31 +137,29 @@ const Graphs = () => {
         onChange={handleChange}
       />
 
-      {/* Compare Countries */}
       <div className="button-row graphs-countries-row">
-  <div className="button-left">
-    <button
-      onClick={() => {
-        setCompareCountries(!compareCountries);
-        setSelectedCountry(null);
-      }}
-      className={`compare-countries-btn ${compareCountries ? "active" : ""}`}
-    >
-      {compareCountries ? "Exit Compare Countries" : "Compare Countries"}
-    </button>
-    {compareCountries && countries.map((country) => (
-      <button
-        key={country}
-        onClick={() => setSelectedCountry(country)}
-        className={`country-btn ${selectedCountry === country ? "active" : ""}`}
-      >
-        {country}
-      </button>
-    ))}
-  </div>
-</div>
+        <div className="button-left">
+          <button
+            onClick={() => {
+              setCompareCountries(!compareCountries);
+              setSelectedCountry(null);
+            }}
+            className={`compare-countries-btn ${compareCountries ? "active" : ""}`}
+          >
+            {compareCountries ? t("exitCompareCountries") : t("compareCountries")}
+          </button>
+          {compareCountries && countries.map((country) => (
+            <button
+              key={country}
+              onClick={() => setSelectedCountry(country)}
+              className={`country-btn ${selectedCountry === country ? "active" : ""}`}
+            >
+              {translateDynamic(t, `country.${country}`, country)}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      {/* Graph Display */}
       <div className="graph-box">
         {renderChart()}
       </div>

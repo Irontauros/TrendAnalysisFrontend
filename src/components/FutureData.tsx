@@ -38,7 +38,7 @@ const FutureData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://trendanalysis-457309.nw.r.appspot.com/api/future");
+        const response = await fetch("https://flask-api-327910309669.europe-southwest1.run.app/api/future");
         if (!response.ok) throw new Error("Failed to fetch future data");
 
         const raw: RawFutureEntry[] = await response.json();

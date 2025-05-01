@@ -54,3 +54,13 @@
     box-shadow: none !important;
   }
   
+  .navbar-title.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-title.clickable:hover {
+    color: #71fafc;
+    text-shadow: 0 0 10px #71fafc;
+  }
+  

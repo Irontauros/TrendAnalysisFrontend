@@ -1,14 +1,12 @@
-// src/components/Prediction.tsx
 import React, { useState } from "react";
 import {
   ResponsiveContainer, LineChart, Line, CartesianGrid,
   Tooltip, XAxis, YAxis, Legend, BarChart, Bar, PieChart,
   Pie, Cell
 } from "recharts";
-import translations from "../i18n";
 import Shared from "./Shared";
-import FutureData from "./FutureData";
-import { useTranslation } from "../hooks/useTranslation";
+import FutureData from "./futureData";
+import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 
 const Prediction = () => {
   const { t } = useTranslation();
@@ -51,8 +49,7 @@ const Prediction = () => {
                   key={cat}
                   type="monotone"
                   dataKey={cat}
-                  name={t(cat as keyof typeof translations["en"])}
-
+                  name={translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} // Translated name
                   stroke={colorsMap[cat] || "#8884d8"}
                   strokeWidth={2}
                   dot={{ r: 4 }}
@@ -76,8 +73,7 @@ const Prediction = () => {
                 <Bar
                   key={cat}
                   dataKey={cat}
-                  name={t(cat as keyof typeof translations["en"])}
-
+                  name={translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} // Translated name
                   fill={colorsMap[cat] || "#8884d8"}
                   barSize={30}
                 />
@@ -89,7 +85,6 @@ const Prediction = () => {
       case "pie":
         return (
           <>
-            <h2 className="graph-header">{t("categoryTotals")}</h2>
             <ResponsiveContainer width="100%" height={400}>
               <PieChart>
                 <Pie
@@ -99,13 +94,12 @@ const Prediction = () => {
                   cx="50%"
                   cy="50%"
                   outerRadius={150}
-                  label
+                  label={({ name }) => translateDynamic(t, `category.${name.toLowerCase()}`, name)} // Translated name
                 >
                   {pieData.map((entry, i) => (
                     <Cell key={`cell-${i}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <Legend iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
           </>

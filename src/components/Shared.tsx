@@ -1,6 +1,6 @@
-// src/components/Shared.tsx
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import { useTranslation } from "../hooks/useTranslation";
+import { SettingsContext } from "../context/SettingsContext";
 
 interface SharedProps {
   dataHook: () => {
@@ -27,6 +27,7 @@ const Shared = ({
   hideChartToggle = false,
 }: SharedProps) => {
   const { t } = useTranslation();
+  const { language } = useContext(SettingsContext); // triggers re-renders on language switch
   const { data, loading, error } = dataHook();
 
   const [compareMode, setCompareMode] = useState(false);
@@ -67,14 +68,14 @@ const Shared = ({
         value: filteredData.reduce((sum: number, d: any) => sum + Number(d[cat] || 0), 0),
         fill: colorsMap[cat] || "#8884d8",
       })),
-    [filteredData, activeCategories, colorsMap]
+    [filteredData, activeCategories, colorsMap, language]
   );
 
   useEffect(() => {
     if (initialized && data) {
       onChange(filteredData, activeCategories, pieData, colorsMap);
     }
-  }, [filteredData, activeCategories, pieData, colorsMap, initialized]);
+  }, [filteredData, activeCategories, pieData, colorsMap, initialized, language]);
 
   const toggleCategory = (cat: string) =>
     setSelectedCategories((prev) =>
@@ -112,10 +113,14 @@ const Shared = ({
         </div>
         <div className="top-controls-right">
           <button className="reset-btn" onClick={resetToDefault}>
-            {t("reset")}
+            🔄 {t("reset")}
           </button>
-          <button className="reset-btn">{t("downloadCSV")}</button>
-          <button className="reset-btn">{t("downloadPDF")}</button>
+          <button className="downloadCSV-btn">
+            📄 {t("downloadCSV")}
+          </button>
+          <button className="downloadPDF-btn">
+            📥 {t("downloadPDF")}
+          </button>
         </div>
       </div>
 
@@ -131,9 +136,12 @@ const Shared = ({
           {compareMode &&
             availableFields.map((cat) => {
               const isActive = selectedCategories.includes(cat);
+              const categoryKey = cat.toLowerCase();
+              const translatedCategory = t(`category.${categoryKey}`);
+
               return (
                 <button
-                  key={cat}
+                  key={`${cat}-${language}`}
                   onClick={() => toggleCategory(cat)}
                   className="category-btn"
                   style={
@@ -141,12 +149,12 @@ const Shared = ({
                       ? {
                           backgroundColor: colorsMap[cat],
                           borderColor: colorsMap[cat],
-                          color: "white",
+                          color: "black",
                         }
                       : {}
                   }
                 >
-                  {t(cat)}
+                  {translatedCategory || cat}
                 </button>
               );
             })}

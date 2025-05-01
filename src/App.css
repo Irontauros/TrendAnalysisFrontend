@@ -71,7 +71,7 @@ body {
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
   padding: 1.5rem;
   border-radius: 1rem;
-  margin-top: -1rem; /* Moved down to give space from buttons */
+  margin-top: -1rem;
   box-shadow: 0 0 15px #71fafc99;
 }
 
@@ -107,7 +107,6 @@ body {
   line-height: 1;
 }
 
-
 /* === Compare Button Base === */
 .compare-categories-btn,
 .compare-countries-btn {
@@ -120,7 +119,6 @@ body {
   border-color: #71fafc;
   box-shadow: 0 0 14px #71fafc;
 }
-
 
 /* === Year Inputs === */
 .years-input {
@@ -150,11 +148,12 @@ body {
   margin: 0;
 }
 
+
 /* === Reset Button === */
 .reset-btn {
   @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
   background-color: #ef4444;
-  color: white;
+  color: black;
   border: 2px solid #ef4444;
   box-shadow: 0 0 10px #ef4444;
 }
@@ -162,6 +161,34 @@ body {
 .reset-btn:hover {
   background-color: #9b2c2c;
   box-shadow: 0 0 12px #ef4444;
+}
+
+/* === Download CSV Button === */
+.downloadCSV-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #f6923b;
+  color: black;
+  border: 2px solid #f6923b;
+  box-shadow: 0 0 10px #f6923b;
+}
+
+.downloadCSV-btn:hover {
+  background-color: #bf6b21;
+  box-shadow: 0 0 12px #f6923b;
+}
+
+/* === Download PDF Button === */
+.downloadPDF-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #a651f1;
+  color: black;
+  border: 2px solid #a651f1;
+  box-shadow: 0 0 10px #a651f1;
+}
+
+.downloadPDF-btn:hover {
+  background-color: #7432ae;
+  box-shadow: 0 0 12px #a651f1;
 }
 
 /* === Button Row Layout === */
@@ -216,21 +243,21 @@ body {
 .chart-toggle-line-active {
   background-color: #3b82f6;
   border-color: #3b82f6;
-  color: white;
+  color: black;
   box-shadow: 0 0 12px #3b82f6;
 }
 
 .chart-toggle-bar-active {
   background-color: #10b981;
   border-color: #10b981;
-  color: white;
+  color: black;
   box-shadow: 0 0 12px #10b981;
 }
 
 .chart-toggle-pie-active {
   background-color: #ec4899;
   border-color: #ec4899;
-  color: white;
+  color: black;
   box-shadow: 0 0 12px #ec4899;
 }
 
@@ -263,18 +290,27 @@ body {
   box-shadow: 0 0 10px #71fafc;
 }
 
+/* When category button is active */
 .category-btn.active {
-  background-color: #6366f1;
-  color: white;
-  border-color: #6366f1;
-  box-shadow: 0 0 12px #6366f1;
+  background-color: #6366f1 !important;  /* Change this color as per your design */
+  color: #0f172a !important;  /* Dark color when active */
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 12px #6366f1 !important;
 }
 
+/* Optional: Hover effect for active category buttons */
+.category-btn.active:hover {
+  background-color: #4f46e5 !important;  /* Change hover color */
+  color: #ffffff !important;  /* White color on hover */
+}
+
+
+
 .country-btn.active {
-  background-color: #34d399;
+  background-color: #ffe16a;
   color: #0f172a;
-  border-color: #34d399;
-  box-shadow: 0 0 12px #34d399;
+  border-color: #ffe16a;
+  box-shadow: 0 0 12px #ffe16a;
 }
 
 /* === Base Button Styling === */
@@ -294,7 +330,6 @@ body {
 }
 
 /* === Serious Mode Theme Override === */
-
 .serious-mode body,
 .serious-mode .graph-container,
 .serious-mode .app-wrapper {
@@ -302,7 +337,6 @@ body {
   color: white !important;
 }
 
-/* Navbar + Nav Links */
 .serious-mode .navbar,
 .serious-mode .nav-link {
   background: #1e293b !important;
@@ -316,20 +350,17 @@ body {
   box-shadow: none !important;
 }
 
-/* Graph Box */
 .serious-mode .graph-box {
   background: #1e293b !important;
   border-color: #334155 !important;
   box-shadow: none !important;
 }
 
-/* Graph Header Text */
 .serious-mode .graph-header {
   color: #ffffff !important;
   text-shadow: none !important;
 }
 
-/* Buttons: only remove glow — keep color styles intact */
 .serious-mode .btn,
 .serious-mode .category-btn,
 .serious-mode .country-btn,
@@ -339,7 +370,6 @@ body {
   border-color: currentColor !important;
 }
 
-/* Optional: if you want to tone down hover effects */
 .serious-mode .btn:hover,
 .serious-mode .chart-toggle-btn:hover,
 .serious-mode .category-btn:hover,
@@ -348,7 +378,6 @@ body {
   filter: brightness(1.1);
 }
 
-/* Compare Category Button (active state) still preserved */
 .serious-mode .compare-categories-btn.active,
 .serious-mode .compare-countries-btn.active {
   border-color: #71fafc !important;
@@ -356,7 +385,6 @@ body {
   color: #71fafc !important;
 }
 
-/* Optional: neutralize glow-only overrides from other classes */
 .serious-mode .chart-toggle-line-active,
 .serious-mode .chart-toggle-bar-active,
 .serious-mode .chart-toggle-pie-active {
@@ -364,15 +392,15 @@ body {
 }
 
 /* === Full Serious Mode Background Override === */
-
 .serious-mode body,
 .serious-mode .graph-container,
 .serious-mode .app-wrapper,
 .serious-mode .main-content {
-  background-color: #0f172a !important; /* deep dark blue */
+  background-color: #0f172a !important;
   color: white !important;
 }
 
+/* === Landing Page Video Background === */
 .landing-container {
   position: relative;
   width: 100vw;
@@ -380,11 +408,11 @@ body {
   overflow: hidden;
 }
 
-/*.landing-video {
+.landing-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}*/
+}
 
 .landing-overlay {
   position: absolute;
@@ -422,7 +450,8 @@ body {
   }
 }
 
-/*.background-video {
+/* === Background Video as Fixed Element === */
+.background-video {
   position: fixed;
   top: 0;
   left: 0;
@@ -431,9 +460,9 @@ body {
   height: 100vh;
   object-fit: cover;
   pointer-events: none;
-}*/
+}
 
 .graphs-countries-row {
   margin-bottom: 2rem;
-  margin-top: -1rem; /* override the default 1.5rem from button-row */
+  margin-top: -1rem;
 }

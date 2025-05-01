@@ -44,7 +44,7 @@ const Data = () => {
     const fetchData = async () => {
       try {
         // Make HTTP request to API
-        const response = await fetch("https://trendanalysis-457309.nw.r.appspot.com/api/data");
+        const response = await fetch("https://flask-api-327910309669.europe-southwest1.run.app/api/data");
         if (!response.ok) throw new Error("Failed to fetch data");
 
         // Parse raw data from JSON

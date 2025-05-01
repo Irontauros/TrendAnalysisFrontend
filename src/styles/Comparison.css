@@ -35,7 +35,7 @@
 .comparison-table-wrapper {
   max-height: 60vh;
   overflow-y: auto;
-  overflow-x: auto;
+  overflow-x: hidden; /* horizontal scroll handled by inner scroll container */
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
@@ -46,14 +46,37 @@
   position: relative;
 }
 
+/* Horizontal Scroll Container */
+.comparison-table-scroll {
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-color: #56b7d9 transparent;
+  scrollbar-width: thin;
+}
+
+/* Optional: Custom scrollbar for WebKit browsers */
+.comparison-table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.comparison-table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.comparison-table-scroll::-webkit-scrollbar-thumb {
+  background-color: #56b7d9;
+  border-radius: 8px;
+}
+
 /* === Table Layout === */
 .comparison-table {
-  width: 100%;
-  table-layout: fixed;
+  width: max-content;     /* Expands horizontally as needed */
+  min-width: 100%;        /* Prevents collapse when content is small */
+  table-layout: auto;
   border-collapse: collapse;
   text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 /* Sticky Header */
@@ -81,12 +104,18 @@
 .comparison-table td {
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid #56b7d9;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* Hover Row */
 .comparison-table tr:hover {
   background-color: #2a7eb0;
+}
+
+/* Prevent Cell Wrapping */
+.comparison-table th,
+.comparison-table td {
+  white-space: nowrap;
 }
 
 /* === Loading & Error === */
@@ -118,4 +147,24 @@
 
 .serious-mode .comparison-table tr:hover {
   background-color: #475569 !important;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .comparison-table {
+    font-size: 16px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.5rem;
+  }
+
+  .comparison-container {
+    padding: 1rem;
+  }
+
+  .comparison-table-wrapper {
+    padding: 1rem;
+  }
 }

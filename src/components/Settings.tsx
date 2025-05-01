@@ -59,7 +59,7 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
                 border: "none",
               }}
             >
-              Português
+              {t("portuguese")}
             </button>
             <button
               onClick={() => setLanguage("en")}
@@ -71,14 +71,14 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
                 border: "none",
               }}
             >
-              English
+              {t("english")}
             </button>
           </div>
         </div>
 
         {/* Serious mode toggle */}
         <div style={{ marginBottom: "1rem" }}>
-          <label>🎯 Serious Mode:</label>
+          <label>{t("seriousMode")}:</label>
           <div style={{ marginTop: "0.5rem" }}>
             <button
               onClick={() => setSeriousMode(true)}
@@ -91,7 +91,7 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
                 border: "none",
               }}
             >
-              On
+              {t("on")}
             </button>
             <button
               onClick={() => setSeriousMode(false)}
@@ -103,7 +103,7 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
                 border: "none",
               }}
             >
-              Off
+              {t("off")}
             </button>
           </div>
         </div>
