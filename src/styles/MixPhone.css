@@ -1,0 +1,77 @@
+/* For tablets and small laptops */
+@media (max-width: 1024px) {
+    .mix-container {
+      padding: 2rem;
+    }
+  
+    .mix-controls {
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 36px;
+    }
+  
+    .mix-dropdown select {
+      width: 250px;
+      font-size: 30px;
+      padding: 16px 32px;
+    }
+  
+    .mix-result-box {
+      width: 250px;
+      font-size: 30px;
+    }
+  }
+  
+  /* For mobile devices */
+  @media (max-width: 768px) {
+    .mix-controls {
+      flex-direction: column;
+      gap: 20px;
+      font-size: 28px;
+    }
+  
+    .mix-dropdown {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .mix-dropdown select {
+      width: 100%;
+      max-width: 300px;
+      font-size: 24px;
+      padding: 12px 24px;
+    }
+  
+    .mix-result-box {
+      width: 100%;
+      max-width: 300px;
+      font-size: 24px;
+      padding: 16px 24px;
+    }
+  
+    .mix-calculate-btn {
+      width: 100%;
+      max-width: 300px;
+      font-size: 24px;
+    }
+  
+    .mix-calculate-btn-wrapper {
+      margin-top: 30px;
+    }
+  }
+  
+  /* For very small phones */
+  @media (max-width: 480px) {
+    .mix-container {
+      padding: 1rem;
+    }
+  
+    .mix-content-box {
+      padding: 2rem;
+    }
+  
+    .mix-error-message {
+      font-size: 1rem;
+    }
+  }
+  
