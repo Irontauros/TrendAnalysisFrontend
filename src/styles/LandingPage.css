@@ -1,12 +1,13 @@
 .landing-page {
   position: relative;
   width: 100vw;
-  min-height: 100vh;  /* ← instead of fixed height */
-  overflow-x: hidden; /* ← only hide horizontal scrolling */
-  padding-top: 20rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #1e2a47; /* Dark blue background */
+  padding-top: 6rem; /* Adjust top space to prevent overlap with navbar */
 }
 
-
+/* Background video adjustment */
 .background-video,
 .landing-video {
   position: fixed;
@@ -18,70 +19,39 @@
   z-index: -1;
 }
 
+/* Adjust container for notes */
 .sticky-notes-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   z-index: 2;
   pointer-events: none;
 }
 
-/* Note style */
+/* Note Style */
 .note {
-  position: absolute;
+  position: relative;  /* Set to relative so they can stack without overlap */
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
   padding: 1rem;
   border-radius: 8px;
   border: 2px solid #ff00f7;
   box-shadow: 0 0 15px #00ffff88;
-  max-width: 300px;
+  max-width: 80%;  /* Let the notes take up most of the width on mobile */
+  margin-bottom: 1.5rem;  /* Add margin between notes */
   backdrop-filter: blur(4px);
   pointer-events: auto;
   text-align: center;
-}
-
-/* Desktop Positions */
-.top-left {
-  top: 10rem;
-  left: 2rem;
-}
-
-.middle-left {
-  top: 55%;
-  left: 30rem;
-  transform: translateY(-50%);
-}
-
-.bottom-left {
-  bottom: 4rem;
-  left: 2rem;
-}
-
-.top-right {
-  top: 10rem;
-  right: 2rem;
-}
-
-.middle-right {
-  top: 55%;
-  right: 30rem;
-  transform: translateY(-50%);
-}
-
-.bottom-right {
-  bottom: 4rem;
-  right: 2rem;
+  word-wrap: break-word;  /* Prevent text from overflowing */
 }
 
 /* Footer */
 .footer {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
   padding: 0.5rem 1.5rem;
@@ -89,19 +59,20 @@
   border: 1px solid #00ffff;
   box-shadow: 0 0 10px #00ffff88;
   font-size: 0.8rem;
-  pointer-events: auto;
   width: 90%;
   max-width: 1200px;
+  margin-top: 3rem;  /* Ensure footer is pushed to the end */
+  text-align: center;
 }
 
-/* Skip button */
+/* Skip button adjustments */
 .skip-intro-btn {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  right: 1rem;
+  top: 1rem;
+  position: fixed; /* Keep it at the top right */
   z-index: 10;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
   background-color: rgba(20, 30, 48, 0.85);
   color: #fff;
   border: 1px solid #00ffff;
@@ -134,79 +105,47 @@
   color: #ffffff !important;
   text-shadow: none !important;
 }
+
 .serious-mode .background-video {
   display: none !important;
 }
 
-/* Landing Boxes layout (still kept) */
-.landing-boxes {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.landing-box {
-  width: 150px;
-  height: 150px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  text-align: center;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px #71fafc;
-  transition: all 0.3s ease-in-out;
-}
-
-.landing-box:hover {
-  box-shadow: 0 0 20px #71fafc;
-}
-
-/* === Mobile & Tablet (Responsive Design) === */
+/* === Responsive for Mobile & Tablet === */
 @media (max-width: 768px) {
-/* Stack the notes vertically for mobile/tablet */
-.sticky-notes-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 3rem; /* Space from top */
-}
+  .sticky-notes-overlay {
+    padding-top: 4rem;
+  }
 
-.note {
-  max-width: 80%;  /* Allow notes to take up more width */
-  margin-bottom: 1rem;  /* Space between notes */
-}
+  /* Notes adjustment for mobile */
+  .note {
+    max-width: 90%; /* Let notes take almost the full width */
+    margin-bottom: 1rem; /* Space between notes */
+    padding: 1.5rem;
+  }
 
-/* Adjust footer for smaller screens */
-.footer {
-  width: 100%;
-  margin-top: 1rem;
-}
+  /* Footer Adjustment */
+  .footer {
+    margin-top: 1rem; /* Ensure footer stays at the bottom of the page */
+    font-size: 0.9rem;
+  }
 
-/* Make the skip button more accessible on smaller screens */
-.skip-intro-btn {
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-  right: 1rem; /* Reduce right margin */
-  top: 1rem;   /* Reduce top margin */
-}
+  /* Fix skip button size */
+  .skip-intro-btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    top: 1rem;
+    right: 1rem;
+  }
 
-/* Adjust video size for smaller screens */
-.background-video,
-.landing-video {
-  width: 100vw;
-  height: 100vh;
-}
+  /* Adjust video size for smaller screens */
+  .background-video,
+  .landing-video {
+    width: 100vw;
+    height: 100vh;
+  }
 
-/* Remove the fixed positions for notes */
-.top-left, .middle-left, .bottom-left, .top-right, .middle-right, .bottom-right {
-  position: static;
+  /* Remove fixed positions for notes, let them stack properly */
+  .top-left, .middle-left, .bottom-left, .top-right, .middle-right, .bottom-right {
+    position: static;
+  }
 }
-}
-  
