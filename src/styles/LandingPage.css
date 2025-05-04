@@ -1,34 +1,38 @@
+/* === Base === */
 html, body, #root {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0;
   padding: 0;
+  background-color: #1e2a47; /* fallback background */
 }
 
+/* === Landing Page Container === */
 .landing-page {
   position: relative;
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
   background-color: #1e2a47;
-  padding-top: 6rem; /* Offset for fixed navbar height */
+  padding-top: 7rem; /* Offset for fixed navbar height */
   z-index: 0;
 }
 
-/* Background video */
+/* === Background Video === */
 .background-video,
 .landing-video {
-  position: absolute;
+  position: fixed; /* ensures full coverage */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
+  background-color: #1e2a47; /* fallback in case video fails */
 }
 
-/* Sticky notes overlay */
+/* === Sticky Notes Overlay === */
 .sticky-notes-overlay {
   display: flex;
   flex-direction: column;
@@ -39,7 +43,7 @@ html, body, #root {
   pointer-events: none;
 }
 
-/* Individual note style */
+/* === Individual Note === */
 .note {
   position: relative;
   background-color: rgba(20, 30, 48, 0.85);
@@ -56,7 +60,7 @@ html, body, #root {
   word-wrap: break-word;
 }
 
-/* Footer at the bottom */
+/* === Footer === */
 .footer {
   position: relative;
   background-color: rgba(20, 30, 48, 0.85);
@@ -72,7 +76,7 @@ html, body, #root {
   text-align: center;
 }
 
-/* Skip intro button */
+/* === Skip Intro Button === */
 .skip-intro-btn {
   font-size: 1.2rem;
   padding: 1rem 2rem;
@@ -88,12 +92,13 @@ html, body, #root {
   cursor: pointer;
 }
 
-/* Serious Mode */
+/* === Serious Mode === */
 .serious-mode .landing-container {
   background-color: #0f172a !important;
 }
 
-.serious-mode .landing-video {
+.serious-mode .landing-video,
+.serious-mode .background-video {
   display: none !important;
 }
 
@@ -113,11 +118,12 @@ html, body, #root {
   text-shadow: none !important;
 }
 
-.serious-mode .background-video {
-  display: none !important;
+/* === Anchor Scroll Fix === */
+:target {
+  scroll-margin-top: 7rem; /* matches navbar height */
 }
 
-/* Responsive */
+/* === Responsive === */
 @media (max-width: 768px) {
   .sticky-notes-overlay {
     padding-top: 4rem;
