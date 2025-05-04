@@ -81,30 +81,22 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
 };
 
 export default LandingPage;*/}
-// File: components/LandingPage.tsx
+// File: LandingPage.tsx
 
 import React from "react";
-import Navbar from "./Navbar";
-import { useTranslation } from "../hooks/useTranslation";
-import { useIsMobile } from "../hooks/useIsMobile";
-import "../styles/LandingPagePhone.css";
+import "./LandingPage.css";
 
-type LandingPageProps = {
-  onOpenSettings: () => void;
-};
-
-const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
-  const { t } = useTranslation();
-  const isMobile = useIsMobile();
-
+const LandingPage = () => {
   return (
-    <div className="landing-page-phone">
-      <Navbar onOpenSettings={onOpenSettings} />
-      <div className="note-container">
+    <div className="landing-page">
+      <nav className="navbar">
+        <h1>My Website</h1>
+      </nav>
+      <main className="main-content">
         <div className="note">
-          {t("intro.welcome")}
+          Welcome to my simple page!
         </div>
-      </div>
+      </main>
     </div>
   );
 };

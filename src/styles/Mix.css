@@ -1,7 +1,7 @@
-/* Ensure the mix container starts after the navbar */
+/* Base (Mobile-first) */
 .mix-container {
   margin-top: 100px;
-  padding: 4rem;
+  padding: 2rem 1rem;
   min-height: 100vh;
   color: white;
   display: flex;
@@ -13,29 +13,28 @@
 
 .mix-controls {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  font-size: 48px;
-  margin-bottom: 40px;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 24px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 .mix-dropdown {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .mix-dropdown select {
-  padding: 20px 40px;
-  font-size: 36px;
-  width: 300px;
+  padding: 12px 20px;
+  font-size: 18px;
+  width: 100%;
+  max-width: 300px;
   cursor: pointer;
-  border-radius: 12px;
-  border: 4px solid #fff;
+  border-radius: 10px;
+  border: 2px solid #fff;
   background-color: transparent;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
@@ -49,25 +48,24 @@
 
 .plus-sign,
 .equal-sign {
-  font-size: 64px;
+  font-size: 32px;
   font-weight: bold;
   color: #fff;
   user-select: none;
   pointer-events: none;
   line-height: 1;
-  display: flex;
-  align-items: center;
 }
 
 .mix-result-box {
-  padding: 20px 40px;
-  font-size: 36px;
-  width: 300px;
+  padding: 16px 20px;
+  font-size: 20px;
+  width: 100%;
+  max-width: 300px;
   border-radius: 12px;
   background-color: transparent;
   color: #fff;
   text-align: center;
-  min-height: 70px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,19 +73,19 @@
 }
 
 .mix-calculate-btn-wrapper {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
 
 .mix-calculate-btn {
-  padding: 16px 40px;
-  font-size: 30px;
+  padding: 12px 30px;
+  font-size: 18px;
   background-color: #09273f;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 10px;
   transition: background-color 0.3s;
 }
 
@@ -97,12 +95,13 @@
 
 .mix-content-box {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3rem;
-  border-radius: 16px;
+  padding: 2rem;
+  border-radius: 12px;
   backdrop-filter: blur(4px);
   border: 2px solid #71fafc;
   box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
-  display: inline-block;
+  width: 100%;
+  max-width: 800px;
   text-align: center;
 }
 
@@ -110,85 +109,48 @@
   color: #f87171;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: bold;
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   text-align: center;
-  max-width: 90%;
+  max-width: 95%;
 }
 
-/* === Serious Mode Overrides: Mix === */
-.serious-mode .mix-container {
-  background-color: #0f172a !important;
-}
+/* --- Media Queries for larger screens --- */
+@media (min-width: 768px) {
+  .mix-controls {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    gap: 40px;
+  }
 
-.serious-mode .mix-content-box {
-  background: #1e293b !important;
-  border: 2px solid #334155 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-}
+  .mix-dropdown {
+    flex-direction: row;
+  }
 
-.serious-mode .mix-result-box {
-  background-color: #0f172a !important;
-  border: 2px solid #334155 !important;
-  color: white !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-              0 2px 6px rgba(0, 0, 0, 0.4) !important;
-}
+  .plus-sign,
+  .equal-sign {
+    font-size: 48px;
+  }
 
-.serious-mode .mix-dropdown select {
-  background-color: #1f2937 !important;
-  border: 2px solid #334155 !important;
-  color: white !important;
-  font-weight: 600;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-              0 2px 4px rgba(0, 0, 0, 0.25);
-}
+  .mix-dropdown select {
+    font-size: 28px;
+    padding: 16px 30px;
+  }
 
-.serious-mode .mix-dropdown:nth-child(1) select:focus {
-  border-color: #34d399 !important;
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.5) !important;
-}
+  .mix-result-box {
+    font-size: 28px;
+    min-height: 70px;
+  }
 
-.serious-mode .mix-dropdown:nth-child(2) select:focus {
-  border-color: #fde68a !important;
-  box-shadow: 0 0 0 3px rgba(253, 230, 138, 0.5) !important;
-}
-
-.serious-mode .mix-dropdown:nth-child(3) select:focus {
-  border-color: #c084fc !important;
-  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.5) !important;
-}
-
-.serious-mode .mix-dropdown select:hover {
-  background-color: #334155 !important;
-}
-
-.serious-mode .mix-calculate-btn {
-  background-color: #ef4444 !important;
-  border: 2px solid #b91c1c !important;
-  font-weight: bold;
-  font-size: 1.125rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
-              inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
-  padding: 16px 40px;
-  border-radius: 12px;
-  color: white !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.serious-mode .mix-calculate-btn:hover {
-  background-color: #dc2626 !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
-              inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
-  transform: translateY(-2px);
-}
-
-.serious-mode .mix-error-message {
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
+  .mix-calculate-btn {
+    font-size: 24px;
+    padding: 14px 36px;
+  }
 }
