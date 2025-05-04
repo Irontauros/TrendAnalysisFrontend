@@ -1,0 +1,127 @@
+/* src/styles/LandingPagePhone.css */
+
+.landing-page-phone {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #000000, #003a7f); /* Sem vídeo */
+  }
+  
+  .sticky-notes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  /* Notas mais adaptadas ao ecrã pequeno */
+  .note {
+    position: absolute;
+    background-color: rgba(20, 30, 48, 0.9);
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff88;
+    max-width: 90%;
+    font-size: 0.9rem;
+    pointer-events: auto;
+    text-align: center;
+  }
+  
+  /* Posicionamento adaptado para ecrãs pequenos */
+  .top-left {
+    top: 2rem;
+    left: 1rem;
+  }
+  .middle-left {
+    top: 40%;
+    left: 1rem;
+    transform: translateY(-50%);
+  }
+  .bottom-left {
+    bottom: 2rem;
+    left: 1rem;
+  }
+  
+  .top-right {
+    top: 2rem;
+    right: 1rem;
+  }
+  .middle-right {
+    top: 40%;
+    right: 1rem;
+    transform: translateY(-50%);
+  }
+  .bottom-right {
+    bottom: 2rem;
+    right: 1rem;
+  }
+  
+  /* Footer adaptado */
+  .footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(20, 30, 48, 0.9);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff88;
+    font-size: 0.75rem;
+    pointer-events: auto;
+    width: 90%;
+    text-align: center;
+  }
+  
+  /* Skip button */
+  .skip-intro-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: rgba(20, 30, 48, 0.85);
+    color: #fff;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff88;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* Landing Boxes ajustadas */
+  .landing-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 1rem;
+  }
+  
+  .landing-box {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px #71fafc;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .landing-box:hover {
+    box-shadow: 0 0 20px #71fafc;
+  }
+  

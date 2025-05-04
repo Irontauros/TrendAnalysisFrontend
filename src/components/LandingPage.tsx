@@ -3,7 +3,9 @@
 import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
-import "../styles/LandingPage.css";
+import { useIsMobile } from "../hooks/useIsMobile";
+import "../styles/LandingPage.css";       // estilo para desktop
+import "../styles/LandingPagePhone.css";  // estilo para telemóvel
 
 type LandingPageProps = {
   onOpenSettings: () => void;
@@ -13,23 +15,48 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   const [introSkipped, setIntroSkipped] = useState(false);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isMobile = useIsMobile();
 
   const handleVideoEnd = () => {
     setIntroSkipped(true);
   };
 
-  return (
-    <div className="landing-page">
-      {introSkipped ? (
+  const renderContent = () => (
+    <>
+      {!isMobile && introSkipped && (
+        <video
+          className="background-video"
+          src="/bgg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      )}
+
+      {!isMobile && !introSkipped && (
+        <video
+          ref={videoRef}
+          className="landing-video"
+          src="/intro.mp4"
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnd}
+        />
+      )}
+
+      {!isMobile && !introSkipped && (
+        <button
+          className="skip-intro-btn"
+          onClick={() => setIntroSkipped(true)}
+        >
+          {t("skipIntro")}
+        </button>
+      )}
+
+      {(isMobile || introSkipped) && (
         <>
-          <video
-            className="background-video"
-            src="/bgg.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
           <Navbar onOpenSettings={onOpenSettings} />
           <div className="sticky-notes-overlay">
             {/* Left side */}
@@ -42,30 +69,16 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             <div className="note middle-right">{t("intro.settings")}</div>
             <div className="note bottom-right">{t("intro.compare")}</div>
 
-            <div className="footer">
-  {t("footer")}
-</div>
+            <div className="footer">{t("footer")}</div>
           </div>
         </>
-      ) : (
-        <>
-          <video
-            ref={videoRef}
-            className="landing-video"
-            src="/intro.mp4"
-            autoPlay
-            muted
-            playsInline
-            onEnded={handleVideoEnd}
-          />
-          <button
-            className="skip-intro-btn"
-            onClick={() => setIntroSkipped(true)}
-          >
-            {t("skipIntro")}
-          </button>
-        </>
       )}
+    </>
+  );
+
+  return (
+    <div className={isMobile ? "landing-page-phone" : "landing-page"}>
+      {renderContent()}
     </div>
   );
 };
