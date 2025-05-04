@@ -5,7 +5,7 @@ import {
   Pie, Cell
 } from "recharts";
 import Shared from "./Shared";
-import FutureData from "./futureData";
+import FutureData from "./FutureData";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 
 const Prediction = () => {
