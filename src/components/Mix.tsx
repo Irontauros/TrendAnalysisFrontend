@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Data from "./Data";
-import "../styles/mix.css";
+import "../styles/Mix.css";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 
 const Mix = () => {
