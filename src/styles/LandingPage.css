@@ -1,9 +1,11 @@
 .landing-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;  /* ← instead of fixed height */
+  overflow-x: hidden; /* ← only hide horizontal scrolling */
+  padding-top: 20rem;
 }
+
 
 .background-video,
 .landing-video {
