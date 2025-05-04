@@ -1,6 +1,6 @@
-/* styles/LandingPagePhone.css */
+/* File: styles/LandingPagePhone.css */
 
-/* Ensure body and html take full height */
+/* Full height setup */
 html, body {
     height: 100%;
     margin: 0;
@@ -8,15 +8,15 @@ html, body {
     overflow-x: hidden;
   }
   
-  /* Phone container */
+  /* Landing page layout */
   .landing-page-phone {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #0f172a;
     box-sizing: border-box;
-    overflow-y: auto; /* Allow page scroll */
-    padding-top: 70px; /* Push below navbar */
+    overflow-y: auto;
+    padding-top: 70px; /* Space for fixed navbar */
   }
   
   /* Navbar */
@@ -27,51 +27,30 @@ html, body {
     width: 100%;
     background-color: #0f172a;
     padding: 1rem;
-    color: #fff;
+    color: white;
     z-index: 1000;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
   }
   
-  /* Sticky notes container */
-  .landing-page-phone .sticky-notes-overlay {
+  /* Centered container for the note */
+  .note-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    flex-grow: 1;
+    justify-content: center;
+    align-items: flex-start;
     padding: 2rem 1rem;
+    width: 100%;
     box-sizing: border-box;
   }
   
-  /* Single note */
-  .landing-page-phone .note {
+  /* The note box */
+  .note {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    color: white;
     padding: 2rem;
     border-radius: 10px;
     font-size: 1.5rem;
-    width: 90%;
     max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  /* Hide all notes except first */
-  .landing-page-phone .note:not(:first-child) {
-    display: none;
-  }
-  
-  /* Hide Footer */
-  .landing-page-phone .footer {
-    display: none;
-  }
-  
-  /* Hide video */
-  .landing-page-phone .background-video {
-    display: none;
-  }
-  
-  /* Hide skip button */
-  .landing-page-phone .skip-intro-btn {
-    display: none;
+    width: 100%;
+    text-align: center;
   }
   

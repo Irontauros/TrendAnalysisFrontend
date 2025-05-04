@@ -1,199 +1,178 @@
-/* Ensure the mix container starts after the navbar */
-.mix-container-phone {
-  margin-top: 60px; /* Adjusted for mobile view */
-  padding: 2rem;    /* Reduced padding for mobile */
-  min-height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-y: auto;
-}
+/* === Responsividade para Mobile === */
+@media (max-width: 768px) {
+  .mix-container {
+    margin-top: 80px; /* Menos espaçamento para telas pequenas */
+    padding: 2rem;
+    min-height: auto; /* Permitindo scroll vertical */
+    overflow-y: auto;
+  }
 
-.mix-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  gap: 20px;
-  font-size: 24px; /* Adjusted font size for mobile */
-  margin-bottom: 20px;
-  flex-wrap: nowrap;
-}
+  .mix-controls {
+    display: flex;
+    flex-direction: column; /* Alinhando os controles verticalmente */
+    align-items: stretch; /* Ocupa toda a largura disponível */
+    justify-content: flex-start;
+    gap: 20px; /* Menor espaço entre os controles */
+    font-size: 32px; /* Reduzindo o tamanho da fonte */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite quebra para a linha seguinte */
+  }
 
-.mix-dropdown {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-}
+  .mix-dropdown {
+    display: flex;
+    flex-direction: column; /* Dropdowns ocupam a altura inteira */
+    align-items: stretch;
+    gap: 10px; /* Menor espaço entre os dropdowns */
+  }
 
-.mix-dropdown select {
-  padding: 12px 20px;  /* Reduced padding for mobile */
-  font-size: 20px;      /* Adjusted font size for mobile */
-  width: 100%;          /* Full width for mobile */
-  cursor: pointer;
-  border-radius: 8px;   /* Smaller border radius for mobile */
-  border: 3px solid #fff;
-  background-color: transparent;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
+  .mix-dropdown select {
+    padding: 16px 30px;
+    font-size: 24px; /* Menor fonte para mobile */
+    width: 100%; /* Ocupa toda a largura disponível */
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-.mix-dropdown select:focus,
-.mix-dropdown select:hover {
-  background-color: #2a7eb0;
-  color: #fff;
-}
+  .mix-dropdown select:focus,
+  .mix-dropdown select:hover {
+    background-color: #2a7eb0;
+    color: #fff;
+  }
 
-.plus-sign,
-.equal-sign {
-  font-size: 40px; /* Adjusted icon size for mobile */
-  font-weight: bold;
-  color: #fff;
-  user-select: none;
-  pointer-events: none;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .plus-sign,
+  .equal-sign {
+    font-size: 48px; /* Tamanho reduzido */
+    font-weight: bold;
+    color: #fff;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+  }
 
-.mix-result-box {
-  padding: 16px 30px; /* Reduced padding for mobile */
-  font-size: 24px;    /* Adjusted font size for mobile */
-  width: 100%;        /* Full width for mobile */
-  border-radius: 8px; /* Smaller border radius for mobile */
-  background-color: transparent;
-  color: #fff;
-  text-align: center;
-  min-height: 60px;   /* Reduced min-height for mobile */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 12px #71fafc, 0 0 20px #ffffff;
-}
+  .mix-result-box {
+    padding: 16px 32px;
+    font-size: 24px; /* Menor fonte */
+    width: 100%; /* Ajuste automático para largura */
+    border-radius: 8px;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px #71fafc, 0 0 20px #ffffff;
+  }
 
-.mix-calculate-btn-wrapper {
-  margin-top: 30px;  /* Reduced margin-top for mobile */
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+  .mix-calculate-btn-wrapper {
+    margin-top: 30px; /* Menor espaçamento */
+    display: flex;
+    justify-content: center;
+  }
 
-.mix-calculate-btn {
-  padding: 14px 30px; /* Reduced padding for mobile */
-  font-size: 24px;     /* Adjusted font size for mobile */
-  background-color: #09273f;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;   /* Smaller border radius for mobile */
-  transition: background-color 0.3s;
-  width: 100%; /* Full width button for mobile */
-}
+  .mix-calculate-btn {
+    padding: 12px 32px;
+    font-size: 24px;
+    background-color: #09273f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
 
-.mix-calculate-btn:hover {
-  background-color: #2a7eb0;
-}
+  .mix-calculate-btn:hover {
+    background-color: #2a7eb0;
+  }
 
-.mix-content-box {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-  border-radius: 12px;
-  backdrop-filter: blur(4px);
-  border: 2px solid #71fafc;
-  box-shadow: 0 0 12px #71fafc, 0 0 20px #0a94f7;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-}
+  .mix-content-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    border: 2px solid #71fafc;
+    box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
+    display: inline-block;
+    text-align: center;
+    width: 100%; /* Largura ajustada */
+  }
 
-.mix-error-message {
-  color: #f87171;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  padding: 1rem 2rem;
-  border-radius: 0.75rem;
-  font-weight: bold;
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  width: 100%;  /* Full width for error message */
-  max-width: 90%;
-}
+  .mix-error-message {
+    color: #f87171;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 90%;
+  }
 
-/* === Serious Mode Overrides: Mix for Mobile === */
-.serious-mode .mix-container-phone {
-  background-color: #0f172a !important;
-}
+  /* === Ajustes para o modo sério no mobile === */
+  .serious-mode .mix-container {
+    background-color: #0f172a !important;
+  }
 
-.serious-mode .mix-content-box {
-  background: #1e293b !important;
-  border: 2px solid #334155 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
-}
+  .serious-mode .mix-content-box {
+    background: #1e293b !important;
+    border: 2px solid #334155 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  }
 
-.serious-mode .mix-result-box {
-  background-color: #0f172a !important;
-  border: 2px solid #334155 !important;
-  color: white !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-              0 2px 6px rgba(0, 0, 0, 0.4) !important;
-}
+  .serious-mode .mix-result-box {
+    background-color: #0f172a !important;
+    border: 2px solid #334155 !important;
+    color: white !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
 
-.serious-mode .mix-dropdown select {
-  background-color: #1f2937 !important;
-  border: 2px solid #334155 !important;
-  color: white !important;
-  font-weight: 600;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-              0 2px 4px rgba(0, 0, 0, 0.25);
-}
+  .serious-mode .mix-dropdown select {
+    background-color: #1f2937 !important;
+    border: 2px solid #334155 !important;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 2px 4px rgba(0, 0, 0, 0.25);
+  }
 
-.serious-mode .mix-dropdown:nth-child(1) select:focus {
-  border-color: #34d399 !important;
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.5) !important;
-}
+  .serious-mode .mix-dropdown select:focus,
+  .serious-mode .mix-dropdown select:hover {
+    background-color: #334155 !important;
+  }
 
-.serious-mode .mix-dropdown:nth-child(2) select:focus {
-  border-color: #fde68a !important;
-  box-shadow: 0 0 0 3px rgba(253, 230, 138, 0.5) !important;
-}
+  .serious-mode .mix-calculate-btn {
+    background-color: #ef4444 !important;
+    border: 2px solid #b91c1c !important;
+    font-weight: bold;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+                inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
+    padding: 16px 40px;
+    border-radius: 12px;
+    color: white !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-.serious-mode .mix-dropdown:nth-child(3) select:focus {
-  border-color: #c084fc !important;
-  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.5) !important;
-}
+  .serious-mode .mix-calculate-btn:hover {
+    background-color: #dc2626 !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
+                inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px);
+  }
 
-.serious-mode .mix-dropdown select:hover {
-  background-color: #334155 !important;
-}
-
-.serious-mode .mix-calculate-btn {
-  background-color: #ef4444 !important;
-  border: 2px solid #b91c1c !important;
-  font-weight: bold;
-  font-size: 1.125rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
-              inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
-  padding: 16px 40px;
-  border-radius: 12px;
-  color: white !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.serious-mode .mix-calculate-btn:hover {
-  background-color: #dc2626 !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
-              inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
-  transform: translateY(-2px);
-}
-
-.serious-mode .mix-error-message {
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
+  .serious-mode .mix-error-message {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
 }

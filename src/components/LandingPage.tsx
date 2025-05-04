@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+{/*import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
 import { useIsMobile } from "../hooks/useIsMobile";
@@ -57,12 +57,11 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
         <>
           <Navbar onOpenSettings={onOpenSettings} />
           <div className="sticky-notes-overlay">
-            {/* Left side */}
             <div className="note top-left">{t("intro.welcome")}</div>
             <div className="note middle-left">{t("intro.mix")}</div>
             <div className="note bottom-left">{t("intro.prediction")}</div>
 
-            {/* Right side */}
+            
             <div className="note top-right">{t("intro.graphs")}</div>
             <div className="note middle-right">{t("intro.settings")}</div>
             <div className="note bottom-right">{t("intro.compare")}</div>
@@ -77,6 +76,35 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   return (
     <div className={isMobile ? "landing-page-phone" : "landing-page"}>
       {renderContent()}
+    </div>
+  );
+};
+
+export default LandingPage;*/}
+// File: components/LandingPage.tsx
+
+import React from "react";
+import Navbar from "./Navbar";
+import { useTranslation } from "../hooks/useTranslation";
+import { useIsMobile } from "../hooks/useIsMobile";
+import "../styles/LandingPagePhone.css";
+
+type LandingPageProps = {
+  onOpenSettings: () => void;
+};
+
+const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
+  const { t } = useTranslation();
+  const isMobile = useIsMobile();
+
+  return (
+    <div className="landing-page-phone">
+      <Navbar onOpenSettings={onOpenSettings} />
+      <div className="note-container">
+        <div className="note">
+          {t("intro.welcome")}
+        </div>
+      </div>
     </div>
   );
 };
