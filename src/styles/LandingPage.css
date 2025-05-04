@@ -1,160 +1,169 @@
-/* === Base === */
-html, body, #root {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 0;
-  padding: 0;
-  background-color: #1e2a47; /* fallback background */
-}
+/* src/styles/LandingPage.css */
 
-/* === Landing Page Container === */
 .landing-page {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-color: #1e2a47;
-  padding-top: 7rem; /* Offset for fixed navbar height */
-  z-index: 0;
-}
-
-/* === Background Video === */
-.background-video,
-.landing-video {
-  position: fixed; /* ensures full coverage */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  background-color: #1e2a47; /* fallback in case video fails */
-}
-
-/* === Sticky Notes Overlay === */
-.sticky-notes-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem 1rem;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* === Individual Note === */
-.note {
-  position: relative;
-  background-color: rgba(20, 30, 48, 0.85);
-  color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 2px solid #ff00f7;
-  box-shadow: 0 0 15px #00ffff88;
-  max-width: 80%;
-  margin-bottom: 1.5rem;
-  backdrop-filter: blur(4px);
-  pointer-events: auto;
-  text-align: center;
-  word-wrap: break-word;
-}
-
-/* === Footer === */
-.footer {
-  position: relative;
-  background-color: rgba(20, 30, 48, 0.85);
-  color: #ffffff;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff88;
-  font-size: 0.9rem;
-  width: 90%;
-  max-width: 1000px;
-  margin: 3rem auto 2rem auto;
-  text-align: center;
-}
-
-/* === Skip Intro Button === */
-.skip-intro-btn {
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-  right: 1rem;
-  top: 1rem;
-  position: fixed;
-  z-index: 10;
-  background-color: rgba(20, 30, 48, 0.85);
-  color: #fff;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff88;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* === Serious Mode === */
-.serious-mode .landing-container {
-  background-color: #0f172a !important;
-}
-
-.serious-mode .landing-video,
-.serious-mode .background-video {
-  display: none !important;
-}
-
-.serious-mode .landing-overlay {
-  background: rgba(15, 23, 42, 0.9) !important;
-}
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .background-video,
+  .landing-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .sticky-notes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  /* Note style */
+  .note {
+    position: absolute;
+    background-color: rgba(20, 30, 48, 0.85);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 15px #00ffff88;
+    max-width: 300px;
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+    text-align: center;
+  }
+  
+  /* Positions (adjusted towards center) */
+  .top-left {
+    top: 10rem;
+    left: 2rem; /* Adjusted from 2rem -> 6rem to move more to center */
+  }
+  
+  .middle-left {
+    top: 55%;
+    left: 30rem; /* Adjusted from 2rem -> 6rem */
+    transform: translateY(-50%);
+  }
+  
+  .bottom-left {
+    bottom: 4rem;
+    left: 2rem; /* Adjusted from 2rem -> 6rem */
+  }
+  
+  .top-right {
+    top: 10rem;
+    right: 2rem; /* Adjusted from 2rem -> 6rem */
+  }
+  
+  .middle-right {
+    top: 55%;
+    right: 30rem; /* Adjusted from 2rem -> 6rem */
+    transform: translateY(-50%);
+  }
+  
+  .bottom-right {
+    bottom: 4rem;
+    right: 2rem; /* Adjusted from 2rem -> 6rem */
+  }
+  
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(20, 30, 48, 0.85);
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff88;
+    font-size: 0.8rem;
+    pointer-events: auto;
+    width: 90%;            /* ← Add this */
+    max-width: 1200px;     /* ← Optional: to prevent it from becoming too wide on big screens */
+  }
+  
+  
+  /* Skip button */
+  .skip-intro-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: rgba(20, 30, 48, 0.85);
+    color: #fff;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 10px #00ffff88;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* === Serious Mode === */
+  .serious-mode .landing-container {
+    background-color: #0f172a !important;
+  }
+  
+  .serious-mode .landing-video {
+    display: none !important;
+  }
+  
+  .serious-mode .landing-overlay {
+    background: rgba(15, 23, 42, 0.9) !important;
+  }
 
 .serious-mode .note,
 .serious-mode .footer,
 .serious-mode .skip-intro-btn {
-  border-color: #ccc !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-color: #ccc !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-.serious-mode .welcome-text {
-  color: #ffffff !important;
-  text-shadow: none !important;
-}
-
-/* === Anchor Scroll Fix === */
-:target {
-  scroll-margin-top: 7rem; /* matches navbar height */
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .sticky-notes-overlay {
-    padding-top: 4rem;
+  .serious-mode .welcome-text {
+    color: #ffffff !important;
+    text-shadow: none !important;
   }
-
-  .note {
-    max-width: 90%;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+  .serious-mode .background-video {
+    display: none !important;
   }
-
-  .footer {
-    margin-top: 1rem;
-    font-size: 0.85rem;
+  /* Landing Boxes layout (still kept) */
+  .landing-boxes {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
   }
-
-  .skip-intro-btn {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-    top: 1rem;
-    right: 1rem;
+  
+  .landing-box {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px #71fafc;
+    transition: all 0.3s ease-in-out;
   }
-
-  .background-video,
-  .landing-video {
-    width: 100vw;
-    height: 100vh;
+  
+  .landing-box:hover {
+    box-shadow: 0 0 20px #71fafc;
   }
-
-  .top-left, .middle-left, .bottom-left,
-  .top-right, .middle-right, .bottom-right {
-    position: static;
-  }
-}
+  
