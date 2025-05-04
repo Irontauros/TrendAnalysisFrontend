@@ -1,15 +1,14 @@
 /* styles/LandingPagePhone.css */
 
-/* Base container for phone */
+/* Phone container */
 .landing-page-phone {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     background-color: #0f172a;
     min-height: 100vh;
-    overflow: hidden; /* No scroll */
-    position: relative;
+    overflow-y: auto; /* Enable scroll */
+    padding-top: 70px; /* Space for navbar */
+    box-sizing: border-box;
   }
   
   /* Navbar */
@@ -25,39 +24,34 @@
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
   }
   
-  /* Sticky notes overlay */
+  /* Sticky notes container */
   .landing-page-phone .sticky-notes-overlay {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex: 1;
     width: 100%;
-    height: 100vh;
-    margin-top: 60px; /* After navbar */
+    padding: 2rem 1rem;
     box-sizing: border-box;
-    overflow: hidden;
-    position: relative;
   }
   
-  /* Only first note visible */
+  /* Single note */
   .landing-page-phone .note {
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
     padding: 2rem;
     border-radius: 10px;
     font-size: 1.5rem;
-    text-align: center;
-    width: 80%;
+    width: 90%;
     max-width: 400px;
-    margin: auto;
+    margin: 0 auto;
   }
   
-  /* Hide other notes */
+  /* Hide all notes except first */
   .landing-page-phone .note:not(:first-child) {
     display: none;
   }
   
-  /* Footer hidden for now */
+  /* Hide Footer */
   .landing-page-phone .footer {
     display: none;
   }

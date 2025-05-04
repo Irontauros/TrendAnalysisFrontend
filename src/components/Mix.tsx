@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Data from "./Data";
-import "../styles/Mix.css";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
+import { useIsMobile } from "../hooks/useIsMobile";  // Importing the hook
 
 const Mix = () => {
   const { t } = useTranslation();
@@ -13,6 +13,8 @@ const Mix = () => {
   const [percentage, setPercentage] = useState<number | null>(null);
   const [showError, setShowError] = useState(false);
   const [compareCountries, setCompareCountries] = useState(false);
+
+  const isMobile = useIsMobile();  // Check if the device is mobile
 
   useEffect(() => {
     document.body.classList.add("no-scroll-body");
@@ -65,7 +67,7 @@ const Mix = () => {
   };
 
   return (
-    <div className="mix-container">
+    <div className={isMobile ? "mix-container-phone" : "mix-container"}>
       {showError && <div className="mix-error-message">{t("categoryRequired")}</div>}
 
       <div className="mix-content-box">
