@@ -1,9 +1,9 @@
-{/*import React, { useRef, useState } from "react";
+// src/components/LandingPage.tsx
+
+import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
-import { useIsMobile } from "../hooks/useIsMobile";
-import "../styles/LandingPage.css";       // estilo para desktop
-import "../styles/LandingPagePhone.css";  // estilo para telemóvel
+import "../styles/LandingPage.css";
 
 type LandingPageProps = {
   onOpenSettings: () => void;
@@ -13,90 +13,72 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   const [introSkipped, setIntroSkipped] = useState(false);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isMobile = useIsMobile();
 
   const handleVideoEnd = () => {
     setIntroSkipped(true);
   };
 
-  const renderContent = () => (
-    <>
-      {!isMobile && introSkipped && (
-        <video
-          className="background-video"
-          src="/bgg.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      )}
-
-      {!isMobile && !introSkipped && (
-        <video
-          ref={videoRef}
-          className="landing-video"
-          src="/intro.mp4"
-          autoPlay
-          muted
-          playsInline
-          onEnded={handleVideoEnd}
-        />
-      )}
-
-      {!isMobile && !introSkipped && (
-        <button
-          className="skip-intro-btn"
-          onClick={() => setIntroSkipped(true)}
-        >
-          {t("skipIntro")}
-        </button>
-      )}
-
-      {(isMobile || introSkipped) && (
-        <>
-          <Navbar onOpenSettings={onOpenSettings} />
-          <div className="sticky-notes-overlay">
-            <div className="note top-left">{t("intro.welcome")}</div>
-            <div className="note middle-left">{t("intro.mix")}</div>
-            <div className="note bottom-left">{t("intro.prediction")}</div>
-
-            
-            <div className="note top-right">{t("intro.graphs")}</div>
-            <div className="note middle-right">{t("intro.settings")}</div>
-            <div className="note bottom-right">{t("intro.compare")}</div>
-
-            <div className="footer">{t("footer")}</div>
-          </div>
-        </>
-      )}
-    </>
-  );
-
-  return (
-    <div className={isMobile ? "landing-page-phone" : "landing-page"}>
-      {renderContent()}
-    </div>
-  );
-};
-
-export default LandingPage;*/}
-// File: LandingPage.tsx
-
-import React from "react";
-import "./LandingPage.css";
-
-const LandingPage = () => {
   return (
     <div className="landing-page">
-      <nav className="navbar">
-        <h1>My Website</h1>
-      </nav>
-      <main className="main-content">
-        <div className="note">
-          Welcome to my simple page!
-        </div>
-      </main>
+      {introSkipped ? (
+        <>
+          <video
+            className="background-video"
+            src="/bgg.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <Navbar onOpenSettings={onOpenSettings} />
+          <div className="sticky-notes-overlay">
+            {/* Left side */}
+            <div className="note top-left sm:max-w-[90%] sm:text-base sm:p-4 sm:left-4 sm:right-4">
+              {t("intro.welcome")}
+            </div>
+            <div className="note middle-left sm:max-w-[90%] sm:text-base sm:p-4 sm:top-1/2 sm:left-4 sm:right-4 sm:-translate-y-1/2">
+              {t("intro.mix")}
+            </div>
+            <div className="note bottom-left sm:max-w-[90%] sm:text-base sm:p-4 sm:left-4 sm:right-4">
+              {t("intro.prediction")}
+            </div>
+
+            {/* Right side */}
+            <div className="note top-right sm:max-w-[90%] sm:text-base sm:p-4 sm:left-4 sm:right-4">
+              {t("intro.graphs")}
+            </div>
+            <div className="note middle-right sm:max-w-[90%] sm:text-base sm:p-4 sm:top-1/2 sm:left-4 sm:right-4 sm:-translate-y-1/2">
+              {t("intro.settings")}
+            </div>
+            <div className="note bottom-right sm:max-w-[90%] sm:text-base sm:p-4 sm:left-4 sm:right-4">
+              {t("intro.compare")}
+            </div>
+
+            {/* Footer */}
+            <div className="footer sm:text-xs sm:p-2 sm:w-[95%]">
+              {t("footer")}
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <video
+            ref={videoRef}
+            className="landing-video"
+            src="/intro.mp4"
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+          />
+          <button
+            className="skip-intro-btn sm:top-4 sm:right-4 sm:py-2 sm:px-4 sm:text-sm"
+            onClick={() => setIntroSkipped(true)}
+          >
+            {t("skipIntro")}
+          </button>
+        </>
+      )}
     </div>
   );
 };

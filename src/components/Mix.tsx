@@ -12,7 +12,6 @@ const Mix = () => {
   const [result, setResult] = useState<number | null>(null);
   const [percentage, setPercentage] = useState<number | null>(null);
   const [showError, setShowError] = useState(false);
-  const [compareCountries, setCompareCountries] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("no-scroll-body");
@@ -66,12 +65,14 @@ const Mix = () => {
 
   return (
     <div className="mix-container">
-      {showError && <div className="mix-error-message">{t("categoryRequired")}</div>}
+      {showError && (
+        <div className="mix-error-message">{t("categoryRequired")}</div>
+      )}
 
       <div className="mix-content-box">
-        <div className="mix-controls">
+        <div className="mix-controls flex flex-col md:flex-row md:items-center md:justify-center md:gap-10 text-xl md:text-3xl">
           {/* Category */}
-          <div className="mix-dropdown">
+          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
             <select
               onChange={(e) => setSelectedCategory(e.target.value || null)}
               value={selectedCategory || ""}
@@ -87,9 +88,11 @@ const Mix = () => {
           </div>
 
           {/* Year */}
-          <div className="mix-dropdown">
+          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
             <select
-              onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
+              onChange={(e) =>
+                setSelectedYear(e.target.value ? Number(e.target.value) : null)
+              }
               value={selectedYear || ""}
             >
               <option value="">{t("selectYear")}</option>
@@ -103,7 +106,7 @@ const Mix = () => {
           </div>
 
           {/* Country */}
-          <div className="mix-dropdown">
+          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
             <select
               onChange={(e) => setSelectedCountry(e.target.value || null)}
               value={selectedCountry || ""}
@@ -131,10 +134,8 @@ const Mix = () => {
         </div>
       </div>
 
-      <div className="mix-calculate-btn-wrapper">
-        <button className="mix-calculate-btn" onClick={handleCalculation}>
-          {t("calculate")}
-        </button>
+      <div className="mix-calculate-btn-wrapper mt-6 flex justify-center">
+        <button className="mix-calculate-btn">{t("calculate")}</button>
       </div>
     </div>
   );
