@@ -1,19 +1,18 @@
 /* styles/LandingPagePhone.css */
 
-/* Base styles for phone (Mobile view) */
+/* Base container for phone */
 .landing-page-phone {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     background-color: #0f172a;
-    min-height: 100vh; /* Full screen minimum */
-    padding-top: 60px; /* Navbar height */
-    overflow-y: auto; /* Enable scrolling */
-    box-sizing: border-box;
+    min-height: 100vh;
+    overflow: hidden; /* No scroll */
+    position: relative;
   }
   
-  /* Navbar styles */
+  /* Navbar */
   .landing-page-phone .navbar {
     position: fixed;
     top: 0;
@@ -26,47 +25,50 @@
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
   }
   
-  /* Sticky notes container */
+  /* Sticky notes overlay */
   .landing-page-phone .sticky-notes-overlay {
     display: flex;
-    flex-direction: column; /* STACK VERTICALLY */
     align-items: center;
+    justify-content: center;
+    flex: 1;
     width: 100%;
-    margin-top: 80px; /* Space for navbar */
-    padding: 1rem;
-    gap: 20px; /* Space between notes */
+    height: 100vh;
+    margin-top: 60px; /* After navbar */
     box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
   }
   
-  /* Single note */
+  /* Only first note visible */
   .landing-page-phone .note {
-    width: 90%;
-    max-width: 400px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
   }
   
-  /* Footer */
+  /* Hide other notes */
+  .landing-page-phone .note:not(:first-child) {
+    display: none;
+  }
+  
+  /* Footer hidden for now */
   .landing-page-phone .footer {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #fff;
-    font-size: 1rem;
-    width: 100%;
+    display: none;
   }
   
-  /* Background Video */
+  /* Hide video */
   .landing-page-phone .background-video {
-    display: none; /* HIDE video on phone */
+    display: none;
   }
   
-  /* Skip intro button */
+  /* Hide skip button */
   .landing-page-phone .skip-intro-btn {
-    display: none; /* HIDE button on phone */
+    display: none;
   }
   
