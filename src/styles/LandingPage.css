@@ -51,7 +51,7 @@
   
   .middle-left {
     top: 55%;
-    left: 40rem; /* Adjusted from 2rem -> 6rem */
+    left: 30rem; /* Adjusted from 2rem -> 6rem */
     transform: translateY(-50%);
   }
   
@@ -67,7 +67,7 @@
   
   .middle-right {
     top: 55%;
-    right: 40rem; /* Adjusted from 2rem -> 6rem */
+    right: 30rem; /* Adjusted from 2rem -> 6rem */
     transform: translateY(-50%);
   }
   

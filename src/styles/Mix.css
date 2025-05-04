@@ -1,14 +1,17 @@
+/* Ensure the mix container starts after the navbar */
 .mix-container {
-  margin-top: 80px;
+  margin-top: 100px;  /* Adjust this to match the height of the navbar */
   padding: 4rem;
   min-height: 100vh;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Updated from center to start for better spacing */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
+/* Other styles remain the same */
 .mix-controls {
   display: flex;
   flex-direction: row;
@@ -118,7 +121,6 @@
   max-width: 90%;
 }
 
-
 /* === Serious Mode Overrides: Mix === */
 .serious-mode .mix-container {
   background-color: #0f172a !important;
@@ -187,7 +189,6 @@
               inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
   transform: translateY(-2px);
 }
-
 
 .serious-mode .mix-error-message {
   background: transparent;
