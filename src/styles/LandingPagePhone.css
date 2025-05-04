@@ -6,8 +6,8 @@
     justify-content: flex-start;
     background-color: #0f172a;
     height: 100vh;
+    padding-top: 60px; /* Adjust for Navbar */
     overflow-y: auto; /* Allow vertical scrolling */
-    padding-top: 60px; /* To avoid content being hidden behind the navbar */
   }
   
   /* Navbar styles */
@@ -28,7 +28,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 80px; /* Ensure it doesn't overlap the navbar */
+    margin-top: 80px; /* To avoid overlap with navbar */
     width: 100%;
     padding: 1rem;
     box-sizing: border-box;
@@ -48,12 +48,11 @@
   
   /* Footer styles */
   .landing-page-phone .footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
+    margin-top: 20px;
     text-align: center;
     color: #fff;
     font-size: 1rem;
+    padding-bottom: 10px;
   }
   
   /* Video styling */
