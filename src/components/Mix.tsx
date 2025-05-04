@@ -17,11 +17,17 @@ const Mix = () => {
   const isMobile = useIsMobile();  // Check if the device is mobile
 
   useEffect(() => {
-    document.body.classList.add("no-scroll-body");
+    if (!isMobile) {
+      document.body.classList.add("no-scroll-body");
+    }
+  
     return () => {
-      document.body.classList.remove("no-scroll-body");
+      if (!isMobile) {
+        document.body.classList.remove("no-scroll-body");
+      }
     };
-  }, []);
+  }, [isMobile]);
+  
 
   useEffect(() => {
     if (selectedCategory && selectedYear && selectedCountry) {

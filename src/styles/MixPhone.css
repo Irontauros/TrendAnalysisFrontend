@@ -1,77 +1,199 @@
-/* For tablets and small laptops */
-@media (max-width: 1024px) {
-    .mix-container {
-      padding: 2rem;
-    }
-  
-    .mix-controls {
-      flex-wrap: wrap;
-      gap: 20px;
-      font-size: 36px;
-    }
-  
-    .mix-dropdown select {
-      width: 250px;
-      font-size: 30px;
-      padding: 16px 32px;
-    }
-  
-    .mix-result-box {
-      width: 250px;
-      font-size: 30px;
-    }
-  }
-  
-  /* For mobile devices */
-  @media (max-width: 768px) {
-    .mix-controls {
-      flex-direction: column;
-      gap: 20px;
-      font-size: 28px;
-    }
-  
-    .mix-dropdown {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .mix-dropdown select {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-      padding: 12px 24px;
-    }
-  
-    .mix-result-box {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-      padding: 16px 24px;
-    }
-  
-    .mix-calculate-btn {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-    }
-  
-    .mix-calculate-btn-wrapper {
-      margin-top: 30px;
-    }
-  }
-  
-  /* For very small phones */
-  @media (max-width: 480px) {
-    .mix-container {
-      padding: 1rem;
-    }
-  
-    .mix-content-box {
-      padding: 2rem;
-    }
-  
-    .mix-error-message {
-      font-size: 1rem;
-    }
-  }
-  
+/* Ensure the mix container starts after the navbar */
+.mix-container-phone {
+  margin-top: 60px; /* Adjusted for mobile view */
+  padding: 2rem;    /* Reduced padding for mobile */
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.mix-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px; /* Adjusted font size for mobile */
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+}
+
+.mix-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.mix-dropdown select {
+  padding: 12px 20px;  /* Reduced padding for mobile */
+  font-size: 20px;      /* Adjusted font size for mobile */
+  width: 100%;          /* Full width for mobile */
+  cursor: pointer;
+  border-radius: 8px;   /* Smaller border radius for mobile */
+  border: 3px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mix-dropdown select:focus,
+.mix-dropdown select:hover {
+  background-color: #2a7eb0;
+  color: #fff;
+}
+
+.plus-sign,
+.equal-sign {
+  font-size: 40px; /* Adjusted icon size for mobile */
+  font-weight: bold;
+  color: #fff;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mix-result-box {
+  padding: 16px 30px; /* Reduced padding for mobile */
+  font-size: 24px;    /* Adjusted font size for mobile */
+  width: 100%;        /* Full width for mobile */
+  border-radius: 8px; /* Smaller border radius for mobile */
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  min-height: 60px;   /* Reduced min-height for mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px #71fafc, 0 0 20px #ffffff;
+}
+
+.mix-calculate-btn-wrapper {
+  margin-top: 30px;  /* Reduced margin-top for mobile */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mix-calculate-btn {
+  padding: 14px 30px; /* Reduced padding for mobile */
+  font-size: 24px;     /* Adjusted font size for mobile */
+  background-color: #09273f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;   /* Smaller border radius for mobile */
+  transition: background-color 0.3s;
+  width: 100%; /* Full width button for mobile */
+}
+
+.mix-calculate-btn:hover {
+  background-color: #2a7eb0;
+}
+
+.mix-content-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border: 2px solid #71fafc;
+  box-shadow: 0 0 12px #71fafc, 0 0 20px #0a94f7;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.mix-error-message {
+  color: #f87171;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 100%;  /* Full width for error message */
+  max-width: 90%;
+}
+
+/* === Serious Mode Overrides: Mix for Mobile === */
+.serious-mode .mix-container-phone {
+  background-color: #0f172a !important;
+}
+
+.serious-mode .mix-content-box {
+  background: #1e293b !important;
+  border: 2px solid #334155 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.serious-mode .mix-result-box {
+  background-color: #0f172a !important;
+  border: 2px solid #334155 !important;
+  color: white !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+              0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+.serious-mode .mix-dropdown select {
+  background-color: #1f2937 !important;
+  border: 2px solid #334155 !important;
+  color: white !important;
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+              0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.serious-mode .mix-dropdown:nth-child(1) select:focus {
+  border-color: #34d399 !important;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.5) !important;
+}
+
+.serious-mode .mix-dropdown:nth-child(2) select:focus {
+  border-color: #fde68a !important;
+  box-shadow: 0 0 0 3px rgba(253, 230, 138, 0.5) !important;
+}
+
+.serious-mode .mix-dropdown:nth-child(3) select:focus {
+  border-color: #c084fc !important;
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.5) !important;
+}
+
+.serious-mode .mix-dropdown select:hover {
+  background-color: #334155 !important;
+}
+
+.serious-mode .mix-calculate-btn {
+  background-color: #ef4444 !important;
+  border: 2px solid #b91c1c !important;
+  font-weight: bold;
+  font-size: 1.125rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
+  padding: 16px 40px;
+  border-radius: 12px;
+  color: white !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.serious-mode .mix-calculate-btn:hover {
+  background-color: #dc2626 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
+              inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.serious-mode .mix-error-message {
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
