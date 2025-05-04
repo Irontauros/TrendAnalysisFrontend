@@ -1,87 +1,82 @@
-/* For tablets and small laptops */
-@media (max-width: 1024px) {
-    .mix-container {
-      padding: 2rem;
-      overflow-y: auto; /* Allow vertical scrolling */
-      height: auto; /* Ensure container height adjusts to content */
-    }
-  
-    .mix-controls {
-      flex-wrap: wrap;
-      gap: 20px;
-      font-size: 36px;
-    }
-  
-    .mix-dropdown select {
-      width: 250px;
-      font-size: 30px;
-      padding: 16px 32px;
-    }
-  
-    .mix-result-box {
-      width: 250px;
-      font-size: 30px;
-    }
+/* Base styles for phone (Mobile view) */
+.landing-page-phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #0f172a;
+    height: 100vh;
+    overflow-y: auto; /* Ensure vertical scrolling */
   }
   
-  /* For mobile devices */
-  @media (max-width: 768px) {
-    .mix-container {
-      padding: 1.5rem; /* Reduce padding to allow more space */
-      overflow-y: auto; /* Allow scrolling */
-      height: auto; /* Ensure container height adjusts */
-    }
-  
-    .mix-controls {
-      flex-direction: column;
-      gap: 20px;
-      font-size: 28px;
-    }
-  
-    .mix-dropdown {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .mix-dropdown select {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-      padding: 12px 24px;
-    }
-  
-    .mix-result-box {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-      padding: 16px 24px;
-    }
-  
-    .mix-calculate-btn {
-      width: 100%;
-      max-width: 300px;
-      font-size: 24px;
-    }
-  
-    .mix-calculate-btn-wrapper {
-      margin-top: 30px;
-    }
+  /* Ensure the navbar is always at the top */
+  .landing-page-phone .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #0f172a; /* Navbar background */
+    padding: 1rem;
+    color: #fff;
   }
   
-  /* For very small phones */
-  @media (max-width: 480px) {
-    .mix-container {
-      padding: 1rem;
-      overflow-y: auto; /* Allow scrolling */
-      height: auto; /* Adjust height */
-    }
+  /* Sticky notes overlay */
+  .landing-page-phone .sticky-notes-overlay {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on navbar height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    padding: 2rem;
+    width: 90%;
+    max-width: 350px;
+  }
   
-    .mix-content-box {
-      padding: 2rem;
-    }
+  .landing-page-phone .sticky-notes-overlay .note {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
   
-    .mix-error-message {
-      font-size: 1rem;
-    }
+  .landing-page-phone .footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  /* Video styling */
+  .landing-page-phone .background-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .landing-page-phone .skip-intro-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Fix the video content layout when intro is skipped */
+  .landing-page-phone .skip-intro-btn,
+  .landing-page-phone .sticky-notes-overlay {
+    z-index: 10;
   }
   

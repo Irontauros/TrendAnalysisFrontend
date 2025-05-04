@@ -1,5 +1,3 @@
-// src/components/LandingPage.tsx
-
 import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
