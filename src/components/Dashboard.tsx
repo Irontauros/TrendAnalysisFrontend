@@ -5,7 +5,7 @@ import {
   Pie, Cell
 } from "recharts";
 
-import Data from "./data";
+import Data from "./Data";
 import Shared from "./Shared";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 

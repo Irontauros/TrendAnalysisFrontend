@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Shared from "./Shared";
-import Data from "./data";
+import Data from "./Data";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 import "../styles/Table.css";
 
