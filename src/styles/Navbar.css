@@ -2,9 +2,9 @@
 .navbar {
   @apply p-4 flex justify-between items-center fixed w-full top-0 z-50;
   height: 100px;
-  background: linear-gradient(90deg, #14557f 0%, #061b2d 100%);
-  border-bottom: 3px solid #71fafc;
-  box-shadow: 0 2px 16px #71fafc;
+  background: linear-gradient(90deg, #FF0000 0%, #B30000 100%);  /* Changed background to red */
+  border-bottom: 3px solid #FF6347;
+  box-shadow: 0 2px 16px #FF6347;
 }
 
 .navbar-title {
@@ -18,21 +18,21 @@
 .nav-link {
   @apply flex items-center px-4 py-2 rounded-lg font-semibold transition-all;
   color: #fff;
-  border: 2px solid #71fafc;
+  border: 2px solid #FF6347;
   background-color: transparent;
 }
 
 .nav-link:hover {
-  background-color: rgba(113, 250, 252, 0.1);
-  box-shadow: 0 0 10px #71fafc, 0 0 20px #71fafc;
+  background-color: rgba(255, 99, 71, 0.1);
+  box-shadow: 0 0 10px #FF6347, 0 0 20px #FF6347;
 }
 
 .nav-link-active-dashboard,
 .nav-link-active-Table,
 .nav-link-active-Predictive,
 .nav-link-active-mix {
-  background-color: #56b7d9;
-  border-color: #56b7d9;
+  background-color: #FF6347;
+  border-color: #FF6347;
   color: #fff;
 }
 
@@ -60,8 +60,8 @@
 }
 
 .navbar-title.clickable:hover {
-  color: #71fafc;
-  text-shadow: 0 0 10px #71fafc;
+  color: #FF6347;
+  text-shadow: 0 0 10px #FF6347;
 }
 
 /* === Responsive Adjustments for Navbar === */
@@ -99,7 +99,7 @@
   }
 
   .navbar-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;  /* Made font size smaller */
     margin-bottom: 0.75rem;
   }
 
@@ -112,7 +112,7 @@
   .nav-link {
     width: 100%;
     padding: 0.5rem 0.75rem;
-    font-size: 1rem;
+    font-size: 0.9rem;  /* Smaller font size on mobile */
     text-align: left;
   }
 
@@ -129,16 +129,16 @@
   }
 
   .navbar-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;  /* Reduced font size even more */
   }
 
   .nav-link {
-    font-size: 0.95rem;
+    font-size: 0.85rem;  /* Smaller font size on very small phones */
     padding: 0.4rem 0.75rem;
   }
 
   .nav-icon {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-right: 0.4rem;
   }
 }
