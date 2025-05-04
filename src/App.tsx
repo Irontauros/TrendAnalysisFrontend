@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,20 +16,39 @@ import Mix from "./components/Mix";
 import Prediction from "./components/Predictive";
 import { Settings } from "./components/Settings";
 import LandingPage from "./components/LandingPage";
+import UnsupportedScreen from "./components/UnsupportedScreen"; // 👈 IMPORTAR
 
 import "./App.css";
 import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
+
+// Hook para obter a largura da janela
+const useWindowWidth = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+};
 
 const AppContent = () => {
   const { seriousMode } = useContext(SettingsContext);
   const [showSettings, setShowSettings] = useState(false);
   const location = useLocation();
+  const width = useWindowWidth(); // 👈 OBTER LARGURA
 
   const isLandingPage = location.pathname === "/";
 
+  // 👇 BLOQUEAR ECRÃS PEQUENOS
+  if (width < 1024) {
+    return <UnsupportedScreen />;
+  }
+
   return (
     <div className={`app-wrapper ${seriousMode ? "serious-mode" : ""}`}>
-      {/* Background video only for non-landing routes */}
       {!isLandingPage && (
         <video
           className="background-video"
@@ -52,7 +71,6 @@ const AppContent = () => {
         </video>
       )}
 
-      {/* Serious mode overlay */}
       {seriousMode && (
         <div
           style={{
@@ -67,7 +85,6 @@ const AppContent = () => {
         />
       )}
 
-      {/* Show navbar only on non-landing pages */}
       {!isLandingPage && (
         <Navbar onOpenSettings={() => setShowSettings(true)} />
       )}
@@ -86,7 +103,6 @@ const AppContent = () => {
         </Routes>
       </main>
 
-      {/* Show settings only when triggered */}
       {showSettings && <Settings onClose={() => setShowSettings(false)} />}
     </div>
   );
