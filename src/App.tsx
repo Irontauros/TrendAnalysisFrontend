@@ -9,11 +9,11 @@ import {
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import Graphs from "./components/Graphs";
-import Comparison from "./components/Comparison";
+import Graphs from "./components/Dashboard";
+import Comparison from "./components/Table";
 import Navbar from "./components/Navbar";
 import Mix from "./components/Mix";
-import Prediction from "./components/Prediction";
+import Prediction from "./components/Predictive";
 import { Settings } from "./components/Settings";
 import LandingPage from "./components/LandingPage";
 
@@ -37,6 +37,7 @@ const AppContent = () => {
           muted
           loop
           playsInline
+          preload="auto"
           style={{
             position: "fixed",
             top: 0,
@@ -47,7 +48,7 @@ const AppContent = () => {
             zIndex: -1,
           }}
         >
-          <source src="/bg.mp4" type="video/mp4" />
+          <source src="/bgg.mp4" type="video/mp4" />
         </video>
       )}
 
@@ -73,19 +74,20 @@ const AppContent = () => {
 
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/comparison" element={<Comparison />} />
-          <Route path="/graphs" element={<Graphs />} />
+          <Route
+            path="/"
+            element={<LandingPage onOpenSettings={() => setShowSettings(true)} />}
+          />
+          <Route path="/table" element={<Comparison />} />
+          <Route path="/dashboard" element={<Graphs />} />
           <Route path="/mix" element={<Mix />} />
-          <Route path="/prediction" element={<Prediction />} />
+          <Route path="/predictive" element={<Prediction />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
-      {/* Show settings only on non-landing pages */}
-      {!isLandingPage && showSettings && (
-        <Settings onClose={() => setShowSettings(false)} />
-      )}
+      {/* Show settings only when triggered */}
+      {showSettings && <Settings onClose={() => setShowSettings(false)} />}
     </div>
   );
 };

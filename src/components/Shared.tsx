@@ -1,6 +1,9 @@
+// src/components/Shared.tsx
 import React, { useState, useEffect, useMemo, useContext } from "react";
 import { useTranslation } from "../hooks/useTranslation";
 import { SettingsContext } from "../context/SettingsContext";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 interface SharedProps {
   dataHook: () => {
@@ -27,7 +30,7 @@ const Shared = ({
   hideChartToggle = false,
 }: SharedProps) => {
   const { t } = useTranslation();
-  const { language } = useContext(SettingsContext); // triggers re-renders on language switch
+  const { language } = useContext(SettingsContext);
   const { data, loading, error } = dataHook();
 
   const [compareMode, setCompareMode] = useState(false);
@@ -90,6 +93,103 @@ const Shared = ({
     setEndYear(years[years.length - 1]);
   };
 
+  const getTranslatedFilename = () => {
+    const rawPage = window.location.pathname.split("/").filter(Boolean).at(-1) || "dashboard";
+    const key = rawPage.charAt(0).toUpperCase() + rawPage.slice(1);
+    const translated = t(`download_filename.${key}`);
+    return typeof translated === "string" && translated !== `download_filename.${key}`
+      ? translated
+      : "report";
+  };
+
+  const handleDownloadPDF = async () => {
+    const original = document.querySelector(".main-content") as HTMLElement;
+    if (!original) {
+      alert("Main content not found.");
+      return;
+    }
+
+    const clone = original.cloneNode(true) as HTMLElement;
+
+    const container = document.createElement("div");
+    container.style.position = "fixed";
+    container.style.top = "0";
+    container.style.left = "0";
+    container.style.width = "100vw";
+    container.style.height = "100vh";
+    container.style.zIndex = "9999";
+    container.style.pointerEvents = "none";
+    container.style.backgroundColor = "#0f172a";
+    container.style.overflow = "hidden";
+    container.style.cursor = "none";
+    container.appendChild(clone);
+
+    const unwanted = clone.querySelectorAll(".top-controls-aligned, .button-row");
+    unwanted.forEach((el) => (el as HTMLElement).style.display = "none");
+
+    document.body.appendChild(container);
+
+    await new Promise((r) => setTimeout(r, 100));
+
+    try {
+      const canvas = await html2canvas(clone, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#0f172a",
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "px",
+        format: [canvas.width, canvas.height],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+
+      const now = new Date();
+      const formattedDate = now.toISOString().split("T")[0];
+      const fileName = `${getTranslatedFilename()}-${formattedDate}.pdf`;
+
+      pdf.save(fileName);
+    } catch (err) {
+      console.error("PDF export error:", err);
+      alert("PDF download failed.");
+    } finally {
+      document.body.removeChild(container);
+    }
+  };
+
+  const handleDownloadCSV = () => {
+    const now = new Date();
+    const formattedDate = now.toISOString().split("T")[0];
+    const fileName = `${getTranslatedFilename()}-${formattedDate}.csv`;
+
+    if (!filteredData.length) {
+      alert("No data to export.");
+      return;
+    }
+
+    const headers = Object.keys(filteredData[0]);
+    const csvRows = [
+      headers.join(","),
+      ...filteredData.map(row =>
+        headers.map(field => JSON.stringify(row[field] ?? "")).join(",")
+      ),
+    ];
+
+    const blob = new Blob([csvRows.join("\n")], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   if (loading) return <div className="text-white p-8">{t("loading")}</div>;
   if (error || !data) return <div className="text-red-500 p-8">{t("error")}: {error}</div>;
 
@@ -115,11 +215,11 @@ const Shared = ({
           <button className="reset-btn" onClick={resetToDefault}>
             🔄 {t("reset")}
           </button>
-          <button className="downloadCSV-btn">
-            📄 {t("downloadCSV")}
-          </button>
-          <button className="downloadPDF-btn">
+          <button className="downloadPDF-btn" onClick={handleDownloadPDF}>
             📥 {t("downloadPDF")}
+          </button>
+          <button className="downloadCSV-btn" onClick={handleDownloadCSV}>
+            📄 {t("downloadCSV")}
           </button>
         </div>
       </div>
@@ -136,9 +236,7 @@ const Shared = ({
           {compareMode &&
             availableFields.map((cat) => {
               const isActive = selectedCategories.includes(cat);
-              const categoryKey = cat.toLowerCase();
-              const translatedCategory = t(`category.${categoryKey}`);
-
+              const translatedCategory = t(`category.${cat.toLowerCase()}`);
               return (
                 <button
                   key={`${cat}-${language}`}

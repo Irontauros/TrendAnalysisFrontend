@@ -168,3 +168,81 @@
     padding: 1rem;
   }
 }
+/* === Responsive Improvements for Comparison Page === */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .comparison-container {
+    padding: 1.5rem;
+  }
+
+  .comparison-header {
+    font-size: 1.5rem;
+  }
+
+  .comparison-table-wrapper {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .comparison-table {
+    font-size: 18px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .comparison-container {
+    margin-top: 60px;
+    padding: 1rem;
+  }
+
+  .comparison-header {
+    font-size: 1.25rem;
+  }
+
+  .year-labels {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+  }
+
+  .comparison-table-wrapper {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .comparison-table {
+    font-size: 16px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .comparison-container {
+    margin-top: 50px;
+    padding: 0.5rem;
+  }
+
+  .comparison-header {
+    font-size: 1rem;
+  }
+
+  .year-labels {
+    font-size: 0.875rem;
+  }
+
+  .comparison-table {
+    font-size: 14px;
+  }
+
+  .comparison-table-wrapper {
+    padding: 0.5rem;
+  }
+}

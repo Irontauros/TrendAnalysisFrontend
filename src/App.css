@@ -39,7 +39,7 @@ body {
   z-index: 1;
 }
 
-/* === Background Image === */
+/* === Background Image & Video === */
 .background-image {
   position: absolute;
   top: 0;
@@ -49,6 +49,17 @@ body {
   height: 100vh;
   background-size: cover;
   background-position: center;
+  pointer-events: none;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   pointer-events: none;
 }
 
@@ -75,7 +86,12 @@ body {
   box-shadow: 0 0 15px #71fafc99;
 }
 
-/* === Align Top Controls: Years on Left, Buttons on Right === */
+.graphs-countries-row {
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
+/* === Top Controls (Years & Buttons) === */
 .top-controls-aligned {
   display: flex;
   justify-content: space-between;
@@ -85,42 +101,22 @@ body {
   gap: 1rem;
 }
 
-/* Left side: Years */
-.top-controls-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Right side: Reset + New */
+.top-controls-left,
 .top-controls-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Fix arrow alignment */
+/* === Arrows === */
 .year-arrow {
   @apply text-white font-bold;
   font-size: 5rem;
-  margin-bottom: 0.6rem; /* Raise arrow up slightly */
+  margin-bottom: 0.6rem;
   line-height: 1;
 }
 
-/* === Compare Button Base === */
-.compare-categories-btn,
-.compare-countries-btn {
-  @apply btn;
-}
-
-.compare-categories-btn.active {
-  background-color: #0f172a;
-  color: #71fafc;
-  border-color: #71fafc;
-  box-shadow: 0 0 14px #71fafc;
-}
-
-/* === Year Inputs === */
+/* === Input Year Fields === */
 .years-input {
   @apply px-4 py-2 rounded-lg font-semibold text-center text-white;
   background-color: rgba(0, 0, 0, 0.6);
@@ -148,50 +144,7 @@ body {
   margin: 0;
 }
 
-
-/* === Reset Button === */
-.reset-btn {
-  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
-  background-color: #ef4444;
-  color: black;
-  border: 2px solid #ef4444;
-  box-shadow: 0 0 10px #ef4444;
-}
-
-.reset-btn:hover {
-  background-color: #9b2c2c;
-  box-shadow: 0 0 12px #ef4444;
-}
-
-/* === Download CSV Button === */
-.downloadCSV-btn {
-  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
-  background-color: #f6923b;
-  color: black;
-  border: 2px solid #f6923b;
-  box-shadow: 0 0 10px #f6923b;
-}
-
-.downloadCSV-btn:hover {
-  background-color: #bf6b21;
-  box-shadow: 0 0 12px #f6923b;
-}
-
-/* === Download PDF Button === */
-.downloadPDF-btn {
-  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
-  background-color: #a651f1;
-  color: black;
-  border: 2px solid #a651f1;
-  box-shadow: 0 0 10px #a651f1;
-}
-
-.downloadPDF-btn:hover {
-  background-color: #7432ae;
-  box-shadow: 0 0 12px #a651f1;
-}
-
-/* === Button Row Layout === */
+/* === Buttons === */
 .button-row {
   display: flex;
   justify-content: space-between;
@@ -206,6 +159,61 @@ body {
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+}
+
+.btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: rgba(15, 23, 42, 0.75);
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #71fafc;
+  box-shadow: 0 0 10px #71fafc;
+}
+
+/* === Specific Buttons === */
+.reset-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #ef4444;
+  color: black;
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.reset-btn:hover {
+  background-color: #9b2c2c;
+  box-shadow: 0 0 12px #ef4444;
+}
+
+.downloadPDF-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #a651f1;
+  color: black;
+  border: 2px solid #a651f1;
+  box-shadow: 0 0 10px #a651f1;
+}
+
+.downloadPDF-btn:hover {
+  background-color: #7432ae;
+  box-shadow: 0 0 12px #a651f1;
+}
+
+.downloadCSV-btn {
+  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
+  background-color: #f97316;
+  color: black;
+  border: 2px solid #f97316;
+  box-shadow: 0 0 10px #f97316;
+}
+
+.downloadCSV-btn:hover {
+  background-color: #c2410c;
+  box-shadow: 0 0 12px #f97316;
 }
 
 /* === Chart Toggle Buttons === */
@@ -227,11 +235,6 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.chart-btn-icon {
-  font-size: 1.2rem;
-  line-height: 1;
 }
 
 .chart-toggle-btn:hover {
@@ -261,7 +264,7 @@ body {
   box-shadow: 0 0 12px #ec4899;
 }
 
-/* === Compare + Category Buttons === */
+/* === Compare Buttons === */
 .compare-categories-btn,
 .compare-countries-btn {
   @apply btn;
@@ -275,6 +278,7 @@ body {
   box-shadow: 0 0 14px #71fafc;
 }
 
+/* === Category / Country Buttons === */
 .category-btn,
 .country-btn {
   @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
@@ -290,21 +294,12 @@ body {
   box-shadow: 0 0 10px #71fafc;
 }
 
-/* When category button is active */
 .category-btn.active {
-  background-color: #6366f1 !important;  /* Change this color as per your design */
-  color: #0f172a !important;  /* Dark color when active */
+  background-color: #6366f1 !important;
+  color: #0f172a !important;
   border-color: #6366f1 !important;
   box-shadow: 0 0 12px #6366f1 !important;
 }
-
-/* Optional: Hover effect for active category buttons */
-.category-btn.active:hover {
-  background-color: #4f46e5 !important;  /* Change hover color */
-  color: #ffffff !important;  /* White color on hover */
-}
-
-
 
 .country-btn.active {
   background-color: #ffe16a;
@@ -313,26 +308,11 @@ body {
   box-shadow: 0 0 12px #ffe16a;
 }
 
-/* === Base Button Styling === */
-.btn {
-  @apply px-4 py-2 font-semibold rounded-lg transition-all duration-300 ease-in-out;
-  background-color: rgba(15, 23, 42, 0.75);
-  color: white;
-  border: 2px solid white;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: rgba(15, 23, 42, 0.9);
-  color: #71fafc;
-  box-shadow: 0 0 10px #71fafc;
-}
-
-/* === Serious Mode Theme Override === */
+/* === Serious Mode === */
 .serious-mode body,
 .serious-mode .graph-container,
-.serious-mode .app-wrapper {
+.serious-mode .app-wrapper,
+.serious-mode .main-content {
   background-color: #0f172a !important;
   color: white !important;
 }
@@ -347,12 +327,32 @@ body {
 
 .serious-mode .nav-link:hover {
   background-color: #334155 !important;
-  box-shadow: none !important;
 }
 
 .serious-mode .graph-box {
   background: #1e293b !important;
-  border-color: #334155 !important;
+  border: 2px solid #334155 !important;
+  box-shadow: none !important;
+}
+
+.serious-mode .popup,
+.serious-mode .modal,
+.serious-mode .settings-popup {
+  background-color: #1e293b !important;
+  border: 2px solid #334155 !important;
+  box-shadow: none !important;
+  color: white !important;
+}
+
+.serious-mode .popup:hover,
+.serious-mode .modal:hover,
+.serious-mode .settings-popup:hover {
+  box-shadow: none !important;
+}
+
+.serious-mode .settings-modal {
+  background-color: #1e293b !important;
+  border: 2px solid #334155 !important;
   box-shadow: none !important;
 }
 
@@ -365,104 +365,37 @@ body {
 .serious-mode .category-btn,
 .serious-mode .country-btn,
 .serious-mode .chart-toggle-btn,
-.serious-mode .reset-btn {
+.serious-mode .reset-btn,
+.serious-mode .downloadPDF-btn,
+.serious-mode .downloadCSV-btn,
+.serious-mode .compare-categories-btn,
+.serious-mode .compare-countries-btn {
   box-shadow: none !important;
-  border-color: currentColor !important;
+  border-color: #000 !important;
+  filter: brightness(0.9);
 }
 
 .serious-mode .btn:hover,
 .serious-mode .chart-toggle-btn:hover,
 .serious-mode .category-btn:hover,
-.serious-mode .reset-btn:hover {
-  box-shadow: none !important;
-  filter: brightness(1.1);
+.serious-mode .country-btn:hover,
+.serious-mode .reset-btn:hover,
+.serious-mode .downloadPDF-btn:hover,
+.serious-mode .downloadCSV-btn:hover,
+.serious-mode .compare-categories-btn:hover,
+.serious-mode .compare-countries-btn:hover {
+  filter: brightness(1.0);
 }
 
 .serious-mode .compare-categories-btn.active,
-.serious-mode .compare-countries-btn.active {
-  border-color: #71fafc !important;
-  box-shadow: 0 0 12px #71fafc !important;
-  color: #71fafc !important;
+.serious-mode .compare-countries-btn.active,
+.serious-mode .category-btn.active,
+.serious-mode .country-btn.active {
+  filter: brightness(1.0);
 }
 
 .serious-mode .chart-toggle-line-active,
 .serious-mode .chart-toggle-bar-active,
 .serious-mode .chart-toggle-pie-active {
-  box-shadow: none !important;
-}
-
-/* === Full Serious Mode Background Override === */
-.serious-mode body,
-.serious-mode .graph-container,
-.serious-mode .app-wrapper,
-.serious-mode .main-content {
-  background-color: #0f172a !important;
-  color: white !important;
-}
-
-/* === Landing Page Video Background === */
-.landing-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.landing-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.landing-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.6);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.welcome-text {
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 0 12px #71fafc;
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* === Background Video as Fixed Element === */
-.background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-.graphs-countries-row {
-  margin-bottom: 2rem;
-  margin-top: -1rem;
+  filter: brightness(0.95);
 }

@@ -1,3 +1,5 @@
+// File: src/components/Settings.tsx
+
 import React from "react";
 import { useTranslation } from "../hooks/useTranslation";
 import { SettingsContext } from "../context/SettingsContext";
@@ -15,6 +17,18 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
     setSeriousMode,
   } = React.useContext(SettingsContext);
 
+  const popupStyle: React.CSSProperties = {
+    background: "#1e293b",
+    color: "#fff",
+    padding: "2rem",
+    borderRadius: "1rem",
+    width: "90%",
+    maxWidth: "400px",
+    position: "relative",
+    boxShadow: seriousMode ? "none" : "0 0 20px #71fafc",
+    border: seriousMode ? "2px solid #334155" : "none",
+  };
+
   return (
     <div
       style={{
@@ -30,18 +44,7 @@ export const Settings: React.FC<Props> = ({ onClose }) => {
         zIndex: 9999,
       }}
     >
-      <div
-        style={{
-          background: "#1e293b",
-          color: "#fff",
-          padding: "2rem",
-          borderRadius: "1rem",
-          width: "90%",
-          maxWidth: "400px",
-          boxShadow: "0 0 20px #71fafc",
-          position: "relative",
-        }}
-      >
+      <div style={popupStyle}>
         <h2 style={{ marginBottom: "1rem", fontSize: "1.5rem" }}>{t("settings")}</h2>
 
         {/* Language toggle */}

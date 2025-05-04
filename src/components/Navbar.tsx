@@ -19,33 +19,33 @@ const Navbar = ({ onOpenSettings }: { onOpenSettings: () => void }) => {
 
       <div className="navbar-links">
         <NavLink
-          to="/graphs"
+          to="/Dashboard"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-graphs" : "nav-link"
+            isActive ? "nav-link nav-link-active-dashboard" : "nav-link"
           }
         >
           <FaChartLine className="nav-icon" />
-          {t("graphs")}
+          {t("Dashboard")}
         </NavLink>
 
         <NavLink
-          to="/Comparison"
+          to="/Table"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-comparison" : "nav-link"
+            isActive ? "nav-link nav-link-active-Table" : "nav-link"
           }
         >
           <FaTable className="nav-icon" />
-          {t("comparison")}
+          {t("Table")}
         </NavLink>
 
         <NavLink
-          to="/Prediction"
+          to="/Predictive"
           className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-prediction" : "nav-link"
+            isActive ? "nav-link nav-link-active-Predictive" : "nav-link"
           }
         >
           <FaLightbulb className="nav-icon" />
-          {t("prediction")}
+          {t("Predictive")}
         </NavLink>
 
         <NavLink

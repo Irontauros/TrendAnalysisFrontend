@@ -1,34 +1,73 @@
-// src/components/Landing.tsx
-import React, { useEffect, useState } from "react";
+// src/components/LandingPage.tsx
+
+import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
+import "../styles/LandingPage.css";
 
-const Landing = () => {
-  const [showContent, setShowContent] = useState(false);
+type LandingPageProps = {
+  onOpenSettings: () => void;
+};
+
+const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
+  const [introSkipped, setIntroSkipped] = useState(false);
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowContent(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  const handleVideoEnd = () => {
+    setIntroSkipped(true);
+  };
 
   return (
     <div className="landing-page">
-      <video
-        className="landing-video"
-        src="/intro.mp4"
-        autoPlay
-        muted
-        playsInline
-      />
-      {showContent && (
-        <div className="landing-overlay fade-in">
-          <Navbar onOpenSettings={() => {}} />
-          <h1 className="welcome-text">{t("welcome")}</h1>
-        </div>
+      {introSkipped ? (
+        <>
+          <video
+            className="background-video"
+            src="/bgg.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <Navbar onOpenSettings={onOpenSettings} />
+          <div className="sticky-notes-overlay">
+            {/* Left side */}
+            <div className="note top-left">{t("intro.welcome")}</div>
+            <div className="note middle-left">{t("intro.mix")}</div>
+            <div className="note bottom-left">{t("intro.prediction")}</div>
+
+            {/* Right side */}
+            <div className="note top-right">{t("intro.graphs")}</div>
+            <div className="note middle-right">{t("intro.settings")}</div>
+            <div className="note bottom-right">{t("intro.compare")}</div>
+
+            <div className="footer">
+  {t("footer")}
+</div>
+          </div>
+        </>
+      ) : (
+        <>
+          <video
+            ref={videoRef}
+            className="landing-video"
+            src="/intro.mp4"
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+          />
+          <button
+            className="skip-intro-btn"
+            onClick={() => setIntroSkipped(true)}
+          >
+            {t("skipIntro")}
+          </button>
+        </>
       )}
     </div>
   );
 };
 
-export default Landing;
+export default LandingPage;
