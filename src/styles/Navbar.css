@@ -130,26 +130,3 @@
     padding: 0.5rem 1rem;
   }
 }
-/* styles/Navbar.css */
-
-/* Minimal base styles if you're using Tailwind */
-
-/* Base nav-link (used in TSX via className) */
-.nav-link {
-  @apply flex items-center px-4 py-2 rounded-lg font-semibold border-2 transition-all text-white bg-transparent hover:bg-[#71fafc1a] hover:shadow-[0_0_10px_#71fafc,0_0_20px_#71fafc];
-  border-color: #71fafc;
-}
-
-/* Serious Mode Overrides */
-.serious-mode .navbar,
-.serious-mode .nav-link {
-  box-shadow: none !important;
-  border-color: #ccc !important;
-  background: #1e293b !important;
-  color: white !important;
-}
-
-.serious-mode .nav-link:hover {
-  background-color: #334155 !important;
-  box-shadow: none !important;
-}

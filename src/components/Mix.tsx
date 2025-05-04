@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Data from "./Data";
-import "../styles/Mix.css";
+import "../styles/mix.css";
 import { useTranslation, translateDynamic } from "../hooks/useTranslation";
 
 const Mix = () => {
@@ -12,6 +12,7 @@ const Mix = () => {
   const [result, setResult] = useState<number | null>(null);
   const [percentage, setPercentage] = useState<number | null>(null);
   const [showError, setShowError] = useState(false);
+  const [compareCountries, setCompareCountries] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("no-scroll-body");
@@ -34,8 +35,10 @@ const Mix = () => {
   const availableYears = Array.from(new Set(groupedData.map((d) => d.year))).sort();
 
   const handleCalculation = () => {
+    console.log("Starting calculation...");
     if (!selectedCategory) {
       setShowError(true);
+      console.log("No category selected");
       return;
     }
 
@@ -44,8 +47,11 @@ const Mix = () => {
     const filteredData = groupedData.filter((item) => {
       const yearMatch = selectedYear ? item.year === selectedYear : true;
       const countryMatch = selectedCountry ? item.country === selectedCountry : true;
+      console.log(`Year match: ${yearMatch}, Country match: ${countryMatch}`);
       return yearMatch && countryMatch;
     });
+
+    console.log(`Filtered data: ${JSON.stringify(filteredData)}`);
 
     const total = filteredData.reduce((acc, item) => {
       const value = item[selectedCategory];
@@ -61,18 +67,18 @@ const Mix = () => {
 
     setResult(total);
     setPercentage(calculatedPercentage);
+
+    console.log(`Result: ${total}, Percentage: ${calculatedPercentage}`);
   };
 
   return (
     <div className="mix-container">
-      {showError && (
-        <div className="mix-error-message">{t("categoryRequired")}</div>
-      )}
+      {showError && <div className="mix-error-message">{t("categoryRequired")}</div>}
 
       <div className="mix-content-box">
-        <div className="mix-controls flex flex-col md:flex-row md:items-center md:justify-center md:gap-10 text-xl md:text-3xl">
+        <div className="mix-controls">
           {/* Category */}
-          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
+          <div className="mix-dropdown">
             <select
               onChange={(e) => setSelectedCategory(e.target.value || null)}
               value={selectedCategory || ""}
@@ -80,7 +86,7 @@ const Mix = () => {
               <option value="">{t("selectCategory")}</option>
               {availableFields.map((cat) => (
                 <option key={cat} value={cat}>
-                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
+                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} {/* Translated category */}
                 </option>
               ))}
             </select>
@@ -88,11 +94,9 @@ const Mix = () => {
           </div>
 
           {/* Year */}
-          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
+          <div className="mix-dropdown">
             <select
-              onChange={(e) =>
-                setSelectedYear(e.target.value ? Number(e.target.value) : null)
-              }
+              onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
               value={selectedYear || ""}
             >
               <option value="">{t("selectYear")}</option>
@@ -106,9 +110,13 @@ const Mix = () => {
           </div>
 
           {/* Country */}
-          <div className="mix-dropdown flex flex-col md:flex-row items-center gap-3">
+          <div className="mix-dropdown">
             <select
-              onChange={(e) => setSelectedCountry(e.target.value || null)}
+              onChange={(e) => {
+                const country = e.target.value || null;
+                setSelectedCountry(country);
+                console.log(`Selected Country: ${country}`);
+              }}
               value={selectedCountry || ""}
             >
               <option value="">{t("selectCountry")}</option>
@@ -134,8 +142,10 @@ const Mix = () => {
         </div>
       </div>
 
-      <div className="mix-calculate-btn-wrapper mt-6 flex justify-center">
-        <button className="mix-calculate-btn">{t("calculate")}</button>
+      <div className="mix-calculate-btn-wrapper">
+        <button className="mix-calculate-btn" onClick={handleCalculation}>
+          {t("calculate")}
+        </button>
       </div>
     </div>
   );
