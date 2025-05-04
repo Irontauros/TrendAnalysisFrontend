@@ -35,10 +35,8 @@ const Mix = () => {
   const availableYears = Array.from(new Set(groupedData.map((d) => d.year))).sort();
 
   const handleCalculation = () => {
-    console.log("Starting calculation...");
     if (!selectedCategory) {
       setShowError(true);
-      console.log("No category selected");
       return;
     }
 
@@ -47,11 +45,8 @@ const Mix = () => {
     const filteredData = groupedData.filter((item) => {
       const yearMatch = selectedYear ? item.year === selectedYear : true;
       const countryMatch = selectedCountry ? item.country === selectedCountry : true;
-      console.log(`Year match: ${yearMatch}, Country match: ${countryMatch}`);
       return yearMatch && countryMatch;
     });
-
-    console.log(`Filtered data: ${JSON.stringify(filteredData)}`);
 
     const total = filteredData.reduce((acc, item) => {
       const value = item[selectedCategory];
@@ -67,8 +62,6 @@ const Mix = () => {
 
     setResult(total);
     setPercentage(calculatedPercentage);
-
-    console.log(`Result: ${total}, Percentage: ${calculatedPercentage}`);
   };
 
   return (
@@ -86,7 +79,7 @@ const Mix = () => {
               <option value="">{t("selectCategory")}</option>
               {availableFields.map((cat) => (
                 <option key={cat} value={cat}>
-                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} {/* Translated category */}
+                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
                 </option>
               ))}
             </select>
@@ -112,11 +105,7 @@ const Mix = () => {
           {/* Country */}
           <div className="mix-dropdown">
             <select
-              onChange={(e) => {
-                const country = e.target.value || null;
-                setSelectedCountry(country);
-                console.log(`Selected Country: ${country}`);
-              }}
+              onChange={(e) => setSelectedCountry(e.target.value || null)}
               value={selectedCountry || ""}
             >
               <option value="">{t("selectCountry")}</option>
