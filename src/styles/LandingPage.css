@@ -23,8 +23,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 8rem 2rem 2rem; /* reduced bottom padding */
-  gap: 2rem; /* tighter gap between rows */
+  padding: 8rem 2rem 2rem; /* top, left/right, bottom */
+  gap: 4rem; /* <<<<< CONTROL THIS GAP between second row and footer */
   pointer-events: none;
 }
 
@@ -84,14 +84,14 @@
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
   padding: 1rem;
-  margin-top: 1rem; /* small margin above */
+  margin-top: 1rem;
   border: 2px solid #00ffff;
   border-radius: 16px;
   box-shadow: 0 0 12px #00ffff88;
   font-size: 0.8rem;
   text-align: center;
   pointer-events: auto;
-  flex-shrink: 0; /* important: prevent shrinking */
+  flex-shrink: 0;
 }
 
 /* Skip button style */
@@ -114,7 +114,7 @@
 @media (max-width: 1024px) {
   .sticky-notes-overlay {
     padding: 6rem 1rem 2rem;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 
   .note {
