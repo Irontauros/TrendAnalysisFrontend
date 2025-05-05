@@ -8,7 +8,8 @@ const translations = {
     Predictive: "Dashboard de Previsões",
     mix: "Equação Dinâmica",
     settings: "Configurações",
-
+    footer:"Créditos",
+    hello:"Bem-Vindo",
     // Settings
     language: "Idioma",
     portuguese: "Português",
@@ -89,7 +90,7 @@ const translations = {
   "settings": "⚙️ Configurações: Personalize a sua experiência no site. Ative o Modo Simples (um tema mais escuro, sem vídeo de fundo). Altere o idioma entre português e inglês. As definições aplicam-se de forma consistente a todas as páginas."
 },
 
-footer: "© 2025 Todos os direitos reservados. Este site incluindo o seu design, código e funcionalidade é propriedade exclusiva do autor: Francisco Duarte. O vídeo de fundo é da autoria original no YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. Os conteúdos noticiosos são obtidos através da API pública do Arquivo.pt, sendo os direitos pertencentes aos jornais originais.",
+footerText: "© 2025 Todos os direitos reservados. Este site incluindo o seu design, código e funcionalidade é propriedade exclusiva do autor: Francisco Duarte. O vídeo de fundo é da autoria original no YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. Os conteúdos noticiosos são obtidos através da API pública do Arquivo.pt, sendo os direitos pertencentes aos jornais originais.",
     
     skipIntro: "Skip Intro",
 
@@ -109,7 +110,8 @@ footer: "© 2025 Todos os direitos reservados. Este site incluindo o seu design,
     Predictive: "Predictions Dashboard",
     mix: "Dynamic Equation",
     settings: "Settings",
-
+    footer:"Credits",
+    hello:"Welcome",
     // Settings
     language: "Language",
     portuguese: "Portuguese",
@@ -190,7 +192,7 @@ footer: "© 2025 Todos os direitos reservados. Este site incluindo o seu design,
       "settings": "⚙️ Settings Panel: Customize your experience across the site. Enable Simple Mode (a darker, distraction-free theme with no background video). Switch between English and Portuguese as needed. Your settings apply consistently across all pages."
     },
     
-footer: "© 2025 All rights reserved. This website including its design, code, and functionality is the sole property of the author: Francisco Duarte. The background video is credited to its original creator on YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. News content is retrieved using the public API from Arquivo.pt, with rights belonging to the original newspapers.",
+footerText: "© 2025 All rights reserved. This website including its design, code, and functionality is the sole property of the author: Francisco Duarte. The background video is credited to its original creator on YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. News content is retrieved using the public API from Arquivo.pt, with rights belonging to the original newspapers.",
         
 skipIntro: "Skip Intro",
 

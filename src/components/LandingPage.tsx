@@ -23,16 +23,6 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
     setOpenPopup(prev => (prev === key ? null : key));
   };
 
-  const popupContent = {
-    welcome: t("intro.welcome"),
-    mix: t("intro.mix"),
-    graphs: t("intro.graphs"),
-    prediction: t("intro.prediction"),
-    settings: t("intro.settings"),
-    compare: t("intro.compare"),
-    footer: t("footer"),
-  };
-
   return (
     <div className="landing-page">
       {introSkipped ? (
@@ -48,21 +38,30 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
           <Navbar onOpenSettings={onOpenSettings} />
           <div className="landing-layout">
             <div className="sidebar-buttons">
-              {Object.keys(popupContent).map((key) => (
-                <button
-                  key={key}
-                  className="landing-button"
-                  onClick={() => togglePopup(key)}
-                >
-                  {t(`buttonTitles.${key}`)}
-                </button>
-              ))}
+              <button onClick={() => togglePopup("graphs")} className="landing-button">
+                {t("dashboard")}
+              </button>
+              <button onClick={() => togglePopup("graphs")} className="landing-button">
+                {t("predictive")}
+              </button>
+              <button onClick={() => togglePopup("mix")} className="landing-button">
+                {t("mix")}
+              </button>
+              <button onClick={() => togglePopup("settings")} className="landing-button">
+                {t("settings")}
+              </button>
+              <button onClick={() => togglePopup("footerText")} className="landing-button">
+                {t("footer")}
+              </button>
+              <button onClick={() => togglePopup("welcome")} className="landing-button">
+                {t("hello")}
+              </button>
             </div>
 
             <div className="popup-area">
               {openPopup && (
                 <div className="popup-box">
-                  {popupContent[openPopup]}
+                  {t(openPopup)}
                 </div>
               )}
             </div>
