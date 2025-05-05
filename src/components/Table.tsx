@@ -38,45 +38,43 @@ const Comparison = () => {
   
     return (
       <div className="comparison-table-wrapper">
-        <div className="comparison-table-scroll">
-          <table className="comparison-table">
-            <thead>
-              <tr>
-                <th>{t("year")}</th>
-                {activeCategories.map((cat) => (
-                  <th key={cat} colSpan={2}>
-                    {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
-
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {years.map((year) => {
-                const total = getTotalForYear(year);
-                return (
-                  <tr key={year}>
-                    <td>{year}</td>
-                    {activeCategories.map((cat) => {
-                      const val = getCategoryDataByYear(year, cat);
-                      const percentage = total > 0 ? ((val || 0) / total) * 100 : 0;
-                      return (
-                        <React.Fragment key={cat}>
-                          <td>{val !== null ? Math.round(val) : "-"}</td>
-                          <td>{percentage.toFixed(1)}%</td>
-
-                        </React.Fragment>
-                      );
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        {/* 🛠 Removed comparison-table-scroll */}
+        <table className="comparison-table">
+          <thead>
+            <tr>
+              <th>{t("year")}</th>
+              {activeCategories.map((cat) => (
+                <th key={cat} colSpan={2}>
+                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {years.map((year) => {
+              const total = getTotalForYear(year);
+              return (
+                <tr key={year}>
+                  <td>{year}</td>
+                  {activeCategories.map((cat) => {
+                    const val = getCategoryDataByYear(year, cat);
+                    const percentage = total > 0 ? ((val || 0) / total) * 100 : 0;
+                    return (
+                      <React.Fragment key={cat}>
+                        <td>{val !== null ? Math.round(val) : "-"}</td>
+                        <td>{percentage.toFixed(1)}%</td>
+                      </React.Fragment>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     );
   };
+  
   
 
   if (loading) return <div className="text-white p-8">{t("loading")}</div>;

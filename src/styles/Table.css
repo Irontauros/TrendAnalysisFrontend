@@ -20,7 +20,7 @@
 /* === Table Wrapper === */
 .comparison-table-wrapper {
   max-height: 60vh;
-  overflow-y: auto;
+  overflow-y: auto; /* ✅ scrolling container */
   overflow-x: auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.5);
@@ -33,6 +33,18 @@
   z-index: 0;
 }
 
+.comparison-table thead th {
+  position: sticky;
+  top: 0; /* 🛠 should be 0 now! */
+  z-index: 10;
+  background-color: #2a7eb0;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.75rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: #e2e8f0;
+  border-bottom: 1px solid #56b7d9;
+}
+
+
 /* Table */
 .comparison-table {
   width: 100%;
@@ -41,18 +53,6 @@
   text-align: center;
   color: white;
   font-size: clamp(12px, 1.8vw, 20px);
-}
-
-/* Sticky Header */
-.comparison-table thead th {
-  position: sticky;
-  top: 80px; /* ✅ Adjust this to match your actual page header height */
-  z-index: 10;
-  background-color: #2a7eb0;
-  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.75rem, 2vw, 1.5rem);
-  font-weight: 400;
-  color: #e2e8f0;
-  border-bottom: 1px solid #56b7d9;
 }
 
 /* Rounded Header Corners */
