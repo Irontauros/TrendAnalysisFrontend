@@ -22,7 +22,6 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
     <div className="landing-page">
       {introSkipped ? (
         <>
-          {/* Vídeo de fundo (loop) */}
           <video
             className="background-video"
             src="/bgg.mp4"
@@ -31,32 +30,25 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             loop
             playsInline
           />
-
-          {/* Navbar no topo */}
           <Navbar onOpenSettings={onOpenSettings} />
+          <div className="sticky-notes-overlay">
+            {/* Left side */}
+            <div className="note top-left">{t("intro.welcome")}</div>
+            <div className="note middle-left">{t("intro.mix")}</div>
+            <div className="note bottom-left">{t("intro.prediction")}</div>
 
-          {/* Conteúdo principal: grelha 3x2 e footer */}
-          <div className="landing-boxes-wrapper">
-            <div className="landing-boxes">
-{/* 1ª linha */}
-<div className="note top-left">{t("intro.welcome")}</div>
-<div className="note top-right">{t("intro.graphs")}</div>
-<div className="note">{t("intro.settings")}</div> {/* centro topo */}
+            {/* Right side */}
+            <div className="note top-right">{t("intro.graphs")}</div>
+            <div className="note middle-right">{t("intro.settings")}</div>
+            <div className="note bottom-right">{t("intro.compare")}</div>
 
-{/* 2ª linha */}
-<div className="note bottom-left">{t("intro.prediction")}</div>
-<div className="note bottom-right">{t("intro.compare")}</div>
-<div className="note">{t("intro.mix")}</div> {/* centro fundo */}
-
-            </div>
+            <div className="footer">
+  {t("footer")}
+</div>
           </div>
-
-          {/* Footer fixo no fundo */}
-          <div className="footer">{t("footer")}</div>
         </>
       ) : (
         <>
-          {/* Vídeo de introdução */}
           <video
             ref={videoRef}
             className="landing-video"
@@ -66,8 +58,6 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             playsInline
             onEnded={handleVideoEnd}
           />
-
-          {/* Botão para ignorar introdução */}
           <button
             className="skip-intro-btn"
             onClick={() => setIntroSkipped(true)}

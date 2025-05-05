@@ -5,6 +5,7 @@
   min-height: 100vh;
   color: white;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Header */
@@ -25,21 +26,18 @@
   border: 2px solid #71fafc;
   box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
   margin-top: 2rem;
-  position: relative;
-  overflow: hidden; /* Prevent double scrollbars */
 }
 
-/* Inner scroll container for horizontal scroll */
+/* Table Scroll Container */
 .comparison-table-scroll {
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   width: 100%;
   max-width: 100%;
   scrollbar-color: #56b7d9 transparent;
   scrollbar-width: thin;
 }
 
-/* WebKit scrollbar styling */
 .comparison-table-scroll::-webkit-scrollbar {
   height: 8px;
 }
@@ -53,7 +51,7 @@
   border-radius: 8px;
 }
 
-/* Table Layout */
+/* Table */
 .comparison-table {
   width: max-content;
   min-width: 100%;
@@ -64,7 +62,6 @@
   font-size: 20px;
 }
 
-/* Sticky Header */
 .comparison-table thead th {
   position: sticky;
   top: 0;
@@ -76,16 +73,13 @@
   border-bottom: 1px solid #56b7d9;
 }
 
-/* Round Header Corners */
 .comparison-table thead tr th:first-child {
   border-top-left-radius: 12px;
 }
-
 .comparison-table thead tr th:last-child {
   border-top-right-radius: 12px;
 }
 
-/* Table Cells */
 .comparison-table td {
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid #56b7d9;
@@ -97,7 +91,6 @@
   white-space: nowrap;
 }
 
-/* Hover */
 .comparison-table tr:hover {
   background-color: #2a7eb0;
 }
@@ -133,7 +126,7 @@
   background-color: #475569 !important;
 }
 
-/* === Responsive Design (optional, no phone support needed) === */
+/* === Responsive === */
 @media (max-width: 1024px) {
   .comparison-container {
     padding: 1.5rem;

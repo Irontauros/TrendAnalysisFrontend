@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: 3vw;
-  font-size: 1.5vw;
+  font-size: 1.8vw;
   margin-bottom: 3vh;
 }
 
@@ -29,16 +29,18 @@
 }
 
 .mix-dropdown select {
-  padding: 1.5vh 3vw;
-  font-size: 1.5vw;
+  padding: 1.2vh 1vw; /* reduced padding */
+  font-size: 1.8vw; /* bigger text */
   width: 100%;
-  max-width: 22vw;
+  max-width: 26vw; /* more room for long words */
   cursor: pointer;
   border-radius: 0.8vw;
   border: 0.2vw solid #fff;
   background-color: transparent;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
+  appearance: none; /* Remove default ugly browser styles */
+  text-indent: 0.2vw; /* make text start closer to the left border */
 }
 
 .mix-dropdown select:focus,
@@ -63,7 +65,7 @@
   padding: 2vh 3vw;
   font-size: 2.5vw;
   width: 100%;
-  max-width: 22vw;
+  max-width: 26vw;
   border-radius: 0.8vw;
   background-color: transparent;
   color: #fff;
@@ -121,8 +123,8 @@
   max-width: 90%;
 }
 
-/* Serious Mode - (updated for bigger selects too) */
+/* Serious Mode - match larger size */
 .serious-mode .mix-dropdown select {
-  font-size: 1.5vw !important;
-  padding: 1.5vh 3vw !important;
+  font-size: 1.8vw !important;
+  padding: 1.2vh 1vw !important;
 }

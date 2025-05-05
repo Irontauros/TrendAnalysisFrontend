@@ -1,9 +1,10 @@
+/* src/styles/LandingPage.css */
+
 .landing-page {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-size: clamp(10px, 0.6vw, 14px);
 }
 
 .background-video,
@@ -30,26 +31,26 @@
 .note {
   position: absolute;
   background-color: rgba(20, 30, 48, 0.85);
-  color: #fff;
-  padding: min(1vw, 1em);
-  border-radius: 0.5vw;
-  border: 0.2vw solid #00ffff;
-  box-shadow: 0 0 1vw #00ffff88;
-  max-width: 20vw;
-  backdrop-filter: blur(0.3vw);
+  color: #ffffff;
+  padding: clamp(0.5rem, 1vw, 2rem);
+  border-radius: clamp(0.3rem, 1vw, 1rem);
+  border: clamp(0.1rem, 0.3vw, 0.3rem) solid #00ffff;
+  box-shadow: 0 0 clamp(0.5rem, 1vw, 2rem) #00ffff88;
+  max-width: clamp(200px, 22vw, 320px);
+  backdrop-filter: blur(0.5vw);
   pointer-events: auto;
   text-align: center;
-  font-size: clamp(12px, 0.9vw, 1.2em);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  font-size: clamp(0.8rem, 1.2vw, 1.5rem);
 }
 
-.top-left { top: 8%; left: 2%; }
-.middle-left { top: 50%; left: 3%; transform: translateY(-50%); }
-.bottom-left { bottom: 8%; left: 2%; }
-.top-right { top: 8%; right: 2%; }
-.middle-right { top: 50%; right: 3%; transform: translateY(-50%); }
-.bottom-right { bottom: 8%; right: 2%; }
+/* % positioning instead of rem to scale with screen */
+.top-left { top: 8%; left: 4%; }
+.middle-left { top: 50%; left: 6%; transform: translateY(-50%); }
+.bottom-left { bottom: 8%; left: 4%; }
+
+.top-right { top: 8%; right: 4%; }
+.middle-right { top: 50%; right: 6%; transform: translateY(-50%); }
+.bottom-right { bottom: 8%; right: 4%; }
 
 .footer {
   position: absolute;
@@ -58,65 +59,68 @@
   transform: translateX(-50%);
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
-  padding: 0.8vw 2vw;
-  border-radius: 0.5vw;
-  border: 0.15vw solid #00ffff;
-  box-shadow: 0 0 0.8vw #00ffff88;
-  font-size: clamp(12px, 0.8vw, 1em);
+  padding: clamp(0.4rem, 1vw, 1.5rem) clamp(1rem, 3vw, 4rem);
+  border-radius: clamp(0.3rem, 0.8vw, 1rem);
+  border: clamp(1px, 0.2vw, 3px) solid #00ffff;
+  box-shadow: 0 0 clamp(0.5rem, 0.8vw, 1.5rem) #00ffff88;
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  width: clamp(300px, 80vw, 1000px);
   pointer-events: auto;
-  width: 80%;
-  max-width: 80vw;
 }
 
 .skip-intro-btn {
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 2%;
+  right: 2%;
   z-index: 10;
-  padding: 0.8vw 1.5vw;
-  font-size: clamp(13px, 1vw, 1.1em);
+  padding: clamp(0.5rem, 1vw, 1.2rem) clamp(1rem, 2vw, 2rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.5rem);
   background-color: rgba(20, 30, 48, 0.85);
   color: #fff;
-  border: 0.15vw solid #00ffff;
-  box-shadow: 0 0 0.8vw #00ffff88;
-  border-radius: 0.4vw;
+  border: clamp(1px, 0.2vw, 3px) solid #00ffff;
+  box-shadow: 0 0 clamp(0.4rem, 0.8vw, 1.2rem) #00ffff88;
+  border-radius: clamp(0.3rem, 0.8vw, 1rem);
   cursor: pointer;
 }
 
+/* Serious mode variants */
 .serious-mode .note,
 .serious-mode .footer,
 .serious-mode .skip-intro-btn {
   border-color: #ccc !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
+.serious-mode .landing-video,
+.serious-mode .background-video {
+  display: none !important;
+}
+
+/* Landing Boxes */
 .landing-boxes {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2vw;
+  gap: clamp(1rem, 3vw, 4rem);
   justify-content: center;
   align-items: center;
-  margin-bottom: 2vw;
+  margin-bottom: clamp(1rem, 3vw, 4rem);
 }
 
 .landing-box {
-  width: clamp(100px, 10vw, 180px);
-  height: clamp(100px, 10vw, 180px);
+  width: clamp(100px, 12vw, 160px);
+  height: clamp(100px, 12vw, 160px);
   background-color: rgba(0, 0, 0, 0.5);
-  border: 0.15vw solid white;
+  border: 2px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(14px, 1.5vw, 1.6em);
+  font-size: clamp(1.2rem, 2vw, 2rem);
   color: white;
   text-align: center;
-  border-radius: 0.8vw;
-  box-shadow: 0 0 0.8vw #71fafc;
+  border-radius: clamp(0.5rem, 1vw, 1.5rem);
+  box-shadow: 0 0 clamp(0.4rem, 1vw, 1.2rem) #71fafc;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Optional safety for desktop-only target */
-@media (max-width: 1024px) {
-  .landing-page {
-    display: none;
-  }
+.landing-box:hover {
+  box-shadow: 0 0 clamp(0.5rem, 2vw, 2rem) #71fafc;
 }
