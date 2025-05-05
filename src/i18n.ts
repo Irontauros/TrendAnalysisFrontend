@@ -144,9 +144,9 @@ footer: "© 2025 Todos os direitos reservados. Este site incluindo o seu design,
 
     // Mix Dropdowns
     categoryRequired: "Category selection is required.",
-    selectCategory: "Select Category",
-    selectYear: "Select Year",
-    selectCountry: "Select Country",
+    selectCategory: "Category",
+    selectYear: "Year",
+    selectCountry: "Country",
     result: "Result",
     calculate: "Calculate",
 

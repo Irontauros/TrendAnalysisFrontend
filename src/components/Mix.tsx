@@ -12,7 +12,6 @@ const Mix = () => {
   const [result, setResult] = useState<number | null>(null);
   const [percentage, setPercentage] = useState<number | null>(null);
   const [showError, setShowError] = useState(false);
-  const [compareCountries, setCompareCountries] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("no-scroll-body");
@@ -35,10 +34,8 @@ const Mix = () => {
   const availableYears = Array.from(new Set(groupedData.map((d) => d.year))).sort();
 
   const handleCalculation = () => {
-    console.log("Starting calculation...");
     if (!selectedCategory) {
       setShowError(true);
-      console.log("No category selected");
       return;
     }
 
@@ -47,11 +44,8 @@ const Mix = () => {
     const filteredData = groupedData.filter((item) => {
       const yearMatch = selectedYear ? item.year === selectedYear : true;
       const countryMatch = selectedCountry ? item.country === selectedCountry : true;
-      console.log(`Year match: ${yearMatch}, Country match: ${countryMatch}`);
       return yearMatch && countryMatch;
     });
-
-    console.log(`Filtered data: ${JSON.stringify(filteredData)}`);
 
     const total = filteredData.reduce((acc, item) => {
       const value = item[selectedCategory];
@@ -67,8 +61,6 @@ const Mix = () => {
 
     setResult(total);
     setPercentage(calculatedPercentage);
-
-    console.log(`Result: ${total}, Percentage: ${calculatedPercentage}`);
   };
 
   return (
@@ -77,7 +69,6 @@ const Mix = () => {
 
       <div className="mix-content-box">
         <div className="mix-controls">
-          {/* Category */}
           <div className="mix-dropdown">
             <select
               onChange={(e) => setSelectedCategory(e.target.value || null)}
@@ -86,14 +77,13 @@ const Mix = () => {
               <option value="">{t("selectCategory")}</option>
               {availableFields.map((cat) => (
                 <option key={cat} value={cat}>
-                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)} {/* Translated category */}
+                  {translateDynamic(t, `category.${cat.toLowerCase()}`, cat)}
                 </option>
               ))}
             </select>
             <span className="plus-sign">+</span>
           </div>
 
-          {/* Year */}
           <div className="mix-dropdown">
             <select
               onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
@@ -109,13 +99,11 @@ const Mix = () => {
             <span className="plus-sign">+</span>
           </div>
 
-          {/* Country */}
           <div className="mix-dropdown">
             <select
               onChange={(e) => {
                 const country = e.target.value || null;
                 setSelectedCountry(country);
-                console.log(`Selected Country: ${country}`);
               }}
               value={selectedCountry || ""}
             >
@@ -129,7 +117,6 @@ const Mix = () => {
             <span className="equal-sign">=</span>
           </div>
 
-          {/* Result */}
           <div className="mix-result-box">
             {result !== null ? (
               <div>
