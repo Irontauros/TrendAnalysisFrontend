@@ -38,12 +38,16 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
           {/* Conteúdo principal: grelha 3x2 e footer */}
           <div className="landing-boxes-wrapper">
             <div className="landing-boxes">
-              <div className="landing-box">{t("intro.welcome")}</div>
-              <div className="landing-box">{t("intro.mix")}</div>
-              <div className="landing-box">{t("intro.prediction")}</div>
-              <div className="landing-box">{t("intro.graphs")}</div>
-              <div className="landing-box">{t("intro.settings")}</div>
-              <div className="landing-box">{t("intro.compare")}</div>
+{/* 1ª linha */}
+<div className="note top-left">{t("intro.welcome")}</div>
+<div className="note top-right">{t("intro.graphs")}</div>
+<div className="note">{t("intro.settings")}</div> {/* centro topo */}
+
+{/* 2ª linha */}
+<div className="note bottom-left">{t("intro.prediction")}</div>
+<div className="note bottom-right">{t("intro.compare")}</div>
+<div className="note">{t("intro.mix")}</div> {/* centro fundo */}
+
             </div>
           </div>
 
