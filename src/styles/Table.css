@@ -20,8 +20,8 @@
 /* === Table Wrapper === */
 .comparison-table-wrapper {
   max-height: 60vh;
-  overflow-x: auto;        /* ✅ horizontal scroll */
   overflow-y: auto;
+  overflow-x: auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
@@ -29,7 +29,7 @@
   border: 2px solid #71fafc;
   box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
   margin-top: 2rem;
-  position: relative;      /* ✅ stacking context */
+  position: relative;
   z-index: 0;
 }
 
@@ -46,8 +46,8 @@
 /* Sticky Header */
 .comparison-table thead th {
   position: sticky;
-  top: 0;
-  z-index: 10;  /* ✅ raised to stay above rows */
+  top: 80px; /* ✅ Adjust this to match your actual page header height */
+  z-index: 10;
   background-color: #2a7eb0;
   padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.75rem, 2vw, 1.5rem);
   font-weight: 400;
@@ -55,7 +55,7 @@
   border-bottom: 1px solid #56b7d9;
 }
 
-/* Round Header Corners */
+/* Rounded Header Corners */
 .comparison-table thead tr th:first-child {
   border-top-left-radius: 12px;
 }
@@ -126,5 +126,15 @@
 
   .comparison-header {
     font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .comparison-table thead th {
+    top: 60px; /* ✅ Adjust to match reduced header height */
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-table thead th {
+    top: 50px;
   }
 }
