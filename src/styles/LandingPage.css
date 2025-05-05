@@ -23,11 +23,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 6rem 2rem 3rem;
+  padding: 5rem 2rem 2rem; /* enough space top/bottom */
+  gap: 2rem;
   pointer-events: none;
 }
 
-/* Two rows, each with three columns: left, center, right */
+/* 3-column grid layout for top and bottom */
 .top-row,
 .bottom-row {
   display: grid;
@@ -37,14 +38,14 @@
   pointer-events: none;
 }
 
-/* Individual note containers */
+/* note alignment */
 .top-left,
 .bottom-left {
   justify-self: start;
 }
 
-.middle-left,
-.middle-right {
+.top-center,
+.bottom-center {
   justify-self: center;
 }
 
@@ -53,55 +54,57 @@
   justify-self: end;
 }
 
-/* Bigger, responsive, independent notes */
+/* Clean, slightly smaller, boxier notes */
 .note {
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
-  padding: 1.25rem;
-  min-width: 240px;
-  max-width: 300px;
-  min-height: 200px;
-  border-radius: 12px;
+  padding: 1rem;
+  min-width: 220px;
+  max-width: 260px;
+  min-height: 160px;
+  max-height: 220px;
+  border-radius: 10px;
   border: 2px solid #00ffff;
-  box-shadow: 0 0 15px #00ffff88;
+  box-shadow: 0 0 12px #00ffff88;
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: 0.9rem;
+  line-height: 1.3;
   pointer-events: auto;
-  word-wrap: break-word;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Footer */
+/* Footer - now always visible */
 .footer {
   width: 100%;
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 0.75rem;
+  margin-top: 1rem;
   border: 2px solid #00ffff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #00ffff88;
-  font-size: 0.8rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #00ffff88;
+  font-size: 0.75rem;
   text-align: center;
   pointer-events: auto;
 }
 
-/* Skip button */
+/* Skip button stays top-right */
 .skip-intro-btn {
   position: absolute;
   top: 2rem;
   right: 2rem;
   z-index: 10;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   background-color: rgba(20, 30, 48, 0.85);
   color: #fff;
   border: 1px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff88;
-  border-radius: 8px;
+  box-shadow: 0 0 8px #00ffff88;
+  border-radius: 6px;
   cursor: pointer;
 }
