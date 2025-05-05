@@ -18,29 +18,29 @@
   z-index: -1;
 }
 
-/* NOTES OVERLAY */
+/* Sticky notes overlay */
 .sticky-notes-overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8rem 2rem 0; /* top padding 8rem, no bottom padding */
-  gap: 6rem; /* <<< Controls gap between top and bottom row */
+  padding: 8rem 2rem 0;
+  gap: 6rem; /* controls gap between top and bottom row */
   pointer-events: none;
 }
 
-/* 3-COLUMN GRID FOR NOTES */
+/* Top and bottom rows */
 .top-row,
 .bottom-row {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 1.5rem;
+  grid-template-columns: auto 1fr auto; /* push columns outward */
+  gap: 4rem; /* increased gap between side and center */
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   justify-items: center;
   pointer-events: none;
 }
 
-/* Alignment for notes */
+/* Note positioning */
 .top-left,
 .bottom-left {
   justify-self: start;
@@ -56,15 +56,15 @@
   justify-self: end;
 }
 
-/* NOTE STYLING */
+/* Note style */
 .note {
   background-color: rgba(20, 30, 48, 0.9);
   color: #ffffff;
-  padding: 1.5rem;
-  min-width: 240px;
-  max-width: 300px;
-  min-height: 200px;
-  max-height: 260px;
+  padding: 1.75rem;
+  min-width: 260px; /* 10% bigger */
+  max-width: 320px;
+  min-height: 220px;
+  max-height: 280px;
   border-radius: 16px;
   border: 2px solid #00ffff;
   box-shadow: 0 0 15px #00ffff88;
@@ -80,18 +80,18 @@
   pointer-events: auto;
 }
 
-/* BOTTOM ROW - REDUCE GAP */
+/* Reduced gap between second line and footer */
 .bottom-row {
-  margin-bottom: 1rem; /* <<< ***Control space between second row and footer here*** */
+  margin-bottom: 0.5rem; /* <<< Change this to control second row -> footer gap */
 }
 
-/* FOOTER */
+/* Footer */
 .footer {
   width: 100%;
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
   padding: 1rem;
-  margin-top: auto; /* <<< THIS pushes footer to the bottom */
+  margin-top: auto; /* pushes footer to bottom */
   border: 2px solid #00ffff;
   border-radius: 16px;
   box-shadow: 0 0 12px #00ffff88;
@@ -100,7 +100,7 @@
   pointer-events: auto;
 }
 
-/* SKIP INTRO BUTTON */
+/* Skip intro button */
 .skip-intro-btn {
   position: absolute;
   top: 2rem;
@@ -116,29 +116,18 @@
   cursor: pointer;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .sticky-notes-overlay {
-    padding-top: 6rem;
-    gap: 4rem;
-  }
-  .note {
-    min-width: 200px;
-    width: 90%;
-    max-width: 90%;
-  }
+/* Serious Mode overrides */
+body.serious-mode .note {
+  border: 2px solid #cccccc;
+  box-shadow: none;
 }
 
-@media (max-width: 600px) {
-  .top-row,
-  .bottom-row {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    justify-items: center;
-  }
-  .note {
-    min-height: 180px;
-    max-height: none;
-    font-size: 1rem;
-  }
+body.serious-mode .footer {
+  border: 2px solid #cccccc;
+  box-shadow: none;
+}
+
+body.serious-mode .skip-intro-btn {
+  border: 1px solid #cccccc;
+  box-shadow: none;
 }
