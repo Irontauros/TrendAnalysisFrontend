@@ -1,6 +1,7 @@
+/* Base Styles */
 .mix-container {
-  margin-top: 5rem;
-  padding: 4rem 2vw;
+  margin-top: 5vh;
+  padding: 4vh 2vw;
   min-height: 100vh;
   color: white;
   display: flex;
@@ -16,23 +17,23 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
-  font-size: 1.5rem; /* REDUZIDO */
-  margin-bottom: 3rem;
+  gap: 3vw;
+  font-size: 2.5vw;
+  margin-bottom: 3vh;
 }
 
 .mix-dropdown {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.5vw;
 }
 
 .mix-dropdown select {
-  padding: 1rem 2rem;
-  font-size: 1.125rem; /* REDUZIDO */
+  padding: 1vh 2vw;
+  font-size: 2vw;
   width: 100%;
-  max-width: 20rem;
+  max-width: 20vw;
   cursor: pointer;
   border-radius: 0.75rem;
   border: 0.25rem solid #fff;
@@ -49,7 +50,7 @@
 
 .plus-sign,
 .equal-sign {
-  font-size: 4rem;
+  font-size: 3vw;
   font-weight: bold;
   color: #fff;
   user-select: none;
@@ -60,15 +61,15 @@
 }
 
 .mix-result-box {
-  padding: 1rem 2rem;
-  font-size: 2.25rem;
+  padding: 1vh 2vw;
+  font-size: 2vw;
   width: 100%;
-  max-width: 20rem;
+  max-width: 20vw;
   border-radius: 0.75rem;
   background-color: transparent;
   color: #fff;
   text-align: center;
-  min-height: 4rem;
+  min-height: 4vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,14 +77,14 @@
 }
 
 .mix-calculate-btn-wrapper {
-  margin-top: 3rem;
+  margin-top: 3vh;
   display: flex;
   justify-content: center;
 }
 
 .mix-calculate-btn {
-  padding: 1rem 2rem;
-  font-size: 1.875rem;
+  padding: 1vh 2vw;
+  font-size: 1.5vw;
   background-color: #09273f;
   color: white;
   border: none;
@@ -98,7 +99,7 @@
 
 .mix-content-box {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3rem 2rem;
+  padding: 3vh 2vw;
   border-radius: 1rem;
   backdrop-filter: blur(4px);
   border: 0.125rem solid #71fafc;
@@ -111,17 +112,17 @@
   color: #f87171;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
-  padding: 1rem 2rem;
+  padding: 1vh 2vw;
   border-radius: 0.75rem;
   font-weight: bold;
   font-size: 1.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2vh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   text-align: center;
   max-width: 90%;
 }
 
-/* === Serious Mode === */
+/* Serious Mode Overrides */
 .serious-mode .mix-container {
   background-color: #0f172a !important;
 }
@@ -147,7 +148,6 @@
   font-weight: 600;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
               0 2px 4px rgba(0, 0, 0, 0.25);
-  font-size: 1.125rem !important; /* REDUZIDO */
 }
 
 .serious-mode .mix-dropdown:nth-child(1) select:focus {
@@ -176,7 +176,7 @@
   font-size: 1.125rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
               inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
-  padding: 1rem 2rem;
+  padding: 1vh 2vw;
   border-radius: 0.75rem;
   color: white !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -195,4 +195,26 @@
   box-shadow: none;
 }
 
-/* === No mobile or tablet rules included === */
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .mix-container {
+    padding: 2vh 5vw;
+  }
+
+  .mix-controls {
+    flex-wrap: wrap;
+    gap: 2vw;
+    font-size: 2vw;
+  }
+
+  .mix-dropdown select {
+    max-width: 18vw;
+    font-size: 1.8vw;
+    padding: 1vh 1.5vw;
+  }
+
+  .mix-result-box {
+    max-width: 18vw;
+    font-size: 1.8vw;
+  }
+}
