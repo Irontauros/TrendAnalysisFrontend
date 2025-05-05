@@ -38,23 +38,26 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
           <Navbar onOpenSettings={onOpenSettings} />
           <div className="landing-layout">
             <div className="sidebar-buttons">
-              <button onClick={() => togglePopup("graphs")} className="landing-button">
-                {t("dashboard")}
+              <button onClick={() => togglePopup("intro.welcome")} className="landing-button">
+                {t("hello")}
               </button>
-              <button onClick={() => togglePopup("graphs")} className="landing-button">
-                {t("predictive")}
+              <button onClick={() => togglePopup("intro.graphs")} className="landing-button">
+                {t("Dashboard")}
               </button>
-              <button onClick={() => togglePopup("mix")} className="landing-button">
+              <button onClick={() => togglePopup("intro.compare")} className="landing-button">
+                {t("Table")}
+              </button>
+              <button onClick={() => togglePopup("intro.prediction")} className="landing-button">
+                {t("Predictive")}
+              </button>
+              <button onClick={() => togglePopup("intro.mix")} className="landing-button">
                 {t("mix")}
               </button>
-              <button onClick={() => togglePopup("settings")} className="landing-button">
+              <button onClick={() => togglePopup("intro.settings")} className="landing-button">
                 {t("settings")}
               </button>
               <button onClick={() => togglePopup("footerText")} className="landing-button">
                 {t("footer")}
-              </button>
-              <button onClick={() => togglePopup("welcome")} className="landing-button">
-                {t("hello")}
               </button>
             </div>
 
