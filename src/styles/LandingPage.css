@@ -1,169 +1,168 @@
 /* src/styles/LandingPage.css */
 
 .landing-page {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .background-video,
-  .landing-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  .sticky-notes-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-  }
-  
-  /* Note style */
-  .note {
-    position: absolute;
-    background-color: rgba(20, 30, 48, 0.85);
-    color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid #00ffff;
-    box-shadow: 0 0 15px #00ffff88;
-    max-width: 300px;
-    backdrop-filter: blur(4px);
-    pointer-events: auto;
-    text-align: center;
-  }
-  
-  /* Positions (adjusted towards center) */
-  .top-left {
-    top: 10rem;
-    left: 2rem; /* Adjusted from 2rem -> 6rem to move more to center */
-  }
-  
-  .middle-left {
-    top: 55%;
-    left: 40rem; /* Adjusted from 2rem -> 6rem */
-    transform: translateY(-50%);
-  }
-  
-  .bottom-left {
-    bottom: 4rem;
-    left: 2rem; /* Adjusted from 2rem -> 6rem */
-  }
-  
-  .top-right {
-    top: 10rem;
-    right: 2rem; /* Adjusted from 2rem -> 6rem */
-  }
-  
-  .middle-right {
-    top: 55%;
-    right: 40rem; /* Adjusted from 2rem -> 6rem */
-    transform: translateY(-50%);
-  }
-  
-  .bottom-right {
-    bottom: 4rem;
-    right: 2rem; /* Adjusted from 2rem -> 6rem */
-  }
-  
-  /* Footer */
-  .footer {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(20, 30, 48, 0.85);
-    color: #ffffff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 8px;
-    border: 1px solid #00ffff;
-    box-shadow: 0 0 10px #00ffff88;
-    font-size: 0.8rem;
-    pointer-events: auto;
-    width: 90%;            /* ← Add this */
-    max-width: 1200px;     /* ← Optional: to prevent it from becoming too wide on big screens */
-  }
-  
-  
-  /* Skip button */
-  .skip-intro-btn {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    z-index: 10;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: rgba(20, 30, 48, 0.85);
-    color: #fff;
-    border: 1px solid #00ffff;
-    box-shadow: 0 0 10px #00ffff88;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  /* === Serious Mode === */
-  .serious-mode .landing-container {
-    background-color: #0f172a !important;
-  }
-  
-  .serious-mode .landing-video {
-    display: none !important;
-  }
-  
-  .serious-mode .landing-overlay {
-    background: rgba(15, 23, 42, 0.9) !important;
-  }
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 1vw; /* Escala geral dinâmica */
+}
+
+.background-video,
+.landing-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.sticky-notes-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Note style */
+.note {
+  position: absolute;
+  background-color: rgba(20, 30, 48, 0.85);
+  color: #ffffff;
+  padding: 2vw;
+  border-radius: 0.8vw;
+  border: 0.3vw solid #00ffff;
+  box-shadow: 0 0 1.5vw #00ffff88;
+  max-width: 30vw;
+  backdrop-filter: blur(0.4vw);
+  pointer-events: auto;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+/* Positions using percentages */
+.top-left {
+  top: 12%;
+  left: 4%;
+}
+
+.middle-left {
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+.bottom-left {
+  bottom: 12%;
+  left: 4%;
+}
+
+.top-right {
+  top: 12%;
+  right: 4%;
+}
+
+.middle-right {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+.bottom-right {
+  bottom: 12%;
+  right: 4%;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(20, 30, 48, 0.85);
+  color: #ffffff;
+  padding: 1vw 3vw;
+  border-radius: 0.8vw;
+  border: 0.2vw solid #00ffff;
+  box-shadow: 0 0 1vw #00ffff88;
+  font-size: 1vw;
+  pointer-events: auto;
+  width: 90%;
+  max-width: 90vw;
+}
+
+/* Skip button */
+.skip-intro-btn {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  z-index: 10;
+  padding: 1vw 2vw;
+  font-size: 1.2vw;
+  background-color: rgba(20, 30, 48, 0.85);
+  color: #fff;
+  border: 0.2vw solid #00ffff;
+  box-shadow: 0 0 1vw #00ffff88;
+  border-radius: 0.5vw;
+  cursor: pointer;
+}
+
+/* Serious Mode */
+.serious-mode .landing-container {
+  background-color: #0f172a !important;
+}
+
+.serious-mode .landing-video,
+.serious-mode .background-video {
+  display: none !important;
+}
+
+.serious-mode .landing-overlay {
+  background: rgba(15, 23, 42, 0.9) !important;
+}
 
 .serious-mode .note,
 .serious-mode .footer,
 .serious-mode .skip-intro-btn {
-    border-color: #ccc !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border-color: #ccc !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-  .serious-mode .welcome-text {
-    color: #ffffff !important;
-    text-shadow: none !important;
-  }
-  .serious-mode .background-video {
-    display: none !important;
-  }
-  /* Landing Boxes layout (still kept) */
-  .landing-boxes {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .landing-box {
-    width: 150px;
-    height: 150px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-    text-align: center;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px #71fafc;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .landing-box:hover {
-    box-shadow: 0 0 20px #71fafc;
-  }
-  
+.serious-mode .welcome-text {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* Landing Boxes */
+.landing-boxes {
+  display: flex;
+  gap: 3vw;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3vw;
+}
+
+.landing-box {
+  width: 12vw;
+  height: 12vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0.2vw solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vw;
+  color: white;
+  text-align: center;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw #71fafc;
+  transition: all 0.3s ease-in-out;
+}
+
+.landing-box:hover {
+  box-shadow: 0 0 2vw #71fafc;
+}
