@@ -24,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   padding: 8rem 2rem 0;
-  gap: 6rem; /* controls gap between top and bottom row */
+  gap: 10rem; /* controls gap between top and bottom row */
   pointer-events: none;
 }
 
@@ -33,7 +33,7 @@
 .bottom-row {
   display: grid;
   grid-template-columns: auto 1fr auto; /* push columns outward */
-  gap: 4rem; /* increased gap between side and center */
+  gap: 10rem; /* increased gap between side and center */
   width: 100%;
   max-width: 1300px;
   justify-items: center;
@@ -61,7 +61,7 @@
   background-color: rgba(20, 30, 48, 0.9);
   color: #ffffff;
   padding: 1.75rem;
-  min-width: 260px; /* 10% bigger */
+  min-width: 280px; /* 10% bigger */
   max-width: 320px;
   min-height: 220px;
   max-height: 280px;
@@ -118,16 +118,16 @@
 
 /* Serious Mode overrides */
 body.serious-mode .note {
-  border: 2px solid #cccccc;
-  box-shadow: none;
+  border: 2px solid #cccccc !important;
+  box-shadow: none !important;
 }
 
 body.serious-mode .footer {
-  border: 2px solid #cccccc;
-  box-shadow: none;
+  border: 2px solid #cccccc !important;
+  box-shadow: none !important;
 }
 
 body.serious-mode .skip-intro-btn {
-  border: 1px solid #cccccc;
-  box-shadow: none;
+  border: 1px solid #cccccc !important;
+  box-shadow: none !important;
 }
