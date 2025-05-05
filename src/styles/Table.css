@@ -1,7 +1,27 @@
-/* Outer container — controls vertical scroll */
+/* === Comparison Page === */
+.comparison-container {
+  margin-top: 80px;
+  padding: 2rem;
+  min-height: 100vh;
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Page Header */
+.comparison-header {
+  font-size: clamp(1rem, 2.5vw, 1.75rem);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+/* === Table Wrapper === */
 .comparison-table-wrapper {
   max-height: 60vh;
   overflow-y: auto;
+  overflow-x: auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
@@ -9,36 +29,33 @@
   border: 2px solid #71fafc;
   box-shadow: 0 0 16px #71fafc, 0 0 30px #0a94f7;
   margin-top: 2rem;
+  position: relative;
+  z-index: 0;
 }
 
-/* Inner scroll container — for horizontal overflow */
-.comparison-table-scroll {
-  overflow-x: auto;
-  width: 100%;
-}
-
-/* The actual table */
+/* Table */
 .comparison-table {
+  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
-  width: max-content;
-  min-width: 100%;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: clamp(12px, 1.8vw, 20px);
 }
 
-/* Sticky header — always visible and above content */
+/* Sticky Header */
 .comparison-table thead th {
   position: sticky;
-  top: 0;
-  background-color: #2a7eb0;
-  color: #e2e8f0;
+  top: 80px; /* ✅ Adjust this to match your actual page header height */
   z-index: 10;
-  padding: 1rem 1.5rem;
+  background-color: #2a7eb0;
+  padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.75rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: #e2e8f0;
   border-bottom: 1px solid #56b7d9;
 }
 
-/* Rounded header corners */
+/* Rounded Header Corners */
 .comparison-table thead tr th:first-child {
   border-top-left-radius: 12px;
 }
@@ -46,32 +63,78 @@
   border-top-right-radius: 12px;
 }
 
-/* Table body rows */
+/* Body Cells */
 .comparison-table td {
-  padding: 0.75rem 1.25rem;
+  padding: clamp(0.4rem, 1vw, 0.75rem) clamp(0.5rem, 1.5vw, 1.25rem);
   border-bottom: 1px solid #56b7d9;
-  font-size: 18px;
+  font-size: clamp(10px, 1.6vw, 18px);
 }
 
-/* Prevent wrapping */
+/* No Wrap */
 .comparison-table th,
 .comparison-table td {
   white-space: nowrap;
 }
 
-/* Hover highlight */
-.comparison-table tbody tr:hover {
+/* Hover */
+.comparison-table tr:hover {
   background-color: #2a7eb0;
 }
 
-/* Scrollbar styling */
-.comparison-table-scroll::-webkit-scrollbar {
-  height: 8px;
+/* === Loading & Error === */
+.comparison-loading,
+.comparison-error {
+  font-size: 1.25rem;
+  color: #f87171;
+  padding: 2rem;
+  text-align: center;
 }
-.comparison-table-scroll::-webkit-scrollbar-thumb {
-  background: #56b7d9;
-  border-radius: 8px;
+
+/* === Serious Mode === */
+.serious-mode .comparison-container,
+.serious-mode .comparison-table-wrapper,
+.serious-mode .comparison-table,
+.serious-mode .comparison-table th,
+.serious-mode .comparison-table td {
+  background-color: #0f172a !important;
+  color: white !important;
+  border-color: #ccc !important;
+  box-shadow: none !important;
 }
-.comparison-table-scroll::-webkit-scrollbar-track {
-  background: transparent;
+
+.serious-mode .comparison-table th {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  font-weight: 500;
+}
+
+.serious-mode .comparison-table tr:hover {
+  background-color: #475569 !important;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .comparison-container {
+    padding: 1rem;
+    margin-top: 60px;
+  }
+
+  .comparison-table-wrapper {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .comparison-header {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .comparison-table thead th {
+    top: 60px; /* ✅ Adjust to match reduced header height */
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-table thead th {
+    top: 50px;
+  }
 }
