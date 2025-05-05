@@ -76,7 +76,7 @@ const translations = {
 
     // Inside the 'pt' section
   intro: {
-  "welcome": "👋 Bem-vindo ao ChronoAnálise! Esta plataforma permite explorar como temas-chave evoluíram ao longo do tempo com base em notícias arquivadas pelo Arquivo.pt. Analise tendências, compare categorias e até preveja o futuro com recurso a inteligência artificial. Use o menu acima para navegar pelas diferentes páginas do site.",
+  "welcome": "👋 Bem-vindo ao ChronoAnálise! Esta plataforma permite explorar como temas-chave evoluíram ao longo do tempo com base em notícias arquivadas pelo Arquivo.pt. Analise tendências, compare categorias e até preveja o futuro com recurso a inteligência artificial.",
   
   "graphs": "📊 Dashboard: Explore todos os dados disponíveis através de gráficos interativos. Filtre por intervalo de anos, categorias e países. Visualize uma ou várias categorias em diferentes estilos de gráficos. Também pode transferir os dados em formato CSV ou PDF.",
   
@@ -177,7 +177,7 @@ footer: "© 2025 Todos os direitos reservados. Este site incluindo o seu design,
 
 
     intro: {
-      "welcome": "👋 Welcome to ChronoAnalysis! This platform lets you explore how key topics have evolved over time using archived news data. Analyze trends, compare categories, and even forecast future developments using AI. Use the menu above to navigate through the different sections of the site.",
+      "welcome": "👋 Welcome to ChronoAnalysis! This platform lets you explore how key topics have evolved over time using archived news data. Analyze trends, compare categories, and even forecast future developments using AI.",
     
       "graphs": "📊 Dashboard: Explore all available data through interactive graphs. Filter by year range, categories, and countries. View one or multiple categories in different graph styles. You can also download the data in CSV or PDF format for further use.",
     
