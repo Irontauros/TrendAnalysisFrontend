@@ -35,7 +35,7 @@
 .comparison-table-wrapper {
   max-height: 60vh;
   overflow-y: auto;
-  overflow-x: hidden; /* horizontal scroll handled by inner scroll container */
+  overflow-x: auto; /* ensure table scrolls on smaller viewports */
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
@@ -54,7 +54,6 @@
   scrollbar-width: thin;
 }
 
-/* Optional: Custom scrollbar for WebKit browsers */
 .comparison-table-scroll::-webkit-scrollbar {
   height: 8px;
 }
@@ -70,8 +69,8 @@
 
 /* === Table Layout === */
 .comparison-table {
-  width: max-content;     /* Expands horizontally as needed */
-  min-width: 100%;        /* Prevents collapse when content is small */
+  width: max-content;
+  min-width: 100%;
   table-layout: auto;
   border-collapse: collapse;
   text-align: center;
@@ -149,31 +148,11 @@
   background-color: #475569 !important;
 }
 
-/* === Responsive Design === */
-@media (max-width: 768px) {
-  .comparison-table {
-    font-size: 16px;
-  }
-
-  .comparison-table th,
-  .comparison-table td {
-    padding: 0.5rem;
-  }
-
-  .comparison-container {
-    padding: 1rem;
-  }
-
-  .comparison-table-wrapper {
-    padding: 1rem;
-  }
-}
-/* === Responsive Improvements for Comparison Page === */
-
-/* Tablets */
+/* === Responsive for 1024px and below === */
 @media (max-width: 1024px) {
   .comparison-container {
-    padding: 1.5rem;
+    padding: 1rem;
+    margin-top: 60px;
   }
 
   .comparison-header {
@@ -181,68 +160,18 @@
   }
 
   .comparison-table-wrapper {
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .comparison-table {
-    font-size: 18px;
-  }
-}
-
-/* Mobile devices */
-@media (max-width: 768px) {
-  .comparison-container {
-    margin-top: 60px;
-    padding: 1rem;
-  }
-
-  .comparison-header {
-    font-size: 1.25rem;
-  }
-
-  .year-labels {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0;
-  }
-
-  .comparison-table-wrapper {
     padding: 1rem;
     margin-top: 1rem;
+    overflow-x: auto;
   }
 
   .comparison-table {
     font-size: 16px;
+    min-width: 900px; /* Prevent table collapse */
   }
 
   .comparison-table th,
   .comparison-table td {
     padding: 0.5rem 0.75rem;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 480px) {
-  .comparison-container {
-    margin-top: 50px;
-    padding: 0.5rem;
-  }
-
-  .comparison-header {
-    font-size: 1rem;
-  }
-
-  .year-labels {
-    font-size: 0.875rem;
-  }
-
-  .comparison-table {
-    font-size: 14px;
-  }
-
-  .comparison-table-wrapper {
-    padding: 0.5rem;
   }
 }

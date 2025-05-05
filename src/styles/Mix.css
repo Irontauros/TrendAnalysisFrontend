@@ -1,4 +1,3 @@
-/* Base Styles */
 .mix-container {
   margin-top: 5vh;
   padding: 4vh 2vw;
@@ -17,8 +16,8 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 3vw;
-  font-size: 2.5vw;
+  gap: 2.5vw;
+  font-size: 1.2vw;
   margin-bottom: 3vh;
 }
 
@@ -26,17 +25,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5vw;
+  gap: 1.2vw;
 }
 
 .mix-dropdown select {
   padding: 1vh 2vw;
-  font-size: 2vw;
+  font-size: 0.9vw;
   width: 100%;
-  max-width: 20vw;
+  max-width: 18vw;
   cursor: pointer;
-  border-radius: 0.75rem;
-  border: 0.25rem solid #fff;
+  border-radius: 0.6vw;
+  border: 0.2vw solid #fff;
   background-color: transparent;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
@@ -50,7 +49,7 @@
 
 .plus-sign,
 .equal-sign {
-  font-size: 3vw;
+  font-size: 3.5vw;
   font-weight: bold;
   color: #fff;
   user-select: none;
@@ -64,8 +63,8 @@
   padding: 1vh 2vw;
   font-size: 2vw;
   width: 100%;
-  max-width: 20vw;
-  border-radius: 0.75rem;
+  max-width: 18vw;
+  border-radius: 0.6vw;
   background-color: transparent;
   color: #fff;
   text-align: center;
@@ -73,7 +72,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0.75rem #71fafc, 0 0 1.25rem #ffffff;
+  box-shadow: 0 0 0.5vw #71fafc, 0 0 1vw #ffffff;
 }
 
 .mix-calculate-btn-wrapper {
@@ -89,7 +88,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 0.75rem;
+  border-radius: 0.6vw;
   transition: background-color 0.3s;
 }
 
@@ -100,10 +99,10 @@
 .mix-content-box {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 3vh 2vw;
-  border-radius: 1rem;
+  border-radius: 1vw;
   backdrop-filter: blur(4px);
-  border: 0.125rem solid #71fafc;
-  box-shadow: 0 0 1rem #71fafc, 0 0 2rem #0a94f7;
+  border: 0.1vw solid #71fafc;
+  box-shadow: 0 0 1vw #71fafc, 0 0 2vw #0a94f7;
   display: inline-block;
   text-align: center;
 }
@@ -113,29 +112,29 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
   padding: 1vh 2vw;
-  border-radius: 0.75rem;
+  border-radius: 0.75vw;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1vw;
   margin-bottom: 2vh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   text-align: center;
   max-width: 90%;
 }
 
-/* Serious Mode Overrides */
+/* === Serious Mode === */
 .serious-mode .mix-container {
   background-color: #0f172a !important;
 }
 
 .serious-mode .mix-content-box {
   background: #1e293b !important;
-  border: 0.125rem solid #334155 !important;
+  border: 0.1vw solid #334155 !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
 .serious-mode .mix-result-box {
   background-color: #0f172a !important;
-  border: 0.125rem solid #334155 !important;
+  border: 0.1vw solid #334155 !important;
   color: white !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
               0 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -143,26 +142,27 @@
 
 .serious-mode .mix-dropdown select {
   background-color: #1f2937 !important;
-  border: 0.125rem solid #334155 !important;
+  border: 0.1vw solid #334155 !important;
   color: white !important;
   font-weight: 600;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
               0 2px 4px rgba(0, 0, 0, 0.25);
+  font-size: 0.9vw !important;
 }
 
 .serious-mode .mix-dropdown:nth-child(1) select:focus {
   border-color: #34d399 !important;
-  box-shadow: 0 0 0 0.1875rem rgba(52, 211, 153, 0.5) !important;
+  box-shadow: 0 0 0 0.2vw rgba(52, 211, 153, 0.5) !important;
 }
 
 .serious-mode .mix-dropdown:nth-child(2) select:focus {
   border-color: #fde68a !important;
-  box-shadow: 0 0 0 0.1875rem rgba(253, 230, 138, 0.5) !important;
+  box-shadow: 0 0 0 0.2vw rgba(253, 230, 138, 0.5) !important;
 }
 
 .serious-mode .mix-dropdown:nth-child(3) select:focus {
   border-color: #c084fc !important;
-  box-shadow: 0 0 0 0.1875rem rgba(192, 132, 252, 0.5) !important;
+  box-shadow: 0 0 0 0.2vw rgba(192, 132, 252, 0.5) !important;
 }
 
 .serious-mode .mix-dropdown select:hover {
@@ -171,13 +171,13 @@
 
 .serious-mode .mix-calculate-btn {
   background-color: #ef4444 !important;
-  border: 0.125rem solid #b91c1c !important;
+  border: 0.1vw solid #b91c1c !important;
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 1vw;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
               inset 0 -2px 0 rgba(255, 255, 255, 0.1) !important;
   padding: 1vh 2vw;
-  border-radius: 0.75rem;
+  border-radius: 0.6vw;
   color: white !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -186,35 +186,11 @@
   background-color: #dc2626 !important;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5),
               inset 0 -2px 0 rgba(255, 255, 255, 0.15) !important;
-  transform: translateY(-2px);
+  transform: translateY(-0.2vw);
 }
 
 .serious-mode .mix-error-message {
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-  .mix-container {
-    padding: 2vh 5vw;
-  }
-
-  .mix-controls {
-    flex-wrap: wrap;
-    gap: 2vw;
-    font-size: 2vw;
-  }
-
-  .mix-dropdown select {
-    max-width: 18vw;
-    font-size: 1.8vw;
-    padding: 1vh 1.5vw;
-  }
-
-  .mix-result-box {
-    max-width: 18vw;
-    font-size: 1.8vw;
-  }
 }

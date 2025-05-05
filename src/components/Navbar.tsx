@@ -1,3 +1,5 @@
+// src/components/Navbar.tsx
+
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaChartLine, FaTable, FaLightbulb, FaRandom, FaCog } from "react-icons/fa";
@@ -8,52 +10,32 @@ const Navbar = ({ onOpenSettings }: { onOpenSettings: () => void }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? "nav-link nav-link-active" : "nav-link";
+
   return (
     <nav className="navbar">
-      <h1
-        className="navbar-title clickable"
-        onClick={() => navigate("/")}
-      >
+      <h1 className="navbar-title clickable" onClick={() => navigate("/")}>
         {t("appTitle")}
       </h1>
 
       <div className="navbar-links">
-        <NavLink
-          to="/Dashboard"
-          className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-dashboard" : "nav-link"
-          }
-        >
+        <NavLink to="/Dashboard" className={navLinkClass}>
           <FaChartLine className="nav-icon" />
           {t("Dashboard")}
         </NavLink>
 
-        <NavLink
-          to="/Table"
-          className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-Table" : "nav-link"
-          }
-        >
+        <NavLink to="/Table" className={navLinkClass}>
           <FaTable className="nav-icon" />
           {t("Table")}
         </NavLink>
 
-        <NavLink
-          to="/Predictive"
-          className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-Predictive" : "nav-link"
-          }
-        >
+        <NavLink to="/Predictive" className={navLinkClass}>
           <FaLightbulb className="nav-icon" />
           {t("Predictive")}
         </NavLink>
 
-        <NavLink
-          to="/Mix"
-          className={({ isActive }) =>
-            isActive ? "nav-link nav-link-active-mix" : "nav-link"
-          }
-        >
+        <NavLink to="/Mix" className={navLinkClass}>
           <FaRandom className="nav-icon" />
           {t("mix")}
         </NavLink>

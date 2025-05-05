@@ -1,72 +1,70 @@
-/* === Navbar === */
-.navbar {
-    @apply p-4 flex justify-between items-center fixed w-full top-0 z-50;
-    height: 100px;
-    background: linear-gradient(90deg, #14557f 0%, #061b2d 100%);
-    border-bottom: 3px solid #71fafc;
-    box-shadow: 0 2px 16px #71fafc;
-  }
-  
-  .navbar-title {
-    @apply text-white text-2xl font-bold tracking-wide uppercase;
-  }
-  
-  .navbar-links {
-    @apply flex space-x-6;
-  }
-  
-  .nav-link {
-    @apply flex items-center px-4 py-2 rounded-lg font-semibold transition-all;
-    color: #fff;
-    border: 2px solid #71fafc;
-    background-color: transparent;
-  }
-  
-  .nav-link:hover {
-    background-color: rgba(113, 250, 252, 0.1);
-    box-shadow: 0 0 10px #71fafc, 0 0 20px #71fafc;
-  }
-  
-  .nav-link-active-graphs,
-  .nav-link-active-comparison,
-  .nav-link-active-prediction,
-  .nav-link-active-mix {
-    background-color: #56b7d9;
-    border-color: #56b7d9;
-    color: #fff;
-  }
-  
-  .nav-icon {
-    @apply mr-2;
-  }
-  
-  /* === Serious Mode Overrides: Navbar === */
-  .serious-mode .navbar,
-  .serious-mode .nav-link {
-    box-shadow: none !important;
-    border-color: #ccc !important;
-    background: #1e293b !important;
-    color: white !important;
-  }
-  
-  .serious-mode .nav-link:hover {
-    background-color: #334155 !important;
-    box-shadow: none !important;
-  }
-  
-  .navbar-title.clickable {
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .navbar-title.clickable:hover {
-    color: #71fafc;
-    text-shadow: 0 0 10px #71fafc;
-  }
-  
-  /* === Responsive Adjustments for Navbar === */
+/* src/styles/Navbar.css */
 
-/* For tablets and small laptops */
+/* Base navbar */
+.navbar {
+  @apply p-4 flex justify-between items-center fixed w-full top-0 z-50;
+  height: 100px;
+  background: linear-gradient(90deg, #14557f 0%, #061b2d 100%);
+  border-bottom: 3px solid #71fafc;
+  box-shadow: 0 2px 16px #71fafc;
+}
+
+.navbar-title {
+  @apply text-white text-2xl font-bold tracking-wide uppercase;
+}
+
+.navbar-links {
+  @apply flex space-x-6;
+}
+
+.nav-link {
+  @apply flex items-center px-4 py-2 rounded-lg font-semibold transition-all;
+  color: #fff;
+  border: 2px solid #71fafc;
+  background-color: transparent;
+}
+
+.nav-link:hover {
+  background-color: rgba(113, 250, 252, 0.1);
+  box-shadow: 0 0 10px #71fafc, 0 0 20px #71fafc;
+}
+
+.nav-link-active {
+  background-color: #56b7d9;
+  border-color: #56b7d9;
+  color: #fff;
+}
+
+.nav-icon {
+  @apply mr-2;
+}
+
+/* Serious mode */
+.serious-mode .navbar,
+.serious-mode .nav-link {
+  box-shadow: none !important;
+  border-color: #ccc !important;
+  background: #1e293b !important;
+  color: white !important;
+}
+
+.serious-mode .nav-link:hover {
+  background-color: #334155 !important;
+  box-shadow: none !important;
+}
+
+/* Navbar clickable title */
+.navbar-title.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-title.clickable:hover {
+  color: #71fafc;
+  text-shadow: 0 0 10px #71fafc;
+}
+
+/* --- Responsive Only to 1024px --- */
 @media (max-width: 1024px) {
   .navbar {
     height: 80px;
@@ -79,50 +77,6 @@
 
   .navbar-links {
     gap: 1rem;
-  }
-
-  .nav-link {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
-}
-
-/* For mobile devices */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 1rem;
-  }
-
-  .navbar-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .navbar-links {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .nav-link {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1.25rem;
-    text-align: left;
-  }
-}
-
-/* For very small phones */
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0.5rem;
-  }
-
-  .navbar-title {
-    font-size: 1.25rem;
   }
 
   .nav-link {
