@@ -44,17 +44,16 @@
 }
 
 .landing-button {
-  background-color: rgba(20, 30, 48, 0.85);
-  color: #ffffff;
+  background-color: transparent;
+  color: #fff;
   padding: 1rem 1.5rem;
   font-size: 1rem;
-  border: 2px solid #00ffff;
+  border: 2px solid #71fafc;
   border-radius: 8px;
-  box-shadow: 0 0 8px #00ffff88;
-  cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
   width: 100%;
+  cursor: pointer;
 }
 
 .landing-button:hover {
@@ -68,6 +67,7 @@
   color: #fff;
 }
 
+/* Popup Area */
 .popup-area {
   flex: 1;
   display: flex;
@@ -76,22 +76,22 @@
   position: relative;
 }
 
+/* Popup Box */
 .popup-box {
   background-color: rgba(20, 30, 48, 0.9);
-  border: 2px solid #00ffff;
+  border: 2px solid #71fafc;
   border-radius: 10px;
   padding: 2rem;
   color: #ffffff;
-  box-shadow: 0 0 12px #00ffff88;
-  max-width: 90vw;
-  width: 100%;
+  box-shadow: 0 0 12px #71fafc88;
   max-width: 500px;
+  width: 90%;
   word-wrap: break-word;
   font-size: 1rem;
   text-align: center;
 }
 
-/* Skip button */
+/* Skip intro button */
 .skip-intro-btn {
   position: absolute;
   top: 2rem;
@@ -99,12 +99,44 @@
   z-index: 10;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  background-color: rgba(20, 30, 48, 0.85);
+  background-color: transparent;
   color: #fff;
-  border: 1px solid #00ffff;
-  box-shadow: 0 0 8px #00ffff88;
+  border: 2px solid #71fafc;
   border-radius: 6px;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
+.skip-intro-btn:hover {
+  background-color: rgba(113, 250, 252, 0.1);
+  box-shadow: 0 0 10px #71fafc, 0 0 20px #71fafc;
+}
 
+.skip-intro-btn:active {
+  background-color: #56b7d9;
+  border-color: #56b7d9;
+  color: #fff;
+}
+
+/* Simple mode (serious mode) changes */
+.serious-mode .landing-button,
+.serious-mode .skip-intro-btn,
+.serious-mode .popup-box {
+  background-color: #1e293b;
+  border-color: #ccc;
+  color: #fff;
+  box-shadow: none;
+}
+
+.serious-mode .landing-button:hover,
+.serious-mode .skip-intro-btn:hover {
+  background-color: #334155;
+  box-shadow: none;
+}
+
+.serious-mode .landing-button:active,
+.serious-mode .skip-intro-btn:active {
+  background-color: #475569;
+  border-color: #ccc;
+  color: #fff;
+}
