@@ -7,18 +7,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .mix-controls {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 3vw;
-  font-size: 2vw;
+  gap: 2vw;
+  font-size: 1.6vw;
   margin-bottom: 3vh;
+  max-width: 90vw;
 }
 
 .mix-dropdown {
@@ -29,19 +30,19 @@
 }
 
 .mix-dropdown select {
-  font-size: 2vw; /* Make font larger */
-  padding: 1.2vh 1vw; /* Tight padding */
-  min-height: 6vh; /* Force button height */
-  min-width: 22vw; /* Minimum width */
-  max-width: 30vw; /* Maximum width for longer words */
+  font-size: 1.6vw; /* Moderate */
+  padding: 1vh 0.8vw; /* Tighter */
+  min-height: 5vh;
+  min-width: 18vw;
+  max-width: 22vw;
   cursor: pointer;
-  border-radius: 0.8vw;
-  border: 0.2vw solid #fff;
+  border-radius: 0.6vw;
+  border: 0.15vw solid #fff;
   background-color: transparent;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
-  appearance: none; /* Remove default browser styles */
-  text-indent: 0.5vw; /* Control how text starts from left */
+  appearance: none;
+  text-indent: 0.5vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -55,22 +56,22 @@
 
 .plus-sign,
 .equal-sign {
-  font-size: 4vw;
+  font-size: 3.5vw;
   font-weight: bold;
   color: #fff;
   user-select: none;
   pointer-events: none;
-  line-height: 1;
   display: flex;
   align-items: center;
 }
 
 .mix-result-box {
-  padding: 2vh 3vw;
-  font-size: 2.5vw;
-  width: 100%;
-  max-width: 30vw;
-  border-radius: 0.8vw;
+  padding: 1.5vh 2vw;
+  font-size: 2vw;
+  width: auto;
+  max-width: 25vw;
+  min-width: 15vw;
+  border-radius: 0.6vw;
   background-color: transparent;
   color: #fff;
   text-align: center;
@@ -79,22 +80,24 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 0.5vw #71fafc, 0 0 1vw #ffffff;
+  word-break: break-word;
 }
 
 .mix-calculate-btn-wrapper {
   margin-top: 4vh;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .mix-calculate-btn {
-  padding: 2vh 4vw;
-  font-size: 2vw;
+  padding: 1.5vh 3vw;
+  font-size: 1.6vw;
   background-color: #09273f;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 0.8vw;
+  border-radius: 0.6vw;
   transition: background-color 0.3s;
 }
 
@@ -104,20 +107,22 @@
 
 .mix-content-box {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 3vh 3vw;
+  padding: 2vh 2vw;
   border-radius: 1vw;
   backdrop-filter: blur(4px);
   border: 0.1vw solid #71fafc;
   box-shadow: 0 0 1vw #71fafc, 0 0 2vw #0a94f7;
   display: inline-block;
   text-align: center;
+  max-width: 95vw;
+  overflow-x: auto;
 }
 
 .mix-error-message {
   color: #f87171;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(6px);
-  padding: 1.5vh 3vw;
+  padding: 1.2vh 2vw;
   border-radius: 0.75vw;
   font-weight: bold;
   font-size: 1.3vw;
@@ -128,7 +133,7 @@
 }
 
 .serious-mode .mix-dropdown select {
-  font-size: 2vw !important;
-  padding: 1.2vh 1vw !important;
-  min-height: 6vh !important;
+  font-size: 1.6vw !important;
+  padding: 1vh 0.8vw !important;
+  min-height: 5vh !important;
 }

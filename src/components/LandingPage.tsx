@@ -30,14 +30,17 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
           />
           <Navbar onOpenSettings={onOpenSettings} />
           <div className="sticky-notes-overlay">
-            <div className="notes-grid">
-              <div className="note">{t("intro.welcome")}</div>
-              <div className="note">{t("intro.mix")}</div>
-              <div className="note">{t("intro.prediction")}</div>
-              <div className="note">{t("intro.graphs")}</div>
-              <div className="note">{t("intro.settings")}</div>
-              <div className="note">{t("intro.compare")}</div>
-            </div>
+          <div className="notes-row top-row">
+  <div className="note">{t("intro.welcome")}</div>
+  <div className="note">{t("intro.mix")}</div>
+  <div className="note">{t("intro.prediction")}</div>
+</div>
+<div className="notes-row bottom-row">
+  <div className="note">{t("intro.graphs")}</div>
+  <div className="note">{t("intro.settings")}</div>
+  <div className="note">{t("intro.compare")}</div>
+</div>
+
             <div className="footer">
               {t("footer")}
             </div>
