@@ -4,8 +4,9 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  font-size: 1vw; /* Escala geral dinâmica */
+  overflow-x: hidden;
+  overflow-y: auto; /* Permite scroll vertical no telemóvel */
+  font-size: 1vw; /* Escala geral dinâmica para desktop */
 }
 
 .background-video,
@@ -19,6 +20,7 @@
   z-index: -1;
 }
 
+/* Notas nos cantos e centro */
 .sticky-notes-overlay {
   position: absolute;
   top: 0;
@@ -29,7 +31,7 @@
   pointer-events: none;
 }
 
-/* Note style */
+/* Estilo das notas */
 .note {
   position: absolute;
   background-color: rgba(20, 30, 48, 0.85);
@@ -42,43 +44,18 @@
   backdrop-filter: blur(0.4vw);
   pointer-events: auto;
   text-align: center;
-  font-size: 1.2vw;
+  font-size: 1.2vw; /* ✏️ Texto dimensionável no desktop */
 }
 
-/* Positions using percentages */
-.top-left {
-  top: 12%;
-  left: 4%;
-}
+/* Posições das notas */
+.top-left { top: 12%; left: 4%; }
+.middle-left { top: 50%; left: 10%; transform: translateY(-50%); }
+.bottom-left { bottom: 12%; left: 4%; }
+.top-right { top: 12%; right: 4%; }
+.middle-right { top: 50%; right: 10%; transform: translateY(-50%); }
+.bottom-right { bottom: 12%; right: 4%; }
 
-.middle-left {
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-}
-
-.bottom-left {
-  bottom: 12%;
-  left: 4%;
-}
-
-.top-right {
-  top: 12%;
-  right: 4%;
-}
-
-.middle-right {
-  top: 50%;
-  right: 10%;
-  transform: translateY(-50%);
-}
-
-.bottom-right {
-  bottom: 12%;
-  right: 4%;
-}
-
-/* Footer */
+/* Rodapé */
 .footer {
   position: absolute;
   bottom: 2%;
@@ -90,20 +67,20 @@
   border-radius: 0.8vw;
   border: 0.2vw solid #00ffff;
   box-shadow: 0 0 1vw #00ffff88;
-  font-size: 1vw;
+  font-size: 1vw; /* ✏️ Tamanho do texto do footer */
   pointer-events: auto;
   width: 90%;
   max-width: 90vw;
 }
 
-/* Skip button */
+/* Botão Skip Intro */
 .skip-intro-btn {
   position: absolute;
   top: 3%;
   right: 3%;
   z-index: 10;
   padding: 1vw 2vw;
-  font-size: 1.2vw;
+  font-size: 1.2vw; /* ✏️ Texto ajustável */
   background-color: rgba(20, 30, 48, 0.85);
   color: #fff;
   border: 0.2vw solid #00ffff;
@@ -138,7 +115,7 @@
   text-shadow: none !important;
 }
 
-/* Landing Boxes */
+/* Caixas centrais */
 .landing-boxes {
   display: flex;
   gap: 3vw;
@@ -155,7 +132,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2vw;
+  font-size: 2vw; /* ✏️ Tamanho do texto ajustável */
   color: white;
   text-align: center;
   border-radius: 1vw;
@@ -165,4 +142,32 @@
 
 .landing-box:hover {
   box-shadow: 0 0 2vw #71fafc;
+}
+
+/* ============================
+   MEDIA QUERIES PARA TEXTO
+   ============================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .note, .landing-box, .skip-intro-btn, .footer {
+    font-size: 1.8vw; /* Reduz só o texto */
+  }
+}
+
+/* Telemóvel */
+@media (max-width: 768px) {
+  .note, .landing-box, .skip-intro-btn, .footer {
+    font-size: 2.8vw; /* Mais pequeno ainda em ecrãs pequenos */
+  }
+
+  .landing-page {
+    height: auto; /* Permite scroll se necessário */
+    font-size: 2.8vw;
+  }
+
+  .sticky-notes-overlay {
+    position: relative; /* Permite empilhamento vertical se necessário */
+    height: auto;
+  }
 }
