@@ -39,12 +39,12 @@
   width: 300px;
   margin: 0 auto;
   position: relative;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
 }
 
 .landing-button {
-  background-color: transparent;
+  background-color: rgba(20, 30, 48, 0.9);
   color: #fff;
   padding: 1rem 1.5rem;
   font-size: 1rem;
@@ -99,7 +99,7 @@
   z-index: 10;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  background-color: transparent;
+  background-color: rgba(20, 30, 48, 0.9);
   color: #fff;
   border: 2px solid #71fafc;
   border-radius: 6px;
