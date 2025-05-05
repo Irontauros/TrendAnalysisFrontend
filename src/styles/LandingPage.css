@@ -22,9 +22,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 8rem 2rem 2rem; /* top, left/right, bottom */
-  gap: 1rem; /* <<<<< CONTROL THIS GAP between second row and footer */
+  align-items: center;
+  padding: 8rem 2rem 2rem; /* top, sides, bottom */
+  gap: 4rem; /* control gap between top and bottom rows */
   pointer-events: none;
 }
 
@@ -36,9 +36,10 @@
   gap: 1.5rem;
   width: 100%;
   pointer-events: none;
+  justify-items: center;
 }
 
-/* Alignment classes */
+/* Individual note alignment */
 .top-left,
 .bottom-left {
   justify-self: start;
@@ -78,13 +79,13 @@
   pointer-events: auto;
 }
 
-/* Footer always visible */
+/* Footer */
 .footer {
   width: 100%;
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 1rem; /* <<<<< You can adjust this margin if needed */
   border: 2px solid #00ffff;
   border-radius: 16px;
   box-shadow: 0 0 12px #00ffff88;
@@ -94,7 +95,7 @@
   flex-shrink: 0;
 }
 
-/* Skip button style */
+/* Skip Intro button */
 .skip-intro-btn {
   position: absolute;
   top: 2rem;
