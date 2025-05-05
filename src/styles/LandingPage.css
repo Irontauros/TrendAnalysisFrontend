@@ -24,7 +24,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 8rem 2rem 2rem; /* top, left/right, bottom */
-  gap: 4rem; /* <<<<< CONTROL THIS GAP between second row and footer */
+  gap: 1rem; /* <<<<< CONTROL THIS GAP between second row and footer */
   pointer-events: none;
 }
 
