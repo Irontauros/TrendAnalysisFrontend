@@ -23,10 +23,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 5rem 2rem 2rem; /* enough space top/bottom */
+  padding: 8rem 2rem 3rem; /* ↑ increased top to avoid navbar, ↓ reduced bottom to pull closer to footer */
   gap: 2rem;
   pointer-events: none;
 }
+
 
 /* 3-column grid layout for top and bottom */
 .top-row,
