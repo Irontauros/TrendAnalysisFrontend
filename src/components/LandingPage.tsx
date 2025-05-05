@@ -1,3 +1,5 @@
+// src/components/LandingPage.tsx
+
 import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
@@ -9,11 +11,26 @@ type LandingPageProps = {
 
 const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   const [introSkipped, setIntroSkipped] = useState(false);
+  const [openPopup, setOpenPopup] = useState<string | null>(null);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnd = () => {
     setIntroSkipped(true);
+  };
+
+  const togglePopup = (key: string) => {
+    setOpenPopup(prev => (prev === key ? null : key));
+  };
+
+  const popupContent = {
+    welcome: t("intro.welcome"),
+    mix: t("intro.mix"),
+    graphs: t("intro.graphs"),
+    prediction: t("intro.prediction"),
+    settings: t("intro.settings"),
+    compare: t("intro.compare"),
+    footer: t("footer"),
   };
 
   return (
@@ -29,19 +46,26 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             playsInline
           />
           <Navbar onOpenSettings={onOpenSettings} />
-          <div className="sticky-notes-overlay">
-  <div className="top-row">
-    <div className="note top-left">{t("intro.welcome")}</div>
-    <div className="note middle-left">{t("intro.mix")}</div>
-    <div className="note top-right">{t("intro.graphs")}</div>
-  </div>
-  <div className="bottom-row">
-    <div className="note bottom-left">{t("intro.prediction")}</div>
-    <div className="note middle-right">{t("intro.settings")}</div>
-    <div className="note bottom-right">{t("intro.compare")}</div>
-  </div>
+          <div className="landing-layout">
+            <div className="sidebar-buttons">
+              {Object.keys(popupContent).map((key) => (
+                <button
+                  key={key}
+                  className="landing-button"
+                  onClick={() => togglePopup(key)}
+                >
+                  {t(`buttonTitles.${key}`)}
+                </button>
+              ))}
+            </div>
 
-  <div className="footer">{t("footer")}</div>
+            <div className="popup-area">
+              {openPopup && (
+                <div className="popup-box">
+                  {popupContent[openPopup]}
+                </div>
+              )}
+            </div>
           </div>
         </>
       ) : (

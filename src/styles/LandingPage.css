@@ -1,10 +1,12 @@
+/* src/styles/LandingPage.css */
+
 .landing-page {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .background-video,
@@ -18,116 +20,74 @@
   z-index: -1;
 }
 
-/* Sticky notes overlay */
-.sticky-notes-overlay {
+.landing-layout {
+  display: flex;
+  flex: 1;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 8rem 2rem 0;
-  gap: 10rem; /* controls gap between top and bottom row */
-  pointer-events: none;
+  gap: 1rem;
 }
 
-/* Top and bottom rows */
-.top-row,
-.bottom-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* push columns outward */
-  gap: 10rem; /* increased gap between side and center */
-  width: 100%;
-  max-width: 1300px;
-  justify-items: center;
-  pointer-events: none;
-}
-
-/* Note positioning */
-.top-left,
-.bottom-left {
-  justify-self: start;
-}
-
-.top-center,
-.bottom-center {
-  justify-self: center;
-}
-
-.top-right,
-.bottom-right {
-  justify-self: end;
-}
-
-/* Note style */
-.note {
-  background-color: rgba(20, 30, 48, 0.9);
-  color: #ffffff;
-  padding: 1.75rem;
-  min-width: 280px; /* 10% bigger */
-  max-width: 320px;
-  min-height: 220px;
-  max-height: 280px;
-  border-radius: 16px;
-  border: 2px solid #00ffff;
-  box-shadow: 0 0 15px #00ffff88;
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  pointer-events: auto;
-}
-
-/* Reduced gap between second line and footer */
-.bottom-row {
-  margin-bottom: 0.5rem; /* <<< Change this to control second row -> footer gap */
-}
-
-/* Footer */
-.footer {
-  width: 100%;
+.landing-button {
   background-color: rgba(20, 30, 48, 0.85);
   color: #ffffff;
-  padding: 1rem;
-  margin-top: auto; /* pushes footer to bottom */
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
   border: 2px solid #00ffff;
-  border-radius: 16px;
-  box-shadow: 0 0 12px #00ffff88;
-  font-size: 0.8rem;
-  text-align: center;
-  pointer-events: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #00ffff88;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Skip intro button */
+.landing-button:hover {
+  background-color: rgba(0, 255, 255, 0.15);
+}
+
+.popup-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.popup-box {
+  background-color: rgba(20, 30, 48, 0.9);
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  padding: 2rem;
+  color: #ffffff;
+  box-shadow: 0 0 12px #00ffff88;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Skip button */
 .skip-intro-btn {
   position: absolute;
   top: 2rem;
   right: 2rem;
   z-index: 10;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   background-color: rgba(20, 30, 48, 0.85);
   color: #fff;
   border: 1px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff88;
-  border-radius: 8px;
+  box-shadow: 0 0 8px #00ffff88;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-/* Serious Mode overrides */
-body.serious-mode .note {
-  border: 2px solid #cccccc !important;
-  box-shadow: none !important;
-}
-
-body.serious-mode .footer {
-  border: 2px solid #cccccc !important;
-  box-shadow: none !important;
-}
-
-body.serious-mode .skip-intro-btn {
-  border: 1px solid #cccccc !important;
-  box-shadow: none !important;
 }
