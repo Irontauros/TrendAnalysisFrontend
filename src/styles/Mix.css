@@ -1,3 +1,5 @@
+/* src/styles/MixPage.css */
+
 .mix-container {
   margin-top: 5vh;
   padding: 4vh 2vw;
@@ -30,8 +32,8 @@
 }
 
 .mix-dropdown select {
-  font-size: 1.6vw; /* Moderate */
-  padding: 1vh 0.8vw; /* Tighter */
+  font-size: 1.6vw;
+  padding: 1vh 0.8vw;
   min-height: 5vh;
   min-width: 18vw;
   max-width: 22vw;
@@ -132,8 +134,47 @@
   max-width: 90%;
 }
 
+/* Serious mode (simple mode) */
 .serious-mode .mix-dropdown select {
-  font-size: 1.6vw !important;
-  padding: 1vh 0.8vw !important;
-  min-height: 5vh !important;
+  background-color: #1e293b;
+  border-color: #ccc;
+  color: white;
+  box-shadow: none;
+}
+
+.serious-mode .mix-dropdown select:hover,
+.serious-mode .mix-dropdown select:focus {
+  background-color: #334155;
+  color: white;
+}
+
+.serious-mode .mix-result-box {
+  background-color: #1e293b;
+  border: 0.15vw solid #ccc;
+  color: white;
+  box-shadow: none;
+}
+
+.serious-mode .mix-calculate-btn {
+  background-color: #1e293b;
+  color: white;
+  box-shadow: none;
+}
+
+.serious-mode .mix-calculate-btn:hover {
+  background-color: #334155;
+}
+
+.serious-mode .mix-content-box {
+  background-color: #1e293b;
+  border: 0.1vw solid #ccc;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.serious-mode .mix-error-message {
+  color: #f87171;
+  background: #1e293b;
+  backdrop-filter: none;
+  box-shadow: none;
 }
