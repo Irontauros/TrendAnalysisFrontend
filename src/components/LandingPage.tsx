@@ -14,6 +14,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   const { seriousMode } = useContext(SettingsContext);
   const [introSkipped, setIntroSkipped] = useState(false);
   const [openPopup, setOpenPopup] = useState<string | null>(null);
+  const [backgroundVideoLoaded, setBackgroundVideoLoaded] = useState(false);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -29,14 +30,18 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
     <div
       className="landing-page"
       style={{
-        backgroundColor: "#0f172a", // 👈 Blue background by default
+        backgroundColor: seriousMode
+          ? "#0f172a"
+          : !backgroundVideoLoaded
+          ? "#0f172a"
+          : "transparent",
         minHeight: "100vh",
         minWidth: "100vw",
         overflow: "hidden",
         position: "relative",
       }}
     >
-      {/* After intro skipped, show background video */}
+      {/* Background video, shown after intro skipped */}
       {introSkipped && (
         <video
           className="background-video"
@@ -46,6 +51,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
           loop
           playsInline
           preload="auto"
+          onLoadedData={() => setBackgroundVideoLoaded(true)}
           style={{
             position: "fixed",
             top: 0,
@@ -53,7 +59,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             minWidth: "100vw",
             minHeight: "100vh",
             objectFit: "cover",
-            zIndex: -1, // 👈 Video over blue
+            zIndex: -1,
           }}
         />
       )}
@@ -71,7 +77,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
                 width: "100vw",
                 height: "100vh",
                 backgroundColor: "#0f172a",
-                zIndex: 0, // 👈 This covers video ONLY when serious mode ON
+                zIndex: 0,
               }}
             />
           )}
@@ -130,7 +136,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
               minWidth: "100vw",
               minHeight: "100vh",
               objectFit: "cover",
-              zIndex: -1, 
+              zIndex: -1,
             }}
           />
 
