@@ -1,8 +1,9 @@
 // src/components/LandingPage.tsx
 
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { useTranslation } from "../hooks/useTranslation";
+import { SettingsContext } from "../context/SettingsContext";
 import "../styles/LandingPage.css";
 
 type LandingPageProps = {
@@ -10,6 +11,7 @@ type LandingPageProps = {
 };
 
 const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
+  const { seriousMode } = useContext(SettingsContext);
   const [introSkipped, setIntroSkipped] = useState(false);
   const [openPopup, setOpenPopup] = useState<string | null>(null);
   const { t } = useTranslation();
@@ -24,18 +26,58 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   };
 
   return (
-    <div className="landing-page">
+    <div
+      className="landing-page"
+      style={{
+        backgroundColor: "#0f172a", // 👈 Blue background by default
+        minHeight: "100vh",
+        minWidth: "100vw",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
+      {/* After intro skipped, show background video */}
+      {introSkipped && (
+        <video
+          className="background-video"
+          src="/bgg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            minWidth: "100vw",
+            minHeight: "100vh",
+            objectFit: "cover",
+            zIndex: -1, // 👈 Video over blue
+          }}
+        />
+      )}
+
+      {/* Main content */}
       {introSkipped ? (
         <>
-          <video
-            className="background-video"
-            src="/bgg.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          {/* Serious Mode Overlay */}
+          {seriousMode && (
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100vw",
+                height: "100vh",
+                backgroundColor: "#0f172a",
+                zIndex: 0, // 👈 This covers video ONLY when serious mode ON
+              }}
+            />
+          )}
+
           <Navbar onOpenSettings={onOpenSettings} />
+
           <div className="landing-layout">
             <div className="sidebar-buttons">
               <button onClick={() => togglePopup("intro.welcome")} className="landing-button">
@@ -72,15 +114,26 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
         </>
       ) : (
         <>
+          {/* Intro video */}
           <video
             ref={videoRef}
             className="landing-video"
-            src="/intro.mp4"
+            src="/video.mp4"
             autoPlay
             muted
             playsInline
             onEnded={handleVideoEnd}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              minWidth: "100vw",
+              minHeight: "100vh",
+              objectFit: "cover",
+              zIndex: -1, 
+            }}
           />
+
           <button
             className="skip-intro-btn"
             onClick={() => setIntroSkipped(true)}

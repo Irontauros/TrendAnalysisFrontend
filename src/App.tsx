@@ -1,3 +1,5 @@
+// src/App.tsx
+
 import React, { useContext, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -16,7 +18,7 @@ import Mix from "./components/Mix";
 import Prediction from "./components/Predictive";
 import { Settings } from "./components/Settings";
 import LandingPage from "./components/LandingPage";
-import UnsupportedScreen from "./components/UnsupportedScreen"; // 👈 IMPORTAR
+import UnsupportedScreen from "./components/UnsupportedScreen";
 
 import "./App.css";
 import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
@@ -38,17 +40,26 @@ const AppContent = () => {
   const { seriousMode } = useContext(SettingsContext);
   const [showSettings, setShowSettings] = useState(false);
   const location = useLocation();
-  const width = useWindowWidth(); // 👈 OBTER LARGURA
+  const width = useWindowWidth();
 
   const isLandingPage = location.pathname === "/";
 
-  // 👇 BLOQUEAR ECRÃS PEQUENOS
   if (width < 1024) {
     return <UnsupportedScreen />;
   }
 
   return (
-    <div className={`app-wrapper ${seriousMode ? "serious-mode" : ""}`}>
+    <div
+      className={`app-wrapper ${seriousMode ? "serious-mode" : ""}`}
+      style={{
+        backgroundColor: "#0f172a", // 👈 Always dark blue base
+        minHeight: "100vh",
+        minWidth: "100vw",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
+      {/* Background video */}
       {!isLandingPage && (
         <video
           className="background-video"
@@ -64,13 +75,14 @@ const AppContent = () => {
             minWidth: "100vw",
             minHeight: "100vh",
             objectFit: "cover",
-            zIndex: -1,
+            zIndex: -1, // 👈 Video above blue
           }}
         >
           <source src="/bgg.mp4" type="video/mp4" />
         </video>
       )}
 
+      {/* Serious mode overlay */}
       {seriousMode && (
         <div
           style={{
@@ -80,15 +92,17 @@ const AppContent = () => {
             width: "100vw",
             height: "100vh",
             backgroundColor: "#0f172a",
-            zIndex: 0,
+            zIndex: 0, // 👈 Over video if serious mode
           }}
         />
       )}
 
+      {/* Navbar */}
       {!isLandingPage && (
         <Navbar onOpenSettings={() => setShowSettings(true)} />
       )}
 
+      {/* Main content */}
       <main className="main-content">
         <Routes>
           <Route
@@ -103,6 +117,7 @@ const AppContent = () => {
         </Routes>
       </main>
 
+      {/* Settings Panel */}
       {showSettings && <Settings onClose={() => setShowSettings(false)} />}
     </div>
   );
