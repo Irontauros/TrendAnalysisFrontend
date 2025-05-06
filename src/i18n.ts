@@ -91,9 +91,9 @@ const translations = {
     // ⚡ New! Unsupported screen
     unsupported: {
       title: "Ecrã Não Suportado",
-      description: "Parece que o tamanho do seu ecrã é demasiado pequeno para utilizar esta aplicação.",
-      instruction: "Por favor, utilize um dispositivo com uma resolução maior para melhor experiência.",
-      minWidth: "Largura mínima recomendada: 1024px",
+      description: "Parece que o tamanho deste ecrã é demasiado pequeno para utilizar esta aplicação.",
+      instruction: "Utilize um dispositivo com uma resolução maior para melhor experiência.",
+      minWidth: "Largura mínima: 1024px",
     },
 
     footerText: "© 2025 Todos os direitos reservados. Este site incluindo o seu design, código e funcionalidade é propriedade exclusiva do autor: Francisco Duarte. O vídeo de fundo é da autoria original no YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. Os conteúdos noticiosos são obtidos através da API pública do Arquivo.pt, sendo os direitos pertencentes aos jornais originais.",
@@ -197,9 +197,9 @@ const translations = {
     // ⚡ New! Unsupported screen
     unsupported: {
       title: "Unsupported Screen",
-      description: "It looks like your screen size is too small to use this application.",
-      instruction: "Please use a device with a larger resolution for a better experience.",
-      minWidth: "Recommended minimum width: 1024px",
+      description: "It looks like this screen size is too small to use this application.",
+      instruction: "Use a device with a larger resolution for a better experience.",
+      minWidth: "Minimum width: 1024px",
     },
 
     footerText: "© 2025 All rights reserved. This website including its design, code, and functionality is the sole property of the author: Francisco Duarte. The background video is credited to its original creator on YouTube: “@backgroundmarketing6762” — https://youtu.be/9HaU8NjH7bI. News content is retrieved using the public API from Arquivo.pt, with rights belonging to the original newspapers.",

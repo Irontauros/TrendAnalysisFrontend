@@ -15,6 +15,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
   const [introSkipped, setIntroSkipped] = useState(false);
   const [openPopup, setOpenPopup] = useState<string | null>(null);
   const [backgroundVideoLoaded, setBackgroundVideoLoaded] = useState(false);
+  const [introVideoLoaded, setIntroVideoLoaded] = useState(false);
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -26,22 +27,27 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
     setOpenPopup(prev => (prev === key ? null : key));
   };
 
+  // Decide background color dynamically
+  const getBackgroundColor = () => {
+    if (seriousMode) return "#0f172a";
+    if (!introSkipped) {
+      return introVideoLoaded ? "transparent" : "#0f172a";
+    }
+    return backgroundVideoLoaded ? "transparent" : "#0f172a";
+  };
+
   return (
     <div
       className="landing-page"
       style={{
-        backgroundColor: seriousMode
-          ? "#0f172a"
-          : !backgroundVideoLoaded
-          ? "#0f172a"
-          : "transparent",
+        backgroundColor: getBackgroundColor(),
         minHeight: "100vh",
         minWidth: "100vw",
         overflow: "hidden",
         position: "relative",
       }}
     >
-      {/* Background video, shown after intro skipped */}
+      {/* Background video after intro */}
       {introSkipped && (
         <video
           className="background-video"
@@ -67,7 +73,7 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
       {/* Main content */}
       {introSkipped ? (
         <>
-          {/* Serious Mode Overlay */}
+          {/* Serious Mode overlay */}
           {seriousMode && (
             <div
               style={{
@@ -126,9 +132,9 @@ const LandingPage = ({ onOpenSettings }: LandingPageProps) => {
             className="landing-video"
             src="/video.mp4"
             autoPlay
-            muted
             playsInline
             onEnded={handleVideoEnd}
+            onLoadedData={() => setIntroVideoLoaded(true)}
             style={{
               position: "fixed",
               top: 0,

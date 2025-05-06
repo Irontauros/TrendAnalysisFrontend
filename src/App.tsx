@@ -23,7 +23,7 @@ import UnsupportedScreen from "./components/UnsupportedScreen";
 import "./App.css";
 import { SettingsProvider, SettingsContext } from "./context/SettingsContext";
 
-// Hook para obter a largura da janela
+// Hook to get window width
 const useWindowWidth = () => {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -39,6 +39,7 @@ const useWindowWidth = () => {
 const AppContent = () => {
   const { seriousMode } = useContext(SettingsContext);
   const [showSettings, setShowSettings] = useState(false);
+  const [backgroundVideoLoaded, setBackgroundVideoLoaded] = useState(false);
   const location = useLocation();
   const width = useWindowWidth();
 
@@ -48,11 +49,16 @@ const AppContent = () => {
     return <UnsupportedScreen />;
   }
 
+  const getBackgroundColor = () => {
+    if (seriousMode) return "#0f172a";
+    return backgroundVideoLoaded ? "transparent" : "#0f172a";
+  };
+
   return (
     <div
       className={`app-wrapper ${seriousMode ? "serious-mode" : ""}`}
       style={{
-        backgroundColor: "#0f172a", // 👈 Always dark blue base
+        backgroundColor: getBackgroundColor(),
         minHeight: "100vh",
         minWidth: "100vw",
         overflow: "hidden",
@@ -68,6 +74,7 @@ const AppContent = () => {
           loop
           playsInline
           preload="auto"
+          onLoadedData={() => setBackgroundVideoLoaded(true)}
           style={{
             position: "fixed",
             top: 0,
@@ -75,14 +82,14 @@ const AppContent = () => {
             minWidth: "100vw",
             minHeight: "100vh",
             objectFit: "cover",
-            zIndex: -1, // 👈 Video above blue
+            zIndex: -1,
           }}
         >
           <source src="/bgg.mp4" type="video/mp4" />
         </video>
       )}
 
-      {/* Serious mode overlay */}
+      {/* Serious Mode overlay */}
       {seriousMode && (
         <div
           style={{
@@ -92,7 +99,7 @@ const AppContent = () => {
             width: "100vw",
             height: "100vh",
             backgroundColor: "#0f172a",
-            zIndex: 0, // 👈 Over video if serious mode
+            zIndex: 0,
           }}
         />
       )}
